@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <ApplicationIcon>pexels-stas-knop-6616845.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\pexels-stas-knop-6616845.ico</ApplicationIcon>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <SignAssembly>False</SignAssembly>
@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <Content Include="Output\CalculateETA.xml" />
-    <Content Include="pexels-stas-knop-6616845.ico" />
+    <Content Include="Resources\pexels-stas-knop-6616845.ico" />
   </ItemGroup>
 
   <ItemGroup>
