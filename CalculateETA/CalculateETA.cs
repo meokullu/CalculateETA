@@ -8,7 +8,9 @@ namespace CalculateETA
     public class CalculateETA
     {
         #region Variables (Multi-Threading)
+
         private static int counter;
+
         #endregion Variables (Multi-Threading)
 
         /// <summary>
@@ -123,9 +125,11 @@ namespace CalculateETA
             //
             return eta;
         }
+
         #endregion Single-Thread
 
         #region Multi-Thread
+
         /// <summary>
         /// Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
         /// </summary>
@@ -222,9 +226,11 @@ namespace CalculateETA
             //
             return eta;
         }
+
         #endregion Multi-Thread
 
         #region Visual Format
+
         /// <summary>
         /// Returns estimated left time to finish on TimeSpan format.
         /// </summary>
@@ -307,6 +313,7 @@ namespace CalculateETA
                 return $"{(eTATimeInMs % 86400):0} day(s)";
             }
         }
+
         #endregion VisualFormat
     }
 }
