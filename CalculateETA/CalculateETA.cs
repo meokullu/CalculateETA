@@ -11,6 +11,26 @@ namespace CalculateETA
         private static int counter;
         #endregion Variables (Multi-Threading)
 
+        /// <summary>
+        /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero.
+        /// </summary>
+        /// <returns>True or false</returns>
+        public bool ResetCounter()
+        {
+            if (counter == 0)
+            {
+                return false;
+            }
+            else
+            {
+                //
+                counter = 0;
+
+                //
+                return true;
+            }
+        }
+
         #region Single-Thread
 
         /// <summary>
