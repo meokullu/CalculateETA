@@ -61,31 +61,43 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 ```
 * CalcETA(int totalIndex, long totalElapsedTimeInMs)
+```
+
+Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
+
+* int index: Current index of loop.
+
+* long totalElapsedTimeInMs: Passed time of loop in milliseconds.
+
+```
 * CalcETA(int totalIndex, long totalElapsedTicks, long tickFrequency)
+```
+
+Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
+
+* int index: Current index of loop.
+
+* long totalElapsedTicks: Passed ticks of loop.
+
+* long tickFrequency: Tick of frequency.
+
+```
 * CalcETA(int totalIndex, TimeSpan timeSpan)
 ```
 
-Returns null or positive numerical values. (long? or double?)
+Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
 
 * int index: Current index of loop.
- 
-* int totalIndex: Total index of loop.
 
-* long totalElapsedTimeInMs:
+* TimeSpan timeSpan: Passed time of loop in TimeSpan format.
 
-* long totalElapsedTicks:
-
-* long tickFrequency:
-
-* TimeSpan timeSpan: 
-
-### Visualization Of output 
+### Visualization of output 
 
 ```
 * TimeSpanETA(long? eTATimeInMs)
 ```
 
-Returns visualized time. (TimeSpan or string)
+Returns Time.Zero if eTATimeInMs is null or negative or left time. (TimeSpan)
 
 * long?: Estimated time to finish in milliseconds.
 
@@ -93,7 +105,7 @@ Returns visualized time. (TimeSpan or string)
 * NumberFormatETA(long? eTATimeInMs)
 ```
 
-Returns visualized time. (TimeSpan or string)
+Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative, returns left time in {hh:mm:ss:msms}. (string)
 
 * long?: Estimated time to finish in milliseconds.
 
@@ -101,7 +113,9 @@ Returns visualized time. (TimeSpan or string)
 * NameETA(long? eTATimeInMs)
 ```
 
-Returns visualized time. (TimeSpan or string)
+Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative (string)
+
+Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} minute(s), or {} hour(s)
 
 * long?: Estimated time to finish in milliseconds.
 
