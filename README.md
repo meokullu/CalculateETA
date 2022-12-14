@@ -21,23 +21,41 @@ Returns true (value was not zero and resetted) or false (value was zero already)
 
 ```
 * CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
-* CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
-* CalcETA(int index, int totalIndex, TimeSpan timeSpan)
 ```
 
-Returns null or positive numerical values. (long? or double?)
+Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
 
 * int index: Current index of loop.
  
 * int totalIndex: Total index of loop.
 
-* long totalElapsedTimeInMs:
+* long totalElapsedTimeInMs: Passed time of loop in milliseconds.
 
-* long totalElapsedTicks:
+```
+* CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+```
 
-* long tickFrequency:
+Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
 
-* TimeSpan timeSpan: 
+* int index: Current index of loop.
+ 
+* int totalIndex: Total index of loop.
+
+* long totalElapsedTicks: Passed ticks of loop.
+
+* long tickFrequency: Tick of frequency.
+
+```
+* CalcETA(int index, int totalIndex, TimeSpan timeSpan)
+```
+
+Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
+
+* int index: Current index of loop.
+ 
+* int totalIndex: Total index of loop.
+
+* TimeSpan timeSpan: Passed time of loop in TimeSpan format.
 
 ### Multi-thread methods
 
@@ -104,8 +122,6 @@ Returns visualized time. (TimeSpan or string)
   
 ## Task list
 - [ ] 
-- [ ] 
-- [ ]
 
 ## Licence
 No licence is required.
