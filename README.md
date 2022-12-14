@@ -10,11 +10,14 @@ CalculateETA is optimized for cpu-intense applications.
 
 ## Listed Methods
 
+### Counter Process
 ```
 * ResetCounter()
 ```
 
 Returns true (value was not zero and resetted) or false (value was zero already) value. (bool)
+
+### Single-thread methods
 
 ```
 * CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
@@ -36,6 +39,8 @@ Returns null or positive numerical values. (long? or double?)
 
 * TimeSpan timeSpan: 
 
+### Multi-thread methods
+
 ```
 * CalcETA(int totalIndex, long totalElapsedTimeInMs)
 * CalcETA(int totalIndex, long totalElapsedTicks, long tickFrequency)
@@ -55,6 +60,8 @@ Returns null or positive numerical values. (long? or double?)
 * long tickFrequency:
 
 * TimeSpan timeSpan: 
+
+### Visualization Of output 
 
 ```
 * TimeSpanETA(long? eTATimeInMs)
