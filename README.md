@@ -4,7 +4,7 @@ CalculateETA is a project to calculate estimated time to arrive on loops whether
 
 ## Description
 
-CalculateETA has methods to calculate estimated time to finish on loops. (Describe more)
+CalculateETA has methods to calculate estimated time to finish on loops. It calculates left count of iteration and multiply it with avarage passed time on the loop. On multi-thread applications, it has internal counter that increases everytime methods works via using that calculating left count of loop and multiply it with avarage passed time on the loop.
 
 CalculateETA is optimized for cpu-intense applications.
 
@@ -135,7 +135,7 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
   * See CHANGELOG.md
   
 ## Task list
-- [ ] 
+- [ ] Support Int64 (UInt) data type on CalcETA methods individually.
 
 ## Licence
 No licence is required.
