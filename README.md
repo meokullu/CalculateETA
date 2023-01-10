@@ -128,11 +128,11 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
 * 1.1.0
   * Added ResetCounter() method for reset counter that holds int variable to calculate ETA on multi-thread applications
   * See [commit change](https://github.com/meokullu/CalculateETA/commits/master) or See [release history](https://github.com/meokullu/CalculateETA/releases)
-  * See CHANELOG.md
-
+  * See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
+  
 * 1.0.0 Initial Release
   * See [commit change](https://github.com/meokullu/CalculateETA/commits/master) or See [release history](https://github.com/meokullu/CalculateETA/releases)
-  * See CHANGELOG.md
+  * See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
   
 ## Task list
 - [ ] Support Int64 (UInt) data type on CalcETA methods individually.
