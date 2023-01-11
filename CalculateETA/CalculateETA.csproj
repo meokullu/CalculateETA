@@ -11,8 +11,16 @@
     <Authors>Okullu</Authors>
     <PackageIcon></PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Initial version.</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <Version>1.1.0</Version>
+    <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
+    <Copyright>Okullu</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ETA;Time;LeftTime</PackageTags>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
+    <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
+    <PackageLicenseFile>LICENCE.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -30,7 +38,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\README.md">
+    <None Include="..\..\Archive\CalculateETA2\LICENCE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\Archive\CalculateETA2\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
