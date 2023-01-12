@@ -8,17 +8,18 @@
     <SignAssembly>False</SignAssembly>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Calculate ETA</Title>
-    <Authors>Okullu</Authors>
+    <Authors>Enes Okullu</Authors>
     <PackageIcon></PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>1.1.0</Version>
+    <PackageReleaseNotes>+ Fixing bug on time measurement and using TimeSpan to resolve of time.
++ day(s) division shows additionally hour(s) now.</PackageReleaseNotes>
+    <Version>1.2.0</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA;Time;LeftTime</PackageTags>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <FileVersion>1.2.0</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <PackageLicenseFile>LICENCE.txt</PackageLicenseFile>
   </PropertyGroup>

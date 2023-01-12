@@ -248,6 +248,7 @@ namespace CalculateETA
                 return TimeSpan.Zero;
             }
 
+            //
             return new TimeSpan(0, 0, 0, 0, (int)eTATimeInMs);
         }
 
@@ -258,6 +259,7 @@ namespace CalculateETA
         /// <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns TimeSpan format.</returns>
         public static string NumberFormatETA(long? eTATimeInMs)
         {
+            //
             if (eTATimeInMs == null)
             {
                 return "Uncalculatable";
@@ -267,8 +269,10 @@ namespace CalculateETA
                 return "Negative";
             }
 
+            //
             TimeSpan ts = new TimeSpan(0, 0, 0, 0, milliseconds: (int)eTATimeInMs);
 
+            //
             return $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}:{ts.Milliseconds}";
         }
 
@@ -293,24 +297,25 @@ namespace CalculateETA
                 return $"{eTATimeInMs:0} ms";
             }
 
-            // Converting millisecond into second
-            eTATimeInMs /= 1000;
+            //
+            TimeSpan ts = new TimeSpan(0, 0, 0, 0, milliseconds: (int)eTATimeInMs);
 
-            if (eTATimeInMs < 60)
+            //
+            if (ts.TotalSeconds < 60)
             {
-                return $"{eTATimeInMs:0 second(s)}";
+                return $"{ts.Seconds} second(s)";
             }
-            else if (eTATimeInMs < 3600)
+            else if (ts.TotalSeconds < 3600)
             {
-                return $"{eTATimeInMs / 60:0} minute(s) and {(eTATimeInMs % 60):0} second(s)";
+                return $"{ts.Minutes} minute(s) and {ts.Seconds} second(s)";
             }
-            else if (eTATimeInMs < 86400)
+            else if (ts.TotalSeconds < 86400)
             {
-                return $"{(eTATimeInMs / 1440):0} hour(s) and {(eTATimeInMs % 1440):0} minute(s)";
+                return $"{ts.Hours} hour(s) and {ts.Minutes} minute(s)";
             }
             else
             {
-                return $"{(eTATimeInMs % 86400):0} day(s)";
+                return $"{ts.Days} day(s) and {ts.Hours} hour(s)";
             }
         }
 
