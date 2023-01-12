@@ -115,7 +115,7 @@ Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeIn
 
 Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative (string)
 
-Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} minute(s), or {} hour(s)
+Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} minute(s), or {} day(s) and {} hour(s)
 
 * long?: Estimated time to finish in milliseconds.
 
