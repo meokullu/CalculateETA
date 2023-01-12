@@ -9,6 +9,12 @@
             Calculate the left time to finish current iteration on single-thread and multi-thread applications.
             </summary>
         </member>
+        <member name="M:CalculateETA.CalculateETA.ResetCounter">
+            <summary>
+            Returns true if the counter is resetted to zero. Returns false if the counter is already zero.
+            </summary>
+            <returns>True or false</returns>
+        </member>
         <member name="M:CalculateETA.CalculateETA.CalcETA(System.Int32,System.Int32,System.Int64)">
             <summary>
             Returns calculated estimated time to finish iteration on seconds (long)
