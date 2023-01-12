@@ -8,6 +8,13 @@
 
 ### Removed
 
+## [1.2.0]
+
+### Changed
+ * NameETA() now returns left hour data while left time is more than one day.
+### Fixed
+ * Bug on left time measurement is fixed.
+
 ## [1.1.0]
 
 ### Added
