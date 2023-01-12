@@ -125,6 +125,14 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
  
 ## Version History
 
+* 1.2.1
+  * Output folder is renamed as OutputDLL
+  * Ready-to-use CalculateETA.dll and CalculateETA.xml are updated.
+
+* 1.2.0
+  * Fixed left time measurement bug.
+  * When calculation left time TimeSpan is being used instead of conventional mathematical operations.
+
 * 1.1.0
   * Added ResetCounter() method for reset counter that holds int variable to calculate ETA on multi-thread applications
   * See [commit change](https://github.com/meokullu/CalculateETA/commits/master) or See [release history](https://github.com/meokullu/CalculateETA/releases)
@@ -141,7 +149,7 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
 No licence is required.
 
 ## Authors
-Twitter: [@enesokullu](https://twitter.com/EnesOkullu)
+Twitter: Enes Okullu [@enesokullu](https://twitter.com/EnesOkullu)
 
 ## Help
-Twitter: [@enesokullu](https://twitter.com/EnesOkullu)
+Twitter: Enes Okullu [@enesokullu](https://twitter.com/EnesOkullu)
