@@ -12,7 +12,7 @@ CalculateETA is optimized for cpu-intense applications.
 
 ### Counter Process
 ```
-* ResetCounter()
+ResetCounter()
 ```
 
 Returns true (value was not zero and resetted) or false (value was zero already) value. (bool)
@@ -21,7 +21,7 @@ Returns true (value was not zero and resetted) or false (value was zero already)
 
 <sup>1</sup>
 ```
-* CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
+CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -34,7 +34,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>2</sup>
 ```
-* CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -49,7 +49,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>3</sup>
 ```
-* CalcETA(int index, int totalIndex, TimeSpan timeSpan)
+CalcETA(int index, int totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
@@ -64,7 +64,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>4</sup>
 ```
-* CalcETA(int totalIndex, long totalElapsedTimeInMs)
+CalcETA(int totalIndex, long totalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -75,7 +75,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>5</sup>
 ```
-* CalcETA(int totalIndex, long totalElapsedTicks, long tickFrequency)
+CalcETA(int totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -88,7 +88,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>6</sup>
 ```
-* CalcETA(int totalIndex, TimeSpan timeSpan)
+CalcETA(int totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
@@ -100,7 +100,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 ### Visualization of output 
 
 ```
-* TimeSpanETA(long? eTATimeInMs)
+TimeSpanETA(long? eTATimeInMs)
 ```
 
 Returns Time.Zero if eTATimeInMs is null or negative or left time. (TimeSpan)
@@ -108,7 +108,7 @@ Returns Time.Zero if eTATimeInMs is null or negative or left time. (TimeSpan)
 * long?: Estimated time to finish in milliseconds.
 
 ```
-* NumberFormatETA(long? eTATimeInMs)
+NumberFormatETA(long? eTATimeInMs)
 ```
 
 Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative, returns left time in {hh:mm:ss:msms}. (string)
@@ -116,7 +116,7 @@ Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeIn
 * long?: Estimated time to finish in milliseconds.
 
 ```
-* NameETA(long? eTATimeInMs)
+NameETA(long? eTATimeInMs)
 ```
 
 Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative (string)
@@ -129,25 +129,31 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
 
 ### Single-Thread
 
+<sup>1</sup>
 ```
-CalcETA<sup>1</sup>(5, 10, 1000) => (long)1000 
+CalcETA(5, 10, 1000) => (long)1000 
 ```
+<sup>2</sup>
 ```
-CalcETA<sup>2</sup>(5, 20, 50000000, 10000000) => (long)15
+CalcETA(5, 20, 50000000, 10000000) => (long)15
 ```
+<sup>3</sup>
 ```
-CalcETA<sup>3</sup>(5, 20, new TimeSpan(0, 0, 1, 5) => (double)195
+CalcETA(5, 20, new TimeSpan(0, 0, 1, 5) => (double)195
 ```
 ### Multi-Thread
 
+<sup>4</sup>
 ```
-CalcETA<sup>4</sup>(10, 1000) => (long)1000 
+CalcETA(10, 1000) => (long)1000 
 ```
+<sup>5</sup>
 ```
-CalcETA<sup>5</sup>(20, 50000000, 10000000) => (long)15
+CalcETA(20, 50000000, 10000000) => (long)15
 ```
+<sup>6</sup>
 ```
-CalcETA<sup>6</sup>(20, new TimeSpan(0, 0, 1, 5) => (double)195
+CalcETA(20, new TimeSpan(0, 0, 1, 5) => (double)195
 ```
 ### Output
 
