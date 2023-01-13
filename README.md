@@ -168,11 +168,14 @@ NameETA(90000) => "1 minute(s) and 30 second(s)"
 ```
 ## Version History
 
+See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
+See [release history](https://github.com/meokullu/CalculateETA/releases)
+See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
+
 * 1.2.1
   * Output folder is renamed as OutputDLL
   * Ready-to-use CalculateETA.dll and CalculateETA.xml are updated.
-  * See [commit change](https://github.com/meokullu/CalculateETA/commits/master) or See [release history](https://github.com/meokullu/CalculateETA/releases)
-  * See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
+ 
 
 * 1.2.0
   * Fixed left time measurement bug.
