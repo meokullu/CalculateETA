@@ -20,7 +20,7 @@ Returns true (value was not zero and resetted) or false (value was zero already)
 ### Single-thread methods
 
 ```
-* CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
+* CalcETA<sup>1</sup>(int index, int totalIndex, long totalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -32,7 +32,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 * long totalElapsedTimeInMs: Passed time of loop in milliseconds.
 
 ```
-* CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+* CalcETA<sup>2</sup>(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -46,7 +46,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 * long tickFrequency: Tick of frequency.
 
 ```
-* CalcETA(int index, int totalIndex, TimeSpan timeSpan)
+* CalcETA<sup>3</sup>(int index, int totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
@@ -60,7 +60,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 ### Multi-thread methods
 
 ```
-* CalcETA(int totalIndex, long totalElapsedTimeInMs)
+* CalcETA<sup>4</sup>(int totalIndex, long totalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -70,7 +70,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 * long totalElapsedTimeInMs: Passed time of loop in milliseconds.
 
 ```
-* CalcETA(int totalIndex, long totalElapsedTicks, long tickFrequency)
+* CalcETA<sup>5</sup>(int totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -82,7 +82,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 * long tickFrequency: Tick of frequency.
 
 ```
-* CalcETA(int totalIndex, TimeSpan timeSpan)
+* CalcETA<sup>6</sup>(int totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
@@ -124,24 +124,24 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
 ### Single-Thread
 
 ```
-CalcETA(5, 10, 1000) => (long)1000 
+CalcETA<sup>1</sup>(5, 10, 1000) => (long)1000 
 ```
 ```
-CalcETA(5, 20, 50000000, 10000000) => (long)15
+CalcETA<sup>2</sup>(5, 20, 50000000, 10000000) => (long)15
 ```
 ```
-CalcETA(5, 20, new TimeSpan(0, 0, 1, 5) => (double)195
+CalcETA<sup>3</sup>(5, 20, new TimeSpan(0, 0, 1, 5) => (double)195
 ```
 ### Multi-Thread
 
 ```
-CalcETA(10, 1000) => (long)1000 
+CalcETA<sup>4</sup>(10, 1000) => (long)1000 
 ```
 ```
-CalcETA(20, 50000000, 10000000) => (long)15
+CalcETA<sup>5</sup>(20, 50000000, 10000000) => (long)15
 ```
 ```
-CalcETA(20, new TimeSpan(0, 0, 1, 5) => (double)195
+CalcETA<sup>6</sup>(20, new TimeSpan(0, 0, 1, 5) => (double)195
 ```
 ### Output
 
