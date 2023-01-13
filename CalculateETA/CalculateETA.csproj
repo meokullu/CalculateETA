@@ -38,17 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\Archive\CalculateETA2\LICENCE.txt">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\..\Archive\CalculateETA2\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="bin\Release\netcoreapp3.1\" />
     <Folder Include="OutputDLL\" />
   </ItemGroup>
