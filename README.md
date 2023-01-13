@@ -123,28 +123,37 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
 
 ### Single-Thread
 
+```
 CalcETA(5, 10, 1000) => (long)1000 
-
+```
+```
 CalcETA(5, 20, 50000000, 10000000) => (long)15
-
+```
+```
 CalcETA(5, 20, new TimeSpan(0, 0, 1, 5) => (double)195
-
+```
 ### Multi-Thread
 
+```
 CalcETA(10, 1000) => (long)1000 
-
+```
+```
 CalcETA(20, 50000000, 10000000) => (long)15
-
+```
+```
 CalcETA(20, new TimeSpan(0, 0, 1, 5) => (double)195
-
+```
 ### Output
 
+```
 TimeSpanETA(90000) => (TimeSpan)00:01:30
-
+```
+```
 NumberFormatETA(90000) => "0:1:30:0"
-
+```
+```
 NameETA(90000) => "1 minute(s) and 30 second(s)"
-
+```
 ## Version History
 
 * 1.2.1
