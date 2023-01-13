@@ -10,14 +10,14 @@ CalculateETA is optimized for cpu-intense applications.
 
 ## Listed Methods
 
-### Counter Process
+#### Counter Process
 ```
 ResetCounter()
 ```
 
 Returns true (value was not zero and resetted) or false (value was zero already) value. (bool)
 
-### Single-thread methods
+#### Single-thread methods
 
 <sup>1</sup>
 ```
@@ -60,7 +60,7 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 * TimeSpan timeSpan: Passed time of loop in TimeSpan format.
 
-### Multi-thread methods
+#### Multi-thread methods
 
 <sup>4</sup>
 ```
@@ -127,7 +127,7 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
 
 ## Example Usage
 
-### Single-Thread
+#### Single-Thread
 
 <sup>1</sup>
 ```
@@ -141,7 +141,7 @@ CalcETA(5, 20, 50000000, 10000000) => (long)15
 ```
 CalcETA(5, 20, new TimeSpan(0, 0, 1, 5) => (double)195
 ```
-### Multi-Thread
+#### Multi-Thread
 
 <sup>4</sup>
 ```
@@ -155,7 +155,7 @@ CalcETA(20, 50000000, 10000000) => (long)15
 ```
 CalcETA(20, new TimeSpan(0, 0, 1, 5) => (double)195
 ```
-### Output
+#### Output
 
 ```
 TimeSpanETA(90000) => (TimeSpan)00:01:30
@@ -171,6 +171,8 @@ NameETA(90000) => "1 minute(s) and 30 second(s)"
 * 1.2.1
   * Output folder is renamed as OutputDLL
   * Ready-to-use CalculateETA.dll and CalculateETA.xml are updated.
+  * See [commit change](https://github.com/meokullu/CalculateETA/commits/master) or See [release history](https://github.com/meokullu/CalculateETA/releases)
+  * See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
 
 * 1.2.0
   * Fixed left time measurement bug.
@@ -178,12 +180,8 @@ NameETA(90000) => "1 minute(s) and 30 second(s)"
 
 * 1.1.0
   * Added ResetCounter() method for reset counter that holds int variable to calculate ETA on multi-thread applications
-  * See [commit change](https://github.com/meokullu/CalculateETA/commits/master) or See [release history](https://github.com/meokullu/CalculateETA/releases)
-  * See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
   
-* 1.0.0 Initial Release
-  * See [commit change](https://github.com/meokullu/CalculateETA/commits/master) or See [release history](https://github.com/meokullu/CalculateETA/releases)
-  * See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
+* 1.0.0 Initial Release 
   
 ## Task list
 - [ ] Support Int64 (UInt) data type on CalcETA methods individually.
