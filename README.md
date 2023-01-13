@@ -19,8 +19,9 @@ Returns true (value was not zero and resetted) or false (value was zero already)
 
 ### Single-thread methods
 
+<sup>1</sup>
 ```
-* CalcETA<sup>1</sup>(int index, int totalIndex, long totalElapsedTimeInMs)
+* CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -31,8 +32,9 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 * long totalElapsedTimeInMs: Passed time of loop in milliseconds.
 
+<sup>2</sup>
 ```
-* CalcETA<sup>2</sup>(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+* CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -45,8 +47,9 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 * long tickFrequency: Tick of frequency.
 
+<sup>3</sup>
 ```
-* CalcETA<sup>3</sup>(int index, int totalIndex, TimeSpan timeSpan)
+* CalcETA(int index, int totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
@@ -59,8 +62,9 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 ### Multi-thread methods
 
+<sup>4</sup>
 ```
-* CalcETA<sup>4</sup>(int totalIndex, long totalElapsedTimeInMs)
+* CalcETA(int totalIndex, long totalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -69,8 +73,9 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 * long totalElapsedTimeInMs: Passed time of loop in milliseconds.
 
+<sup>5</sup>
 ```
-* CalcETA<sup>5</sup>(int totalIndex, long totalElapsedTicks, long tickFrequency)
+* CalcETA(int totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -81,8 +86,9 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 * long tickFrequency: Tick of frequency.
 
+<sup>6</sup>
 ```
-* CalcETA<sup>6</sup>(int totalIndex, TimeSpan timeSpan)
+* CalcETA(int totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
