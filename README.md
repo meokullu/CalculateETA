@@ -121,7 +121,8 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
 
 ## Example Usage
 
-###
+### Single-Thread
+### Multi-Thread
  
 ## Version History
 
