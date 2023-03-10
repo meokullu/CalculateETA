@@ -15,6 +15,8 @@ CalculateETA is optimized for cpu-intense applications.
 #### Counter Process
 ```
 ResetCounter()
+
+ResetCounterUint()
 ```
 
 Returns true (value was not zero and resetted) or false (value was zero already) value. (bool)
