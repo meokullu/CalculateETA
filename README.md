@@ -174,6 +174,10 @@ See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
 See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
 
+* 1.3.0
+  * Added support for uint data type as parameters.
+  * Added unsafe methods for increase performance
+
 * 1.2.1
   * Output folder is renamed as OutputDLL
   * Ready-to-use CalculateETA.dll and CalculateETA.xml are updated.
@@ -189,9 +193,9 @@ See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.M
 * 1.0.0 Initial Release 
   
 ## Task list
-- [ ] Support Int64 (UInt) data type on CalcETA methods individually.
-- [ ] Support unsafe methods individually for better performance.
-- [ ] Usage of negative index values create corrupted data as result.
+- [X] Support Int64 (UInt) data type on CalcETA methods individually.
+- [X] Support unsafe methods individually for better performance.
+- [ ] ~~Usage of negative index values create corrupted data as result.~~
 
 ## Licence
 No licence is required.
