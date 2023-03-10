@@ -710,7 +710,7 @@ namespace CalculateETA
         /// <param name="tickFrequency">The frequency of tick.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
         /// <exception cref="System.DivideByZeroException">Throws exception if tickFrequency is zero.</exception>
-        public static long? CalcETAUnsafe(int totalIndex, long totalElapsedTicks, long tickFrequency)
+        public static long CalcETAUnsafe(int totalIndex, long totalElapsedTicks, long tickFrequency)
         {
             //
             long seconds = totalElapsedTicks / tickFrequency;
