@@ -10,7 +10,7 @@ namespace CalculateETA
         #region Variables (Multi-Threading)
 
         private static int counter;
-        private static uint counterUInt;
+        private static uint counterUint;
 
         #endregion Variables (Multi-Threading)
                
@@ -38,16 +38,16 @@ namespace CalculateETA
         /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero. (uint methods)
         /// </summary>
         /// <returns>True or false</returns>
-        public bool ResetCounterUInt()
+        public bool ResetCounterUint()
         {
-            if (counterUInt == 0)
+            if (counterUint == 0)
             {
                 return false;
             }
             else
             {
                 //
-                counterUInt = 0;
+                counterUint = 0;
 
                 //
                 return true;
@@ -55,6 +55,8 @@ namespace CalculateETA
         }
 
         #region Single-Thread
+
+        #region Safe Methods
 
         /// <summary>
         /// [Safe] Returns calculated estimated time to finish iteration on seconds (long)
@@ -238,9 +240,169 @@ namespace CalculateETA
             return eta;
         }
 
+        #endregion Safe Methods
+
+        #region Unsafe Methods
+
+        /// <summary>
+        /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
+        /// </summary>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>
+        /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        public static long CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTimeInMs)
+        {
+            //
+            uint leftCount = totalIndex - index;
+
+            //
+            long avarageElapsedTime = totalElapsedTimeInMs / index;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
+        /// </summary>
+        /// <param name="index">The index of current iteration.</param>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>   
+        /// <exception cref="System.DivideByZeroException">Throws exception if index or tickFrequecny is zero.</exception>
+        public static long CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
+        {
+            //
+            uint leftCount = totalIndex - index;
+
+            //
+            long seconds = totalElapsedTicks / tickFrequency;
+
+            //
+            long avarageElapsedTime = seconds / index;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (double)
+        /// </summary>
+        /// <param name="index">The index of current iteration.</param>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
+        /// <returns>The left time to finish iteration. (double)</returns>
+        /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        public static double CalcETAUnsafe(uint index, uint totalIndex, TimeSpan timeSpan)
+        {
+            //
+            uint leftCount = totalIndex - index;
+
+            //
+            double seconds = timeSpan.TotalSeconds;
+
+            //
+            double avarageElapsedTime = seconds / index;
+
+            //
+            double eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
+        /// </summary>
+        /// <param name="index">The index of current iteration.</param>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>
+        /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        public static long CalcETAUnsafe(int index, int totalIndex, long totalElapsedTimeInMs)
+        {
+            //
+            int leftCount = totalIndex - index;
+
+            //
+            long avarageElapsedTime = totalElapsedTimeInMs / index;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
+        /// </summary>
+        /// <param name="index">The index of current iteration.</param>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>
+        /// <exception cref="System.DivideByZeroException">Throws exception if index or tickFrequency is zero.</exception>
+        public static long CalcETAUnsafe(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+        {
+            //
+            int leftCount = totalIndex - index;
+
+            //
+            long seconds = totalElapsedTicks / tickFrequency;
+
+            //
+            long avarageElapsedTime = seconds / index;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (double)
+        /// </summary>
+        /// <param name="index">The index of current iteration.</param>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
+        /// <returns>The left time to finish iteration. (double)</returns>
+        /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        public static double CalcETAUnsafe(int index, int totalIndex, TimeSpan timeSpan)
+        {
+            //
+            int leftCount = totalIndex - index;
+
+            //
+            double seconds = timeSpan.TotalSeconds;
+
+            //
+            double avarageElapsedTime = seconds / index;
+
+            //
+            double eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        #endregion Unsafe Methods
+
         #endregion Single-Thread
 
         #region Multi-Thread
+
+        #region Safe Methods
 
         /// <summary>
         /// [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
@@ -256,13 +418,13 @@ namespace CalculateETA
             }
 
             //
-            counterUInt++;
+            counterUint++;
 
             //
-            uint leftCount = totalIndex - counterUInt;
+            uint leftCount = totalIndex - counterUint;
 
             //
-            long avarageElapsedTime = totalElapsedTimeInMs / counterUInt;
+            long avarageElapsedTime = totalElapsedTimeInMs / counterUint;
 
             //
             long eta = leftCount * avarageElapsedTime;
@@ -290,13 +452,13 @@ namespace CalculateETA
             long seconds = totalElapsedTicks / tickFrequency;
 
             //
-            counterUInt++;
+            counterUint++;
 
             //
-            uint leftCount = totalIndex - counterUInt;
+            uint leftCount = totalIndex - counterUint;
 
             //
-            long avarageElapsedTime = seconds / counterUInt;
+            long avarageElapsedTime = seconds / counterUint;
 
             //
             long eta = leftCount * avarageElapsedTime;
@@ -322,13 +484,13 @@ namespace CalculateETA
             double seconds = timeSpan.TotalMilliseconds;
 
             //
-            counterUInt++;
+            counterUint++;
 
             //
-            uint leftCount = totalIndex - counterUInt;
+            uint leftCount = totalIndex - counterUint;
 
             //
-            double avarageElapsedTime = seconds / counterUInt;
+            double avarageElapsedTime = seconds / counterUint;
 
             //
             double eta = leftCount * avarageElapsedTime;
@@ -433,6 +595,170 @@ namespace CalculateETA
             //
             return eta;
         }
+
+        #endregion Safe Methods
+
+        #region Unsafe Methods
+
+        /// <summary>
+        /// [Logically Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
+        /// </summary>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
+        public static long CalcETAUnsafe(uint totalIndex, long totalElapsedTimeInMs)
+        {
+            //
+            counterUint++;
+
+            //
+            uint leftCount = totalIndex - counterUint;
+
+            //
+            long avarageElapsedTime = totalElapsedTimeInMs / counterUint;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
+        /// </summary>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>
+        /// <exception cref="System.DivideByZeroException">Throws exception if tickFrequency is zero.</exception>
+        public static long CalcETAUnsafe(uint totalIndex, long totalElapsedTicks, long tickFrequency)
+        {
+            //
+            long seconds = totalElapsedTicks / tickFrequency;
+
+            //
+            counterUint++;
+
+            //
+            uint leftCount = totalIndex - counterUint;
+
+            //
+            long avarageElapsedTime = seconds / counterUint;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Logically Unsafe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations
+        /// </summary>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
+        public static double CalcETAUnsafe(uint totalIndex, TimeSpan timeSpan)
+        {
+            //
+            double seconds = timeSpan.TotalMilliseconds;
+
+            //
+            counterUint++;
+
+            //
+            uint leftCount = totalIndex - counterUint;
+
+            //
+            double avarageElapsedTime = seconds / counterUint;
+
+            //
+            double eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Logically Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
+        /// </summary>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
+        /// <returns>The left time to finish iteration. </returns>
+        public static long CalcETAUnsafe(int totalIndex, long totalElapsedTimeInMs)
+        {
+            //
+            counter++;
+
+            //
+            int leftCount = totalIndex - counter;
+
+            //
+            long avarageElapsedTime = totalElapsedTimeInMs / counter;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
+        /// </summary>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>
+        /// <exception cref="System.DivideByZeroException">Throws exception if tickFrequency is zero.</exception>
+        public static long? CalcETAUnsafe(int totalIndex, long totalElapsedTicks, long tickFrequency)
+        {
+            //
+            long seconds = totalElapsedTicks / tickFrequency;
+
+            //
+            counter++;
+
+            //
+            int leftCount = totalIndex - counter;
+
+            //
+            long avarageElapsedTime = seconds / counter;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Logically Unsafe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations
+        /// </summary>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
+        /// <returns>The left time to finish iteration. (double)</returns>
+        public static double CalcETAUnsafe(int totalIndex, TimeSpan timeSpan)
+        {
+            //
+            double seconds = timeSpan.TotalMilliseconds;
+
+            //
+            counter++;
+
+            //
+            int leftCount = totalIndex - counter;
+
+            //
+            double avarageElapsedTime = seconds / counter;
+
+            //
+            double eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        #endregion Unsafe Methods
 
         #endregion Multi-Thread
 
