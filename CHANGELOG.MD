@@ -8,6 +8,13 @@
 
 ### Removed
 
+## [1.3.0]
+
+### Added
+ * Added ReserCounterUint() for multi-threaded iterations that use uint as index or totalindex.
+ * Added [Unsafe] methods for all methods to increase performance.
+ * Added methods uses uint data type rather than int to increase range.
+
 ## [1.2.0]
 
 ### Changed
