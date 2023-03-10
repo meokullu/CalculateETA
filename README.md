@@ -25,27 +25,33 @@ Returns true (value was not zero and resetted) or false (value was zero already)
 
 <sup>1</sup>
 ```
-CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
+* CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
+* CalcETAUnsafe(int index, int totalIndex, long totalElapsedTimeInMs)
+* CalcETA(uint index, uint totalIndex, long totalElapsedTimeInMs)
+* CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
 
-* int index: Current index of loop.
+* int/uint index: Current index of loop.
  
-* int totalIndex: Total index of loop.
+* int/uint totalIndex: Total index of loop.
 
 * long totalElapsedTimeInMs: Passed time of loop in milliseconds.
 
 <sup>2</sup>
 ```
-CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+* CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+* CalcETAUnsafe(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+* CalcETA(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
+* CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
 
-* int index: Current index of loop.
+* int/uint index: Current index of loop.
  
-* int totalIndex: Total index of loop.
+* int/uint totalIndex: Total index of loop.
 
 * long totalElapsedTicks: Passed ticks of loop.
 
@@ -53,14 +59,17 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>3</sup>
 ```
-CalcETA(int index, int totalIndex, TimeSpan timeSpan)
+* CalcETA(int index, int totalIndex, TimeSpan timeSpan)
+* CalcETAUnsafe(int index, int totalIndex, TimeSpan timeSpan)
+* CalcETA(uint index, uint totalIndex, TimeSpan timeSpan)
+* CalcETAUnsafe(uint index, uint totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
 
-* int index: Current index of loop.
+* int/uint index: Current index of loop.
  
-* int totalIndex: Total index of loop.
+* int/uint totalIndex: Total index of loop.
 
 * TimeSpan timeSpan: Passed time of loop in TimeSpan format.
 
@@ -68,23 +77,29 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>4</sup>
 ```
-CalcETA(int totalIndex, long totalElapsedTimeInMs)
+* CalcETA(int totalIndex, long totalElapsedTimeInMs)
+* CalcETAUnsafe(int totalIndex, long totalElapsedTimeInMs)
+* CalcETA(uint totalIndex, long totalElapsedTimeInMs)
+* CalcETAUnsafe(uint totalIndex, longTotalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
 
-* int index: Current index of loop.
+* int/uint index: Current index of loop.
 
 * long totalElapsedTimeInMs: Passed time of loop in milliseconds.
 
 <sup>5</sup>
 ```
 CalcETA(int totalIndex, long totalElapsedTicks, long tickFrequency)
+CalcETAUnSafe(int totalIndex, long totalElapsedTicks, long tickFrequency)
+CalcETA(uint totalIndex, long totalElapsedTicks, long tickFrequency)
+CalcETAUnsafe(uint totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
 
-* int index: Current index of loop.
+* int/uint index: Current index of loop.
 
 * long totalElapsedTicks: Passed ticks of loop.
 
@@ -92,12 +107,15 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>6</sup>
 ```
-CalcETA(int totalIndex, TimeSpan timeSpan)
+* CalcETA(int totalIndex, TimeSpan timeSpan)
+* CalcETAUnsafe(int totalIndex, TimeSpan timeSpan)
+* CalcETA(uint totalIndex, TimeSpan timeSpan)
+* CalcETAUnsafe(uint totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
 
-* int index: Current index of loop.
+* int/uint index: Current index of loop.
 
 * TimeSpan timeSpan: Passed time of loop in TimeSpan format.
 
