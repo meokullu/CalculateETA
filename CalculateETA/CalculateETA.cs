@@ -10,11 +10,12 @@ namespace CalculateETA
         #region Variables (Multi-Threading)
 
         private static int counter;
+        private static uint counterUInt;
 
         #endregion Variables (Multi-Threading)
-
+               
         /// <summary>
-        /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero.
+        /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero. (int methods)
         /// </summary>
         /// <returns>True or false</returns>
         public bool ResetCounter()
@@ -33,10 +34,121 @@ namespace CalculateETA
             }
         }
 
+        /// <summary>
+        /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero. (uint methods)
+        /// </summary>
+        /// <returns>True or false</returns>
+        public bool ResetCounterUInt()
+        {
+            if (counterUInt == 0)
+            {
+                return false;
+            }
+            else
+            {
+                //
+                counterUInt = 0;
+
+                //
+                return true;
+            }
+        }
+
         #region Single-Thread
 
         /// <summary>
-        /// Returns calculated estimated time to finish iteration on seconds (long)
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (long)
+        /// </summary>
+        /// <param name="index">The index of current iteration.</param>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>
+        public static long? CalcETA(uint index, uint totalIndex, long totalElapsedTimeInMs)
+        {
+            //
+            if (index == 0 || totalIndex == 0 || totalElapsedTimeInMs == 0)
+            {
+                return null;
+            }
+
+            //
+            uint leftCount = totalIndex - index;
+
+            //
+            long avarageElapsedTime = totalElapsedTimeInMs / index;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (long)
+        /// </summary>
+        /// <param name="index">The index of current iteration.</param>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>        
+        public static long? CalcETA(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
+        {
+            //
+            if (index == 0 || totalIndex == 0 || totalElapsedTicks == 0 || tickFrequency == 0)
+            {
+                return null;
+            }
+
+            //
+            uint leftCount = totalIndex - index;
+
+            //
+            long seconds = totalElapsedTicks / tickFrequency;
+
+            //
+            long avarageElapsedTime = seconds / index;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (double)
+        /// </summary>
+        /// <param name="index">The index of current iteration.</param>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
+        /// <returns>The left time to finish iteration. (double)</returns>
+        public static double? CalcETA(uint index, uint totalIndex, TimeSpan timeSpan)
+        {
+            //
+            if (index == 0 || totalIndex == 0 || timeSpan == TimeSpan.Zero)
+            {
+                return null;
+            }
+
+            //
+            uint leftCount = totalIndex - index;
+
+            //
+            double seconds = timeSpan.TotalSeconds;
+
+            //
+            double avarageElapsedTime = seconds / index;
+
+            //
+            double eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (long)
         /// </summary>
         /// <param name="index">The index of current iteration.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
@@ -64,7 +176,7 @@ namespace CalculateETA
         }
 
         /// <summary>
-        /// Returns calculated estimated time to finish iteration on seconds (long)
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (long)
         /// </summary>
         /// <param name="index">The index of current iteration.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
@@ -96,7 +208,7 @@ namespace CalculateETA
         }
 
         /// <summary>
-        /// Returns calculated estimated time to finish iteration on seconds (double)
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (double)
         /// </summary>
         /// <param name="index">The index of current iteration.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
@@ -131,7 +243,102 @@ namespace CalculateETA
         #region Multi-Thread
 
         /// <summary>
-        /// Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
+        /// </summary>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
+        public static long? CalcETA(uint totalIndex, long totalElapsedTimeInMs)
+        {
+            //
+            if (totalIndex == 0 || totalElapsedTimeInMs == 0)
+            {
+                return null;
+            }
+
+            //
+            counterUInt++;
+
+            //
+            uint leftCount = totalIndex - counterUInt;
+
+            //
+            long avarageElapsedTime = totalElapsedTimeInMs / counterUInt;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
+        /// </summary>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>
+        public static long? CalcETA(uint totalIndex, long totalElapsedTicks, long tickFrequency)
+        {
+            //
+            if (totalIndex == 0 || totalElapsedTicks == 0 || tickFrequency == 0)
+            {
+                return null;
+            }
+
+            //
+            long seconds = totalElapsedTicks / tickFrequency;
+
+            //
+            counterUInt++;
+
+            //
+            uint leftCount = totalIndex - counterUInt;
+
+            //
+            long avarageElapsedTime = seconds / counterUInt;
+
+            //
+            long eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations
+        /// </summary>
+        /// <param name="totalIndex">Total index of iteration.</param>
+        /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
+        public static double? CalcETA(uint totalIndex, TimeSpan timeSpan)
+        {
+            //
+            if (totalIndex == 0 || timeSpan == TimeSpan.Zero)
+            {
+                return null;
+            }
+
+            //
+            double seconds = timeSpan.TotalMilliseconds;
+
+            //
+            counterUInt++;
+
+            //
+            uint leftCount = totalIndex - counterUInt;
+
+            //
+            double avarageElapsedTime = seconds / counterUInt;
+
+            //
+            double eta = leftCount * avarageElapsedTime;
+
+            //
+            return eta;
+        }
+
+        /// <summary>
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
@@ -161,7 +368,7 @@ namespace CalculateETA
         }
 
         /// <summary>
-        /// Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
@@ -195,7 +402,7 @@ namespace CalculateETA
         }
 
         /// <summary>
-        /// Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
