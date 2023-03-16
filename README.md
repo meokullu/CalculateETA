@@ -150,6 +150,12 @@ Returns {} ms, {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} mi
 * long?: Estimated time to finish in milliseconds.
 
 ## Example Usage
+```
+public string MethodName(int index, int totalIndex, double totalElapsedTimeInMs)
+{
+    return NameETA(CalcETA(index: index, totalIndex: totalIndex, totalElapsedTimeInMs: totalElapsedTimeInMs));
+}
+```
 
 #### Single-Thread
 
@@ -179,6 +185,7 @@ CalcETA(20, 50000000, 10000000) => (long)15
 ```
 CalcETA(20, new TimeSpan(0, 0, 1, 5) => (double)195
 ```
+
 #### Output
 
 ```
