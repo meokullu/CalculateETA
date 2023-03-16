@@ -186,13 +186,18 @@ TimeSpanETA(90000) => (TimeSpan)00:01:30
 NumberFormatETA(90000) => "0:1:30:0"
 ```
 ```
-NameETA(90000) => "1 minute(s) and 30 second(s)"
+NameETA(90000) => "1 minute(s) and 30 second(s)" (recommended for high-CPU-intense algorithm)
+
+NameETABetterVisual(90000) => "1 minute and 30 seconds"(recommended for low-CPU-intense algorithm in order to offer better visual output)
 ```
 ## Version History
 
 See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
 See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
+
+* 1.4.0
+  * Added NameETABetterVisual() method for offer better visual output
 
 * 1.3.0
   * Added support for uint data type as parameters.
