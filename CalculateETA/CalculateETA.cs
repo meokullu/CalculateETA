@@ -13,7 +13,7 @@ namespace CalculateETA
         private static uint counterUint;
 
         #endregion Variables (Multi-Threading)
-               
+
         /// <summary>
         /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero. (int methods)
         /// </summary>
@@ -810,7 +810,7 @@ namespace CalculateETA
         }
 
         /// <summary>
-        /// Returns estimated time to finish on naming format. (xxx ms or xx second(s) or xx minute(s) and yy (second(s)...)
+        /// Returns estimated time to finish on naming format. (xxx ms or xx second(s) or xx minute(s) and yy (second(s)...) Recommended for high-cpu-intense algorithm
         /// </summary>
         /// <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
         /// <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns string format.</returns>
@@ -849,6 +849,49 @@ namespace CalculateETA
             else
             {
                 return $"{ts.Days} day(s) and {ts.Hours} hour(s)";
+            }
+        }
+
+        /// <summary>
+        /// Returns estimated time to finish on naming format. (xxx ms or xx second/seconds or xx minute/minutes and yy (second/seconds...) Recommended for low-cpu-intense algorithm in order to better visual output
+        /// </summary>
+        /// <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns string format.</returns>
+        public static string NameETABetterVisual(long? eTATimeInMs)
+        {
+            //
+            if (eTATimeInMs == null)
+            {
+                return "Uncalculatable";
+            }
+            else if (eTATimeInMs < 0)
+            {
+                return "Negative";
+            }
+            else if (eTATimeInMs < 1000)
+            {
+                return $"{eTATimeInMs:0} ms";
+            }
+
+            //
+            TimeSpan ts = new TimeSpan(0, 0, 0, 0, milliseconds: (int)eTATimeInMs);
+
+            //
+            if (ts.TotalSeconds < 60)
+            {
+                return $"{ts.Seconds} {(ts.Seconds != 1 ? "seconds" : "second")}";
+            }
+            else if (ts.TotalSeconds < 3600)
+            {
+                return $"{ts.Minutes} {(ts.Minutes != 1 ? "minutes" : "minute")} and {ts.Seconds} {(ts.Seconds != 1 ? "minutes" : "minute")}";
+            }
+            else if (ts.TotalSeconds < 86400)
+            {
+                return $"{ts.Hours} {(ts.Hours != 1 ? "hours" : "hour")} and {ts.Minutes} {(ts.Minutes != 1 ? "minutes" : "minute")}";
+            }
+            else
+            {
+                return $"{ts.Days} {(ts.Days != 1 ? "days" : "day")} and {ts.Hours} {(ts.Hours != 1 ? "hours" : "hour")}";
             }
         }
 
