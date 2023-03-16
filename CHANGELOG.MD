@@ -8,6 +8,11 @@
 
 ### Removed
 
+## [1.4.0]
+
+### Added
+ * Added NameETABetterVisual() for better reability on algorithms.
+
 ## [1.3.0]
 
 ### Added
