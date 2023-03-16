@@ -2,6 +2,8 @@
 
 CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.
 
+![CalcETA14](https://user-images.githubusercontent.com/4971757/225625096-53a44c03-a316-4e8d-b04f-b56d61f8045a.png)
+
 [Check out on Nuget gallery](https://www.nuget.org/packages/CalculateETA/)
 
 ## Description
