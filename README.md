@@ -17,7 +17,8 @@ CalculateETA is optimized for cpu-intense applications.
 #### Counter Process
 ```
 ResetCounter()
-
+```
+```
 ResetCounterUint()
 ```
 
@@ -27,10 +28,16 @@ Returns true (value was not zero and resetted) or false (value was zero already)
 
 <sup>1</sup>
 ```
-* CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
-* CalcETAUnsafe(int index, int totalIndex, long totalElapsedTimeInMs)
-* CalcETA(uint index, uint totalIndex, long totalElapsedTimeInMs)
-* CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTimeInMs)
+CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
+```
+```
+CalcETAUnsafe(int index, int totalIndex, long totalElapsedTimeInMs)
+```
+```
+CalcETA(uint index, uint totalIndex, long totalElapsedTimeInMs)
+```
+```
+CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -43,10 +50,16 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>2</sup>
 ```
-* CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
-* CalcETAUnsafe(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
-* CalcETA(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
-* CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
+CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+```
+```
+CalcETAUnsafe(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+```
+```
+CalcETA(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
+```
+```
+CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
@@ -61,10 +74,16 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>3</sup>
 ```
-* CalcETA(int index, int totalIndex, TimeSpan timeSpan)
-* CalcETAUnsafe(int index, int totalIndex, TimeSpan timeSpan)
-* CalcETA(uint index, uint totalIndex, TimeSpan timeSpan)
-* CalcETAUnsafe(uint index, uint totalIndex, TimeSpan timeSpan)
+CalcETA(int index, int totalIndex, TimeSpan timeSpan)
+```
+```
+CalcETAUnsafe(int index, int totalIndex, TimeSpan timeSpan)
+```
+```
+CalcETA(uint index, uint totalIndex, TimeSpan timeSpan)
+```
+```
+CalcETAUnsafe(uint index, uint totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
@@ -94,8 +113,14 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 <sup>5</sup>
 ```
 CalcETA(int totalIndex, long totalElapsedTicks, long tickFrequency)
+```
+```
 CalcETAUnSafe(int totalIndex, long totalElapsedTicks, long tickFrequency)
+```
+```
 CalcETA(uint totalIndex, long totalElapsedTicks, long tickFrequency)
+```
+```
 CalcETAUnsafe(uint totalIndex, long totalElapsedTicks, long tickFrequency)
 ```
 
@@ -109,10 +134,16 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>6</sup>
 ```
-* CalcETA(int totalIndex, TimeSpan timeSpan)
-* CalcETAUnsafe(int totalIndex, TimeSpan timeSpan)
-* CalcETA(uint totalIndex, TimeSpan timeSpan)
-* CalcETAUnsafe(uint totalIndex, TimeSpan timeSpan)
+CalcETA(int totalIndex, TimeSpan timeSpan)
+```
+```
+CalcETAUnsafe(int totalIndex, TimeSpan timeSpan)
+```
+```
+CalcETA(uint totalIndex, TimeSpan timeSpan)
+```
+```
+CalcETAUnsafe(uint totalIndex, TimeSpan timeSpan)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
@@ -159,46 +190,21 @@ public string MethodName(int index, int totalIndex, double totalElapsedTimeInMs)
 
 #### Single-Thread
 
-<sup>1</sup>
-```
-CalcETA(5, 10, 1000) => (long)1000 
-```
-<sup>2</sup>
-```
-CalcETA(5, 20, 50000000, 10000000) => (long)15
-```
-<sup>3</sup>
-```
-CalcETA(5, 20, new TimeSpan(0, 0, 1, 5) => (double)195
-```
+* CalcETA<sup>1</sup>(5, 10, 1000) => (long)1000
+* CalcETA<sup>2</sup>(5, 20, 50000000, 10000000) => (long)15
+* CalcETA<sup>3</sup>(5, 20, new TimeSpan(0, 0, 1, 5) => (double)195
 #### Multi-Thread
 
-<sup>4</sup>
-```
-CalcETA(10, 1000) => (long)1000 
-```
-<sup>5</sup>
-```
-CalcETA(20, 50000000, 10000000) => (long)15
-```
-<sup>6</sup>
-```
-CalcETA(20, new TimeSpan(0, 0, 1, 5) => (double)195
-```
+* CalcETA<sup>4</sup>(10, 1000) => (long)1000
+* CalcETA<sup>5</sup>(20, 50000000, 10000000) => (long)15
+* CalcETA<sup>6</sup>(20, new TimeSpan(0, 0, 1, 5) => (double)195
 
 #### Output
 
-```
-TimeSpanETA(90000) => (TimeSpan)00:01:30
-```
-```
-NumberFormatETA(90000) => "0:1:30:0"
-```
-```
-NameETA(90000) => "1 minute(s) and 30 second(s)" (recommended for high-CPU-intense algorithm)
-
-NameETABetterVisual(90000) => "1 minute and 30 seconds"(recommended for low-CPU-intense algorithm in order to offer better visual output)
-```
+* TimeSpanETA(90000) => (TimeSpan)00:01:30
+* NumberFormatETA(90000) => "0:1:30:0"
+* NameETA(90000) => "1 minute(s) and 30 second(s)" (recommended for high-CPU-intense algorithm)
+* NameETABetterVisual(90000) => "1 minute and 30 seconds"(recommended for low-CPU-intense algorithm in order to offer better visual output)
 ## Version History
 
 See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
