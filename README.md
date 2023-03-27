@@ -4,7 +4,7 @@ CalculateETA is a project to calculate estimated time to arrive on loops whether
 
 ![CalcETA14](https://repository-images.githubusercontent.com/569852870/37de212a-54d8-428f-aa2e-c723b08ae7df)
 
-[Check out on Nuget gallery](https://www.nuget.org/packages/CalculateETA/)
+[Check out on NuGet gallery](https://www.nuget.org/packages/CalculateETA/)
 
 ## Description
 
