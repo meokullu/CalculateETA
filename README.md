@@ -233,9 +233,8 @@ See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.M
 * 1.0.0 Initial Release 
   
 ## Task list
-- [X] Support Int64 (UInt) data type on CalcETA methods individually.
-- [X] Support unsafe methods individually for better performance.
 - [ ] ~~Usage of negative index values create corrupted data as result.~~
+- [ ] Using of certain high values creates missing result value with naming ("Uncalculatable") and with CalcETA (-1) 
 
 ## Licence
 No licence is required.
