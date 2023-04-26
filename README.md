@@ -240,7 +240,8 @@ See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.M
   
 ## Task list
 - [ ] ~~Usage of negative index values create corrupted data as result.~~
-- [ ] Using of certain high values creates missing result value with naming ("Uncalculatable") and with CalcETA (-1) 
+- [ ] Using of certain high values creates missing result value with naming ("Uncalculatable") and with CalcETA (-1)
+- [ ] Provide TimeSpanETA(), NumberFormatETA(), NameETA() and NameETABetterVisual() with their unsafe versions for better performance.
 
 ## Licence
 No licence is required.
