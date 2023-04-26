@@ -98,10 +98,16 @@ Returns null if any of parameter is zero or returns estimated left time in milli
 
 <sup>4</sup>
 ```
-* CalcETA(int totalIndex, long totalElapsedTimeInMs)
-* CalcETAUnsafe(int totalIndex, long totalElapsedTimeInMs)
-* CalcETA(uint totalIndex, long totalElapsedTimeInMs)
-* CalcETAUnsafe(uint totalIndex, longTotalElapsedTimeInMs)
+CalcETA(int totalIndex, long totalElapsedTimeInMs)
+```
+```
+CalcETAUnsafe(int totalIndex, long totalElapsedTimeInMs)
+```
+```
+CalcETA(uint totalIndex, long totalElapsedTimeInMs)
+```
+```
+CalcETAUnsafe(uint totalIndex, longTotalElapsedTimeInMs)
 ```
 
 Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
