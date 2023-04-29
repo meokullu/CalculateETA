@@ -21,63 +21,71 @@
             </summary>
             <returns>True or false</returns>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.UInt32,System.UInt32,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.Int64})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (long)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
             <returns>The left time to finish iteration. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.UInt32,System.UInt32,System.Int64,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (long)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-            <param name="tickFrequency">The frequency of tick.</param>
-            <returns>The left time to finish iteration. (long)</returns>        
+            <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
+            <returns>The left time to finish iteration. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.UInt32,System.UInt32,System.TimeSpan)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.TimeSpan})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (double)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
             <returns>The left time to finish iteration. (double)</returns>
+            <exception cref = "T:System.DivideByZeroException" > Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Int32,System.Int32,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int64})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (long)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
             <returns>The left time to finish iteration. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Int32,System.Int32,System.Int64,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (long)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-            <param name="tickFrequency">The frequency of tick.</param>
-            <returns>The left time to finish iteration. (long)</returns>        
+            <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
+            <returns>The left time to finish iteration. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Int32,System.Int32,System.TimeSpan)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.TimeSpan})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (double)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
             <returns>The left time to finish iteration. (double)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.UInt32,System.UInt32,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.Int64})">
             <summary>
             [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
             </summary>
@@ -87,82 +95,83 @@
             <returns>The left time to finish iteration. (long)</returns>
             <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.UInt32,System.UInt32,System.Int64,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-            <param name="tickFrequency">The frequency of tick.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
             <returns>The left time to finish iteration. (long)</returns>   
-            <exception cref="T:System.DivideByZeroException">Throws exception if index or tickFrequecny is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index or frequency is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.UInt32,System.UInt32,System.TimeSpan)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.TimeSpan})">
             <summary>
             [Unsafe] Returns calculated estimated time to finish iteration on seconds (double)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
             <returns>The left time to finish iteration. (double)</returns>
             <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Int32,System.Int32,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int64})">
             <summary>
             [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
             <returns>The left time to finish iteration. (long)</returns>
             <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Int32,System.Int32,System.Int64,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-            <param name="tickFrequency">The frequency of tick.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
             <returns>The left time to finish iteration. (long)</returns>
-            <exception cref="T:System.DivideByZeroException">Throws exception if index or tickFrequency is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index or frequency is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Int32,System.Int32,System.TimeSpan)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.TimeSpan})">
             <summary>
             [Unsafe] Returns calculated estimated time to finish iteration on seconds (double)
             </summary>
-            <param name="index">The index of current iteration.</param>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
             <returns>The left time to finish iteration. (double)</returns>
             <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.UInt32,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.UInt32},System.Nullable{System.Int64})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.UInt32,System.Int64,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-            <param name="tickFrequency">The frequency of tick.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
             <returns>The left time to finish iteration. (long)</returns>
+            /// <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.UInt32,System.TimeSpan)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.UInt32},System.Nullable{System.TimeSpan})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Int32,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.Int32},System.Nullable{System.Int64})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
             </summary>
@@ -170,16 +179,17 @@
             <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
             <returns>The left time to finish iteration. </returns>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Int32,System.Int64,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-            <param name="tickFrequency">The frequency of tick.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
             <returns>The left time to finish iteration. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequecny is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Int32,System.TimeSpan)">
+        <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.Int32},System.Nullable{System.TimeSpan})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations
             </summary>
@@ -187,31 +197,31 @@
             <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
             <returns>The left time to finish iteration. (double)</returns>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.UInt32,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.UInt32},System.Nullable{System.Int64})">
             <summary>
             [Logically Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.UInt32,System.Int64,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-            <param name="tickFrequency">The frequency of tick.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
             <returns>The left time to finish iteration. (long)</returns>
-            <exception cref="T:System.DivideByZeroException">Throws exception if tickFrequency is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.UInt32,System.TimeSpan)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.UInt32},System.Nullable{System.TimeSpan})">
             <summary>
             [Logically Unsafe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Int32,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int64})">
             <summary>
             [Logically Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
             </summary>
@@ -219,17 +229,17 @@
             <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
             <returns>The left time to finish iteration. </returns>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Int32,System.Int64,System.Int64)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-            <param name="tickFrequency">The frequency of tick.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
             <returns>The left time to finish iteration. (long)</returns>
-            <exception cref="T:System.DivideByZeroException">Throws exception if tickFrequency is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         </member>
-        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Int32,System.TimeSpan)">
+        <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.Int32},System.Nullable{System.TimeSpan})">
             <summary>
             [Logically Unsafe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations
             </summary>
@@ -253,7 +263,14 @@
         </member>
         <member name="M:CalculateETA.CalculateETA.NameETA(System.Nullable{System.Int64})">
             <summary>
-            Returns estimated time to finish on naming format. (xxx ms or xx second(s) or xx minute(s) and yy (second(s)...)
+            Returns estimated time to finish on naming format. (xxx ms or xx second(s) or xx minute(s) and yy (second(s)...) Recommended for high-cpu-intense algorithm
+            </summary>
+            <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
+            <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns string format.</returns>
+        </member>
+        <member name="M:CalculateETA.CalculateETA.NameETABetterVisual(System.Nullable{System.Int64})">
+            <summary>
+            Returns estimated time to finish on naming format. (xxx ms or xx second/seconds or xx minute/minutes and yy (second/seconds...) Recommended for low-cpu-intense algorithm in order to better visual output
             </summary>
             <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
             <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns string format.</returns>
