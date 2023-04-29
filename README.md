@@ -40,7 +40,7 @@ CalcETA(uint? index, uint? totalIndex, long? totalElapsedTimeInMs)
 CalcETAUnsafe(uint? index, uint? totalIndex, long? totalElapsedTimeInMs)
 ```
 
-Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
+Returns null if any of parameter is null or returns estimated left time in milliseconds (long?)
 
 * int?/uint? index: Current index of loop. Index must not be zero.
  
@@ -62,7 +62,7 @@ CalcETA(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)
 CalcETAUnsafe(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)
 ```
 
-Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
+Returns null if any of parameter is null or returns estimated left time in milliseconds (long?)
 
 * int?/uint? index: Current index of loop. Index must not be zero.
  
@@ -86,7 +86,7 @@ CalcETA(uint? index, uint? totalIndex, TimeSpan? timeSpan)
 CalcETAUnsafe(uint? index, uint? totalIndex, TimeSpan? timeSpan)
 ```
 
-Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
+Returns null if any of parameter is null or returns estimated left time in milliseconds (double?)
 
 * int?/uint? index: Current index of loop. Index must not be zero.
  
@@ -110,7 +110,7 @@ CalcETA(uint? totalIndex, long? totalElapsedTimeInMs)
 CalcETAUnsafe(uint? totalIndex, long? TotalElapsedTimeInMs)
 ```
 
-Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
+Returns null if any of parameter is null or returns estimated left time in milliseconds (long?)
 
 * int?/uint? index: Current index of loop. Index must not be zero.
 
@@ -130,7 +130,7 @@ CalcETA(uint? totalIndex, long? totalElapsedTicks, long? frequency)
 CalcETAUnsafe(uint? totalIndex, long? totalElapsedTicks, long? frequency)
 ```
 
-Returns null if any of parameter is zero or returns estimated left time in milliseconds (long?)
+Returns null if any of parameter is null or returns estimated left time in milliseconds (long?)
 
 * int?/uint? index: Current index of loop. Index must not be zero.
 
@@ -152,7 +152,7 @@ CalcETA(uint? totalIndex, TimeSpan? timeSpan)
 CalcETAUnsafe(uint? totalIndex, TimeSpan? timeSpan)
 ```
 
-Returns null if any of parameter is zero or returns estimated left time in milliseconds (double?)
+Returns null if any of parameter is null or returns estimated left time in milliseconds (double?)
 
 * int?/uint? index: Current index of loop. Index must not be zero.
 
