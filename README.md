@@ -228,18 +228,18 @@ See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
 
 * 1.5.0
- * Added comments to every lines of code.
- * Added DivideByZeroException to methods when input parameter index is not longer being checkes for it was zero.
+  * Added comments to every lines of code.
+  * Added DivideByZeroException to methods when input parameter index is not longer being checkes for it was zero.
 
- * CalcETA() and CalcETAUnsafe() methods, now using nullable parameters.
- * CalcETA() methods checks if given parameters are null instead of 0 value.
- * CalcETA(..., long tickFrequency) method is now using CalcETA(..., long? frequency)
- * avarageElapsedTime varaiable is renamed into avarageElapsedTimeInMs.
- * seconds variable is renamed into elapsedSeconds.
- * TimeSpanETA() now returns null instead of TimeSpan.Zero when input parameter is null instead of it is zero value.
- * TimeSpanETA(), NumberFormatETA(), NameETA(), NameETABetterVisual() now uses new TimeSpan(ticks: ) instead of new TimeSpan(0,0,0,0, milliseconds: (int)eTATimeInMs)
+  * CalcETA() and CalcETAUnsafe() methods, now using nullable parameters.
+  * CalcETA() methods checks if given parameters are null instead of 0 value.
+  * CalcETA(..., long tickFrequency) method is now using CalcETA(..., long? frequency)
+  * avarageElapsedTime varaiable is renamed into avarageElapsedTimeInMs.
+  * seconds variable is renamed into elapsedSeconds.
+  * TimeSpanETA() now returns null instead of TimeSpan.Zero when input parameter is null instead of it is zero value.
+  * TimeSpanETA(), NumberFormatETA(), NameETA(), NameETABetterVisual() now uses new TimeSpan(ticks: ) instead of new TimeSpan(0,0,0,0, milliseconds: (int)eTATimeInMs)
 
- * NameETA() and NameETABetterVisual() are no longer returning result as $"{etaTimeInMs:0} ms" if input parameters is shorter then a second.
+  * NameETA() and NameETABetterVisual() are no longer returning result as $"{etaTimeInMs:0} ms" if input parameters is shorter then a second.
 
 * 1.4.0
   * Added NameETABetterVisual() method for offer better visual output
