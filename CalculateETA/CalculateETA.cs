@@ -9,7 +9,10 @@ namespace CalculateETA
     {
         #region Variables (Multi-Threading)
 
+        // Integer variable that holds total interaction for multi-threading applications. This value should be reset with ResetCounter() after re-use of CalcETA() multi-threading methods.
         private static int counter;
+
+        // Unsigned integer variable that holds total interaction for multi-threading applications. This value should be reset with ResetCounterUint() after re-use of CalcETA() multi-threading methods.
         private static uint counterUint;
 
         #endregion Variables (Multi-Threading)
@@ -20,16 +23,18 @@ namespace CalculateETA
         /// <returns>True or false</returns>
         public bool ResetCounter()
         {
+            // Checking if the counter is zero.
             if (counter == 0)
             {
+                // Returns false indicates that counter was zero already.
                 return false;
             }
             else
             {
-                //
+                // Re-setting the counter value to zero.
                 counter = 0;
 
-                //
+                // Returns true indicates that re-setting the counter value to zero was successful.
                 return true;
             }
         }
@@ -40,16 +45,18 @@ namespace CalculateETA
         /// <returns>True or false</returns>
         public bool ResetCounterUint()
         {
+            // Checking if the counter is zero.
             if (counterUint == 0)
             {
+                // Returns false indicates that counter was zero already.
                 return false;
             }
             else
             {
-                //
+                // Re-setting the counter value to zero.
                 counterUint = 0;
 
-                //
+                // Returns true indicates that re-setting the counter value to zero is successful.
                 return true;
             }
         }
@@ -61,182 +68,196 @@ namespace CalculateETA
         /// <summary>
         /// [Safe] Returns calculated estimated time to finish iteration on seconds (long)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
-        public static long? CalcETA(uint index, uint totalIndex, long totalElapsedTimeInMs)
+        /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        public static long? CalcETA(uint? index, uint? totalIndex, long? totalElapsedTimeInMs)
         {
-            //
-            if (index == 0 || totalIndex == 0 || totalElapsedTimeInMs == 0)
+            // Checking at least one the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (index.HasValue == false || totalIndex.HasValue == false || totalElapsedTimeInMs.HasValue == false)
             {
+                // Returning null value to indicate at least one of the given parameters was null.
                 return null;
             }
 
-            //
-            uint leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - index.Value;
 
-            //
-            long avarageElapsedTime = totalElapsedTimeInMs / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / index.Value;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Safe] Returns calculated estimated time to finish iteration on seconds (long)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-        /// <param name="tickFrequency">The frequency of tick.</param>
-        /// <returns>The left time to finish iteration. (long)</returns>        
-        public static long? CalcETA(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
+        /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>
+        /// <exception cref="System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        public static long? CalcETA(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)
         {
-            //
-            if (index == 0 || totalIndex == 0 || totalElapsedTicks == 0 || tickFrequency == 0)
+            // Checking at least one the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (index.HasValue == false || totalIndex.HasValue == false || totalElapsedTicks.HasValue == false || frequency.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
-            uint leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - index.Value;
 
-            //
-            long seconds = totalElapsedTicks / tickFrequency;
+            // Calculating elapsed time with dividing totalElapsedTicks to frequency. 
+            long elapsedSeconds = totalElapsedTicks.Value / frequency.Value;
 
-            //
-            long avarageElapsedTime = seconds / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = elapsedSeconds / index.Value;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Safe] Returns calculated estimated time to finish iteration on seconds (double)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
         /// <returns>The left time to finish iteration. (double)</returns>
-        public static double? CalcETA(uint index, uint totalIndex, TimeSpan timeSpan)
+        /// <exception cref = "System.DivideByZeroException" > Throws exception if index is zero.</exception>
+        public static double? CalcETA(uint? index, uint? totalIndex, TimeSpan? timeSpan)
         {
-            //
-            if (index == 0 || totalIndex == 0 || timeSpan == TimeSpan.Zero)
+            // Checking at least one the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (index.HasValue == false || totalIndex.HasValue == false || timeSpan.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
-            uint leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - index.Value;
 
-            //
-            double seconds = timeSpan.TotalSeconds;
+            // Getting total time value from timeSpan.TotalSeconds.
+            double elapsedSeconds = timeSpan.Value.TotalSeconds;
 
-            //
-            double avarageElapsedTime = seconds / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            double avarageElapsedTimeInMs = elapsedSeconds / index.Value;
 
-            //
-            double eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            double eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Safe] Returns calculated estimated time to finish iteration on seconds (long)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
-        public static long? CalcETA(int index, int totalIndex, long totalElapsedTimeInMs)
+        /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        public static long? CalcETA(int? index, int? totalIndex, long? totalElapsedTimeInMs)
         {
-            //
-            if (index == 0 || totalIndex == 0 || totalElapsedTimeInMs == 0)
+            // Checking one of the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (index.HasValue == false || totalIndex.HasValue == false || totalElapsedTimeInMs.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
-            int leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - index.Value;
 
-            //
-            long avarageElapsedTime = totalElapsedTimeInMs / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / index.Value;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Safe] Returns calculated estimated time to finish iteration on seconds (long)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-        /// <param name="tickFrequency">The frequency of tick.</param>
-        /// <returns>The left time to finish iteration. (long)</returns>        
-        public static long? CalcETA(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+        /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
+        /// <returns>The left time to finish iteration. (long)</returns>
+        /// <exception cref="System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        public static long? CalcETA(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)
         {
-            //
-            if (index == 0 || totalIndex == 0 || totalElapsedTicks == 0 || tickFrequency == 0)
+            // Checking at least one given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (index.HasValue == false || totalIndex.HasValue == false || totalElapsedTicks.HasValue == false || frequency.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
-            int leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - index.Value;
 
-            //
-            long seconds = totalElapsedTicks / tickFrequency;
+            // Calculating elapsed time with dividing totalElapsedTicks to frequency.
+            long elapsedSeconds = totalElapsedTicks.Value / frequency.Value;
 
-            //
-            long avarageElapsedTime = seconds / index;
+            //  Calculating avarage elapsed time with dividing totalElapsedTicks to frequency.
+            long avarageElapsedTimeInMs = elapsedSeconds / index.Value;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Safe] Returns calculated estimated time to finish iteration on seconds (double)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
         /// <returns>The left time to finish iteration. (double)</returns>
-        public static double? CalcETA(int index, int totalIndex, TimeSpan timeSpan)
+        /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        public static double? CalcETA(int? index, int? totalIndex, TimeSpan? timeSpan)
         {
-            //
-            if (index == 0 || totalIndex == 0 || timeSpan == TimeSpan.Zero)
+            // Checking at least one the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (index.HasValue == false || totalIndex.HasValue == false || timeSpan.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
-            int leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - index.Value;
 
-            //
-            double seconds = timeSpan.TotalSeconds;
+            // Getting totalSeconds value from timeSpan.TotalSeconds.
+            double totalseconds = timeSpan.Value.TotalSeconds;
 
-            //
-            double avarageElapsedTime = seconds / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            double avarageElapsedTimeInMs = totalseconds / index.Value;
 
-            //
-            double eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            double eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -252,147 +273,147 @@ namespace CalculateETA
         /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
         /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
-        public static long CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTimeInMs)
+        public static long CalcETAUnsafe(uint? index, uint? totalIndex, long? totalElapsedTimeInMs)
         {
-            //
-            uint leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - index.Value;
 
-            //
-            long avarageElapsedTime = totalElapsedTimeInMs / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / index.Value;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
         /// <returns>The left time to finish iteration. (long)</returns>   
-        /// <exception cref="System.DivideByZeroException">Throws exception if index or tickFrequecny is zero.</exception>
-        public static long CalcETAUnsafe(uint index, uint totalIndex, long totalElapsedTicks, long tickFrequency)
+        /// <exception cref="System.DivideByZeroException">Throws exception if index or frequency is zero.</exception>
+        public static long CalcETAUnsafe(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)
         {
-            //
-            uint leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - index.Value;
 
-            //
-            long seconds = totalElapsedTicks / tickFrequency;
+            // Calculating elapsed time with dividing totalElapsedTicks to frequency.
+            long elapsedSeconds = totalElapsedTicks.Value / frequency.Value;
 
-            //
-            long avarageElapsedTime = seconds / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = elapsedSeconds / index.Value;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (double)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
         /// <returns>The left time to finish iteration. (double)</returns>
         /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
-        public static double CalcETAUnsafe(uint index, uint totalIndex, TimeSpan timeSpan)
+        public static double CalcETAUnsafe(uint? index, uint? totalIndex, TimeSpan? timeSpan)
         {
-            //
-            uint leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - index.Value;
 
-            //
-            double seconds = timeSpan.TotalSeconds;
+            // Getting totalSeconds value from timeSpan.TotalSeconds.
+            double totalSeconds = timeSpan.Value.TotalSeconds;
 
-            //
-            double avarageElapsedTime = seconds / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            double avarageElapsedTimeInMs = totalSeconds / index.Value;
 
-            //
-            double eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            double eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
         /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
-        public static long CalcETAUnsafe(int index, int totalIndex, long totalElapsedTimeInMs)
+        public static long CalcETAUnsafe(int? index, int? totalIndex, long? totalElapsedTimeInMs)
         {
-            //
-            int leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - index.Value;
 
-            //
-            long avarageElapsedTime = totalElapsedTimeInMs / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / index.Value;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
-        /// <exception cref="System.DivideByZeroException">Throws exception if index or tickFrequency is zero.</exception>
-        public static long CalcETAUnsafe(int index, int totalIndex, long totalElapsedTicks, long tickFrequency)
+        /// <exception cref="System.DivideByZeroException">Throws exception if index or frequency is zero.</exception>
+        public static long CalcETAUnsafe(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)
         {
-            //
-            int leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - index.Value;
 
-            //
-            long seconds = totalElapsedTicks / tickFrequency;
+            // Calculating elapsed time with dividing totalElapsedTicks to frequency.
+            long totalSeconds = totalElapsedTicks.Value / frequency.Value;
 
-            //
-            long avarageElapsedTime = seconds / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalSeconds / index.Value;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
         /// <summary>
         /// [Unsafe] Returns calculated estimated time to finish iteration on seconds (double)
         /// </summary>
-        /// <param name="index">The index of current iteration.</param>
+        /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
         /// <returns>The left time to finish iteration. (double)</returns>
         /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
-        public static double CalcETAUnsafe(int index, int totalIndex, TimeSpan timeSpan)
+        public static double CalcETAUnsafe(int? index, int? totalIndex, TimeSpan? timeSpan)
         {
-            //
-            int leftCount = totalIndex - index;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - index.Value;
 
-            //
-            double seconds = timeSpan.TotalSeconds;
+            // Getting totalSeconds value from timeSpan.TotalSeconds.
+            double totalSeconds = timeSpan.Value.TotalSeconds;
 
-            //
-            double avarageElapsedTime = seconds / index;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            double avarageElapsedTimeInMs = totalSeconds / index.Value;
 
-            //
-            double eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            double eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -409,27 +430,28 @@ namespace CalculateETA
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
-        public static long? CalcETA(uint totalIndex, long totalElapsedTimeInMs)
+        public static long? CalcETA(uint? totalIndex, long? totalElapsedTimeInMs)
         {
-            //
-            if (totalIndex == 0 || totalElapsedTimeInMs == 0)
+            // Checking parameters for at least one of them is null. This control is not being made for CalcETAUnsafe() method.
+            if (totalIndex.HasValue == false || totalElapsedTimeInMs.HasValue == false)
             {
+                // Returning null value to indicate that at least one of the given parameter was null.
                 return null;
             }
 
-            //
+            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop. 
             counterUint++;
 
-            //
-            uint leftCount = totalIndex - counterUint;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - counterUint;
 
-            //
-            long avarageElapsedTime = totalElapsedTimeInMs / counterUint;
+            // Calculating avarage time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / counterUint;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply elapsed avarage time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -438,32 +460,34 @@ namespace CalculateETA
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
-        public static long? CalcETA(uint totalIndex, long totalElapsedTicks, long tickFrequency)
+        /// /// <exception cref="System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        public static long? CalcETA(uint? totalIndex, long? totalElapsedTicks, long? frequency)
         {
-            //
-            if (totalIndex == 0 || totalElapsedTicks == 0 || tickFrequency == 0)
+            // Checking at least one of the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (totalIndex.HasValue == false || totalElapsedTicks.HasValue == false || frequency.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
-            long seconds = totalElapsedTicks / tickFrequency;
+            // Calculating elapsed time with dividing totalElapsedTicks to frequency.
+            long totalSeconds = totalElapsedTicks.Value / frequency.Value;
 
-            //
+            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
             counterUint++;
 
-            //
-            uint leftCount = totalIndex - counterUint;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - counterUint;
 
-            //
-            long avarageElapsedTime = seconds / counterUint;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalSeconds / counterUint;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -472,30 +496,31 @@ namespace CalculateETA
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
-        public static double? CalcETA(uint totalIndex, TimeSpan timeSpan)
+        public static double? CalcETA(uint? totalIndex, TimeSpan? timeSpan)
         {
-            //
-            if (totalIndex == 0 || timeSpan == TimeSpan.Zero)
+            // Checking at least one the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (totalIndex.HasValue == false || timeSpan.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
-            double seconds = timeSpan.TotalMilliseconds;
+            // Getting totalMilliseconds value from timeSpan.TotalMilliseconds.
+            double totalMilliseconds = timeSpan.Value.TotalMilliseconds;
 
-            //
+            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
             counterUint++;
 
-            //
-            uint leftCount = totalIndex - counterUint;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - counterUint;
 
-            //
-            double avarageElapsedTime = seconds / counterUint;
+            // Calculating avarage elapsed time by dividing total time into number of iteration.
+            double avarageElapsedTimeInMs = totalMilliseconds / counterUint;
 
-            //
-            double eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            double eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -505,27 +530,28 @@ namespace CalculateETA
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
         /// <returns>The left time to finish iteration. </returns>
-        public static long? CalcETA(int totalIndex, long totalElapsedTimeInMs)
+        public static long? CalcETA(int? totalIndex, long? totalElapsedTimeInMs)
         {
-            //
-            if (totalIndex == 0 || totalElapsedTimeInMs == 0)
+            // Checking at least one the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (totalIndex.HasValue == false || totalElapsedTimeInMs.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
+            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
             counter++;
 
-            //
-            int leftCount = totalIndex - counter;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - counter;
 
-            //
-            long avarageElapsedTime = totalElapsedTimeInMs / counter;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / counter;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -534,32 +560,34 @@ namespace CalculateETA
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
-        public static long? CalcETA(int totalIndex, long totalElapsedTicks, long tickFrequency)
+        /// <exception cref="System.DivideByZeroException">Throws exception if frequecny is zero.</exception>
+        public static long? CalcETA(int? totalIndex, long? totalElapsedTicks, long? frequency)
         {
-            //
-            if (totalIndex == 0 || totalElapsedTicks == 0 || tickFrequency == 0)
+            // Checking at least one of the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (totalIndex.HasValue == false || totalElapsedTicks.HasValue == false || frequency.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
-            long seconds = totalElapsedTicks / tickFrequency;
+            // Calculating elapsed time with dividing totalElapsedTicks to tickFrequency.
+            long elapsedSeconds = totalElapsedTicks.Value / frequency.Value;
 
-            //
+            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
             counter++;
 
-            //
-            int leftCount = totalIndex - counter;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - counter;
 
-            //
-            long avarageElapsedTime = seconds / counter;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = elapsedSeconds / counter;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -569,30 +597,31 @@ namespace CalculateETA
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
         /// <returns>The left time to finish iteration. (double)</returns>
-        public static double? CalcETA(int totalIndex, TimeSpan timeSpan)
+        public static double? CalcETA(int? totalIndex, TimeSpan? timeSpan)
         {
-            //
-            if (totalIndex == 0 || timeSpan == TimeSpan.Zero)
+            // Checking at least one the given parameters is null. This control is not being made for CalcETAUnsafe() method.
+            if (totalIndex.HasValue == false || timeSpan.HasValue == false)
             {
+                // Returning null value to indicate one of the given parameters was null.
                 return null;
             }
 
-            //
-            double seconds = timeSpan.TotalMilliseconds;
+            // Getting totalMilliseconds value from timeSpan.TotalMilliseconds.
+            double totalMilliseconds = timeSpan.Value.TotalMilliseconds;
 
-            //
+            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
             counter++;
 
-            //
-            int leftCount = totalIndex - counter;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - counter;
 
-            //
-            double avarageElapsedTime = seconds / counter;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            double avarageElapsedTimeInMs = totalMilliseconds / counter;
 
-            //
-            double eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            double eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -605,21 +634,21 @@ namespace CalculateETA
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
-        public static long CalcETAUnsafe(uint totalIndex, long totalElapsedTimeInMs)
+        public static long CalcETAUnsafe(uint? totalIndex, long? totalElapsedTimeInMs)
         {
-            //
+            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
             counterUint++;
 
-            //
-            uint leftCount = totalIndex - counterUint;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - counterUint;
 
-            //
-            long avarageElapsedTime = totalElapsedTimeInMs / counterUint;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / counterUint;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -628,27 +657,27 @@ namespace CalculateETA
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
-        /// <exception cref="System.DivideByZeroException">Throws exception if tickFrequency is zero.</exception>
-        public static long CalcETAUnsafe(uint totalIndex, long totalElapsedTicks, long tickFrequency)
+        /// <exception cref="System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        public static long CalcETAUnsafe(uint? totalIndex, long? totalElapsedTicks, long? frequency)
         {
-            //
-            long seconds = totalElapsedTicks / tickFrequency;
+            // Calculating elapsed time with dividing totalElapsedTicks to frequency.
+            long seconds = totalElapsedTicks.Value / frequency.Value;
 
-            //
+            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
             counterUint++;
 
-            //
-            uint leftCount = totalIndex - counterUint;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - counterUint;
 
-            //
-            long avarageElapsedTime = seconds / counterUint;
+            // Calculating avarage elapsed time by dividing total time into number of iteration.
+            long avarageElapsedTimeInMs = seconds / counterUint;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -657,24 +686,24 @@ namespace CalculateETA
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
-        public static double CalcETAUnsafe(uint totalIndex, TimeSpan timeSpan)
+        public static double CalcETAUnsafe(uint? totalIndex, TimeSpan? timeSpan)
         {
-            //
-            double seconds = timeSpan.TotalMilliseconds;
+            // Get totalMilliseconds from TimeSpan formatted parameter.
+            double totalMilliseconds = timeSpan.Value.TotalMilliseconds;
 
-            //
+            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.:
             counterUint++;
 
-            //
-            uint leftCount = totalIndex - counterUint;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            uint leftCount = totalIndex.Value - counterUint;
 
-            //
-            double avarageElapsedTime = seconds / counterUint;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            double avarageElapsedTimeInMs = totalMilliseconds / counterUint;
 
-            //
-            double eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            double eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -684,21 +713,21 @@ namespace CalculateETA
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTimeInMs">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
         /// <returns>The left time to finish iteration. </returns>
-        public static long CalcETAUnsafe(int totalIndex, long totalElapsedTimeInMs)
+        public static long CalcETAUnsafe(int? totalIndex, long? totalElapsedTimeInMs)
         {
-            //
+            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
             counter++;
 
-            //
-            int leftCount = totalIndex - counter;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - counter;
 
-            //
-            long avarageElapsedTime = totalElapsedTimeInMs / counter;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / counter;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -707,27 +736,27 @@ namespace CalculateETA
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
-        /// <param name="tickFrequency">The frequency of tick.</param>
+        /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
-        /// <exception cref="System.DivideByZeroException">Throws exception if tickFrequency is zero.</exception>
-        public static long CalcETAUnsafe(int totalIndex, long totalElapsedTicks, long tickFrequency)
+        /// <exception cref="System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        public static long CalcETAUnsafe(int? totalIndex, long? totalElapsedTicks, long? frequency)
         {
-            //
-            long seconds = totalElapsedTicks / tickFrequency;
+            // Calculating elapsed time by diving totalElapsedTicks into frequency.
+            long elapsedSeconds = totalElapsedTicks.Value / frequency.Value;
 
-            //
+            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
             counter++;
 
-            //
-            int leftCount = totalIndex - counter;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - counter;
 
-            //
-            long avarageElapsedTime = seconds / counter;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            long avarageElapsedTimeInMs = elapsedSeconds / counter;
 
-            //
-            long eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            long eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -737,24 +766,24 @@ namespace CalculateETA
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="timeSpan">Elapsed time from starting of the iteration until current iteration on TimeSpan format</param>
         /// <returns>The left time to finish iteration. (double)</returns>
-        public static double CalcETAUnsafe(int totalIndex, TimeSpan timeSpan)
+        public static double CalcETAUnsafe(int? totalIndex, TimeSpan? timeSpan)
         {
-            //
-            double seconds = timeSpan.TotalMilliseconds;
+            // Get totalMilliseconds from TimeSpan formatted parameter.
+            double totalMilliseconds = timeSpan.Value.TotalMilliseconds;
 
-            //
+            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
             counter++;
 
-            //
-            int leftCount = totalIndex - counter;
+            // Calculating leftCount by last Index of the iteration and current index of the iteration.
+            int leftCount = totalIndex.Value - counter;
 
-            //
-            double avarageElapsedTime = seconds / counter;
+            // Calculating avarage elapsed time by dividing total time into number of the iteration.
+            double avarageElapsedTimeInMs = totalMilliseconds / counter;
 
-            //
-            double eta = leftCount * avarageElapsedTime;
+            // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
+            double eta = leftCount * avarageElapsedTimeInMs;
 
-            //
+            // Returning ETA in milliseconds.
             return eta;
         }
 
@@ -764,25 +793,42 @@ namespace CalculateETA
 
         #region Visual Format
 
+        /*  For TimeSpanETA(), NumberFormatETA(), NameETA() and NAmeETABetterVisual()
+         *  TimeSpan has four different options. Int data type has maximum value of 2147483647.
+            If etaTimeInMs as int decided to use maximum TimeSpan could be created is ~25 days.
+            
+            This method use (long) ticks to avoid it with higher precision.
+
+            Using of etaTime parameter as in minute, hour or day will lose precision.
+
+            public TimeSpan(long ticks);
+            public TimeSpan(int hours, int minutes, int seconds);
+            public TimeSpan(int days, int hours, int minutes, int seconds);
+            public TimeSpan(int days, int hours, int minutes, int seconds, int milliseconds);
+            */
+
         /// <summary>
         /// Returns estimated left time to finish on TimeSpan format.
         /// </summary>
         /// <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
         /// <returns>Returns TimeSpan.Zero if etaTimeInMs is either null or negative. Return TimeSpan format.</returns>
-        public static TimeSpan TimeSpanETA(long? eTATimeInMs)
+        public static TimeSpan? TimeSpanETA(long? eTATimeInMs)
         {
-            //
+            // Checking if the given parameter is null.
             if (eTATimeInMs == null)
             {
-                return TimeSpan.Zero;
+                // Returning null to indicate the given parameter was null.
+                return null;
             }
+            // Checking if the given parameter is negative.
             else if (eTATimeInMs < 0)
             {
+                // Returning TimeSpan.Zero to indicate the given parameter was negative.
                 return TimeSpan.Zero;
             }
 
-            //
-            return new TimeSpan(0, 0, 0, 0, (int)eTATimeInMs);
+            // Returning ETA in TimeSpan.
+            return new TimeSpan(ticks: eTATimeInMs.Value * TimeSpan.TicksPerMillisecond);
         }
 
         /// <summary>
@@ -792,20 +838,23 @@ namespace CalculateETA
         /// <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns TimeSpan format.</returns>
         public static string NumberFormatETA(long? eTATimeInMs)
         {
-            //
+            // Checking if the given parameter is null.
             if (eTATimeInMs == null)
             {
+                // Returning "Uncalculatable" to indicate the given parameter was null.
                 return "Uncalculatable";
             }
+            // Checking if the given parameter is negative.
             else if (eTATimeInMs < 0)
             {
+                // Returning "Negative" to indicate the given parameter was negative. 
                 return "Negative";
             }
 
-            //
-            TimeSpan ts = new TimeSpan(0, 0, 0, 0, milliseconds: (int)eTATimeInMs);
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: eTATimeInMs.Value * TimeSpan.TicksPerMillisecond);
 
-            //
+            // Returning ETA in number format. E.g 05:03:24:538
             return $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}:{ts.Milliseconds}";
         }
 
@@ -816,38 +865,51 @@ namespace CalculateETA
         /// <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns string format.</returns>
         public static string NameETA(long? eTATimeInMs)
         {
-            //
+            // Checking if the given parameter is null.
             if (eTATimeInMs == null)
             {
+                // Returning "Uncalculatable" to indicate the given parameter was null.
                 return "Uncalculatable";
             }
+            // Checking if the given parameter is negative.
             else if (eTATimeInMs < 0)
             {
+                // Returning "Negative" to indicate the given parameter was negative. 
                 return "Negative";
             }
-            else if (eTATimeInMs < 1000)
-            {
-                return $"{eTATimeInMs:0} ms";
-            }
 
-            //
-            TimeSpan ts = new TimeSpan(0, 0, 0, 0, milliseconds: (int)eTATimeInMs);
+            // Checking if the given parameter is lower than one second. This is commented out for better performance.
+            //else if (eTATimeInMs < 1000)
+            //{
+            //    //
+            //    return $"{eTATimeInMs:0} ms";
+            //}
 
-            //
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: eTATimeInMs.Value * TimeSpan.TicksPerMillisecond);
+
+            // Checking if the parameter is shorter than one minute.
             if (ts.TotalSeconds < 60)
             {
+                // Returning ETA as xx second(s).
                 return $"{ts.Seconds} second(s)";
             }
+            // Checking if parameter is shorter than one hour.
             else if (ts.TotalSeconds < 3600)
             {
+                // Returning ETA as xx minute(s) and yy second(s).
                 return $"{ts.Minutes} minute(s) and {ts.Seconds} second(s)";
             }
+            // Checking if parameter is shorter than one day.
             else if (ts.TotalSeconds < 86400)
             {
+                // Returning ETA as xx hours(s) and yy minutes(s).
                 return $"{ts.Hours} hour(s) and {ts.Minutes} minute(s)";
             }
+            // If parameter is longer than a day.
             else
             {
+                // Returning ETA as xx days(s) and yy hour(s).
                 return $"{ts.Days} day(s) and {ts.Hours} hour(s)";
             }
         }
@@ -859,38 +921,51 @@ namespace CalculateETA
         /// <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns string format.</returns>
         public static string NameETABetterVisual(long? eTATimeInMs)
         {
-            //
+            // Checking if the given parameter is null.
             if (eTATimeInMs == null)
             {
+                // Returning "Uncalculatable" to indicate the given parameter was null.
                 return "Uncalculatable";
             }
+            // Checking if the given parameter is negative.
             else if (eTATimeInMs < 0)
             {
+                // Returning "Negative" to indicate the given parameter was negative. 
                 return "Negative";
             }
-            else if (eTATimeInMs < 1000)
-            {
-                return $"{eTATimeInMs:0} ms";
-            }
 
-            //
-            TimeSpan ts = new TimeSpan(0, 0, 0, 0, milliseconds: (int)eTATimeInMs);
+            // Checking if parameter is lower than one second. This is commented out for better performance.
+            //else if (eTATimeInMs < 1000)
+            //{
+            //    //
+            //    return $"{eTATimeInMs:0} ms";
+            //}
 
-            //
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: eTATimeInMs.Value * TimeSpan.TicksPerMillisecond);
+
+            // Checking if the parameter is shorter than one minute.
             if (ts.TotalSeconds < 60)
             {
+                // Returning ETA as x second or yy seconds.
                 return $"{ts.Seconds} {(ts.Seconds != 1 ? "seconds" : "second")}";
             }
+            // Checking if parameter is shorter than one hour.
             else if (ts.TotalSeconds < 3600)
             {
-                return $"{ts.Minutes} {(ts.Minutes != 1 ? "minutes" : "minute")} and {ts.Seconds} {(ts.Seconds != 1 ? "minutes" : "minute")}";
+                // Returning ETA as x minute or xx minutes, y second or yy seconds.
+                return $"{ts.Minutes} {(ts.Minutes != 1 ? "minutes" : "minute")} and {ts.Seconds} {(ts.Seconds != 1 ? "seconds" : "second")}";
             }
+            // Checking if parameter is shorter than one day.
             else if (ts.TotalSeconds < 86400)
             {
+                // Returning ETA as x hour or xx hours and, y minute or yy minutes.
                 return $"{ts.Hours} {(ts.Hours != 1 ? "hours" : "hour")} and {ts.Minutes} {(ts.Minutes != 1 ? "minutes" : "minute")}";
             }
+            // If parameter is longer than a day.
             else
             {
+                // Returning ETA as x day or xx days, y hour and yy hours.
                 return $"{ts.Days} {(ts.Days != 1 ? "days" : "day")} and {ts.Hours} {(ts.Hours != 1 ? "hours" : "hour")}";
             }
         }
