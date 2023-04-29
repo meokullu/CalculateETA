@@ -13,6 +13,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>Added:
 * Adding comments to every lines of code.
+* Adding DivideByZeroException to methods when input parameter index is not longer being checkes for it was zero.
 
 Changed:
 * CalcETA() and CalcETAUnsafe() methods,  now using nullable parameters.
