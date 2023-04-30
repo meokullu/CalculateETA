@@ -82,6 +82,13 @@ namespace CalculateETA
                 return null;
             }
 
+            // Checking if index value is zero. Index value is a dividor on calculation of avarageElapsedTimeInMs.
+            if (index.Value == 0)
+            {
+                // Returning null value to indicate index value is zero.
+                return null;
+            }
+
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
             uint leftCount = totalIndex.Value - index.Value;
 
@@ -103,14 +110,21 @@ namespace CalculateETA
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
         /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
-        /// <exception cref="System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        /// <exception cref="System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         public static long? CalcETA(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)
         {
             // Checking at least one the given parameters is null. This control is not being made for CalcETAUnsafe() method.
             if (index.HasValue == false || totalIndex.HasValue == false || totalElapsedTicks.HasValue == false || frequency.HasValue == false)
             {
                 // Returning null value to indicate one of the given parameters was null.
+                return null;
+            }
+
+            // Checking if index value or frequency is zero. Index value is a dividor on calculation of avarageElapsedTimeInMs. Frequency value is a dividor on calculation of elapsedSeconds.
+            if (index.Value == 0 || frequency == 0)
+            {
+                // Returning null value to indicate index value or frequency is zero.
                 return null;
             }
 
@@ -147,10 +161,17 @@ namespace CalculateETA
                 return null;
             }
 
+            // Checking if index value is zero. Index value is a dividor on calculation of avarageElapsedTimeInMs.
+            if (index.Value == 0)
+            {
+                // Returning null value to indicate index value is zero.
+                return null;
+            }
+
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
             uint leftCount = totalIndex.Value - index.Value;
 
-            // Getting total time value from timeSpan.TotalSeconds.
+            // Getting elapsed time value from timeSpan.TotalSeconds.
             double elapsedSeconds = timeSpan.Value.TotalSeconds;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
@@ -180,6 +201,13 @@ namespace CalculateETA
                 return null;
             }
 
+            // Checking if index value is zero. Index value is a dividor on calculation of avarageElapsedTimeInMs.
+            if (index.Value == 0)
+            {
+                // Returning null value to indicate index value is zero.
+                return null;
+            }
+
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
             int leftCount = totalIndex.Value - index.Value;
 
@@ -201,14 +229,21 @@ namespace CalculateETA
         /// <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
         /// <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
         /// <returns>The left time to finish iteration. (long)</returns>
-        /// <exception cref="System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         /// <exception cref="System.DivideByZeroException">Throws exception if index is zero.</exception>
+        /// <exception cref="System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         public static long? CalcETA(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)
         {
             // Checking at least one given parameters is null. This control is not being made for CalcETAUnsafe() method.
             if (index.HasValue == false || totalIndex.HasValue == false || totalElapsedTicks.HasValue == false || frequency.HasValue == false)
             {
                 // Returning null value to indicate one of the given parameters was null.
+                return null;
+            }
+
+            // Checking if index value or frequency is zero. Index value is a dividor on calculation of avarageElapsedTimeInMs. Frequency value is a dividor on calculation of elapsedSeconds.
+            if (index.Value == 0 || frequency == 0)
+            {
+                // Returning null value to indicate index value or frequency is zero.
                 return null;
             }
 
@@ -245,14 +280,21 @@ namespace CalculateETA
                 return null;
             }
 
+            // Checking if index value is zero. Index value is a dividor on calculation of avarageElapsedTimeInMs.
+            if (index.Value == 0)
+            {
+                // Returning null value to indicate index value is zero.
+                return null;
+            }
+
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
             int leftCount = totalIndex.Value - index.Value;
 
-            // Getting totalSeconds value from timeSpan.TotalSeconds.
-            double totalseconds = timeSpan.Value.TotalSeconds;
+            // Getting elapsed time value from timeSpan.TotalSeconds.
+            double elapsedSeconds = timeSpan.Value.TotalSeconds;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            double avarageElapsedTimeInMs = totalseconds / index.Value;
+            double avarageElapsedTimeInMs = elapsedSeconds / index.Value;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = leftCount * avarageElapsedTimeInMs;
@@ -328,11 +370,11 @@ namespace CalculateETA
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
             uint leftCount = totalIndex.Value - index.Value;
 
-            // Getting totalSeconds value from timeSpan.TotalSeconds.
-            double totalSeconds = timeSpan.Value.TotalSeconds;
+            // Getting elapsed time value from timeSpan.TotalSeconds.
+            double elapsedSeconds = timeSpan.Value.TotalSeconds;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            double avarageElapsedTimeInMs = totalSeconds / index.Value;
+            double avarageElapsedTimeInMs = elapsedSeconds / index.Value;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = leftCount * avarageElapsedTimeInMs;
@@ -379,10 +421,10 @@ namespace CalculateETA
             int leftCount = totalIndex.Value - index.Value;
 
             // Calculating elapsed time with dividing totalElapsedTicks to frequency.
-            long totalSeconds = totalElapsedTicks.Value / frequency.Value;
+            long elapsedSeconds = totalElapsedTicks.Value / frequency.Value;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            long avarageElapsedTimeInMs = totalSeconds / index.Value;
+            long avarageElapsedTimeInMs = elapsedSeconds / index.Value;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -404,11 +446,11 @@ namespace CalculateETA
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
             int leftCount = totalIndex.Value - index.Value;
 
-            // Getting totalSeconds value from timeSpan.TotalSeconds.
-            double totalSeconds = timeSpan.Value.TotalSeconds;
+            // Getting elapsed time value from timeSpan.TotalSeconds.
+            double elapsedSeconds = timeSpan.Value.TotalSeconds;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            double avarageElapsedTimeInMs = totalSeconds / index.Value;
+            double avarageElapsedTimeInMs = elapsedSeconds / index.Value;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = leftCount * avarageElapsedTimeInMs;
@@ -472,8 +514,15 @@ namespace CalculateETA
                 return null;
             }
 
+            // Checking if index value is zero. Frequency value is a dividor on calculation of elapsedSeconds.
+            if (frequency.Value == 0)
+            {
+                // Returning null value to indicate frequency value is zero.
+                return null;
+            }
+
             // Calculating elapsed time with dividing totalElapsedTicks to frequency.
-            long totalSeconds = totalElapsedTicks.Value / frequency.Value;
+            long elapsedSeconds = totalElapsedTicks.Value / frequency.Value;
 
             // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
             counterUint++;
@@ -482,7 +531,7 @@ namespace CalculateETA
             uint leftCount = totalIndex.Value - counterUint;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            long avarageElapsedTimeInMs = totalSeconds / counterUint;
+            long avarageElapsedTimeInMs = elapsedSeconds / counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -569,6 +618,13 @@ namespace CalculateETA
             if (totalIndex.HasValue == false || totalElapsedTicks.HasValue == false || frequency.HasValue == false)
             {
                 // Returning null value to indicate one of the given parameters was null.
+                return null;
+            }
+
+            // Checking if frequency is zero. Frequency value is a dividor on calculation of elapsedSeconds.
+            if (frequency == 0)
+            {
+                // Returning null value to indicate index value or frequency is zero.
                 return null;
             }
 
