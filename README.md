@@ -163,36 +163,48 @@ Returns null if any of parameter is null or returns estimated left time in milli
 ```
 TimeSpanETA(long? eTATimeInMs)
 ```
+```
+TimeSpanETAUnsafe(long eTATimeInMs)
+```
 
-Returns null if eTATimeInMs is null. Returns TimeSpan.Zero if etaTimeInMs is negative. Returns left time. (TimeSpan)
+Returns null if eTATimeInMs is null. Returns TimeSpan.Zero if etaTimeInMs is negative. Returns left time. Unsafe method returns left time directly on same format. (TimeSpan)
 
 * long?: Estimated time to finish in milliseconds.
 
 ```
 NumberFormatETA(long? eTATimeInMs)
 ```
+```
+NumberFormatETAUnsafe(long? eTATimeInMs)
+```
 
-Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative, returns left time in {hh:mm:ss:msms}. (string)
+Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative, returns left time in {hh:mm:ss:msms}. Unsafe method returns left time directly on same format. (string)
 
 * long?: Estimated time to finish in milliseconds.
 
 ```
 NameETA(long? eTATimeInMs)
 ```
+```
+NameETAUnsafe(long? eTATimeInMs)
+```
 
 Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative (string)
 
-Returns {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} minute(s), or {} day(s) and {} hour(s)
+Returns {} second(s), {} minute(s) and {} second(s), {} hour(s) and {} minute(s), or {} day(s) and {} hour(s). Unsafe method returns left time directly on same format. 
 
 * long?: Estimated time to finish in milliseconds.
 
 ```
 NameETABetterVisual(long? eTATimeInMs)
 ```
+```
+NameETABetterVisualUnsafe(long? eTATimeInMs)
+```
 
 Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative (string)
 
-Returns {} second/seconds, {} minute/minutes and {} second/seconds, {} hour/hours and {} minute/minutes, or {} day/days and {} hour/hours
+Returns {} second/seconds, {} minute/minutes and {} second/seconds, {} hour/hours and {} minute/minutes, or {} day/days and {} hour/hours. Unsafe method returns left time directly on same format.
 
 * long?: Estimated time to finish in milliseconds.
 
