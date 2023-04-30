@@ -793,7 +793,7 @@ namespace CalculateETA
 
         #region Visual Format
 
-        /*  For TimeSpanETA(), NumberFormatETA(), NameETA() and NAmeETABetterVisual()
+        /*  For TimeSpanETA(), NumberFormatETA(), NameETA(), NameETABetterVisual(), TimeSpanETAUnsafe(), NumberFormatETAUnsafe(), NameETAUnsafe() and NameETABetterVisualUnsafe()
          *  TimeSpan has four different options. Int data type has maximum value of 2147483647.
             If etaTimeInMs as int decided to use maximum TimeSpan could be created is ~25 days.
             
@@ -806,6 +806,8 @@ namespace CalculateETA
             public TimeSpan(int days, int hours, int minutes, int seconds);
             public TimeSpan(int days, int hours, int minutes, int seconds, int milliseconds);
             */
+
+        #region Safe Methods
 
         /// <summary>
         /// Returns estimated left time to finish on TimeSpan format.
@@ -969,6 +971,108 @@ namespace CalculateETA
                 return $"{ts.Days} {(ts.Days != 1 ? "days" : "day")} and {ts.Hours} {(ts.Hours != 1 ? "hours" : "hour")}";
             }
         }
+
+        /// <summary>
+        /// Returns estimated left time to finish on TimeSpan format.
+        /// </summary>
+        /// <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
+        /// <returns>Return TimeSpan format.</returns>
+        public static TimeSpan TimeSpanETAUnsafe(long eTATimeInMs)
+        {
+            return new TimeSpan(ticks: eTATimeInMs * TimeSpan.TicksPerMillisecond);
+        }
+
+        #endregion Safe Methods
+
+        #region Unsafe Methods
+
+        /// <summary>
+        /// [Unsafe] Returns estimated left time to finish on string format. (HH:MM.SS.MMM)
+        /// </summary>
+        /// <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns TimeSpan format.</returns>
+        public static string NumberFormatETAUnsafe(long eTATimeInMs)
+        {
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: eTATimeInMs * TimeSpan.TicksPerMillisecond);
+
+            // Returning ETA in number format. E.g 05:03:24:538
+            return $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}:{ts.Milliseconds}";
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns estimated time to finish on naming format. (xxx ms or xx second(s) or xx minute(s) and yy (second(s)...) Recommended for high-cpu-intense algorithm
+        /// </summary>
+        /// <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns string format.</returns>
+        public static string NameETAUnsafe(long eTATimeInMs)
+        {
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: eTATimeInMs * TimeSpan.TicksPerMillisecond);
+
+            // Checking if the parameter is shorter than one minute.
+            if (ts.TotalSeconds < 60)
+            {
+                // Returning ETA as xx second(s).
+                return $"{ts.Seconds} second(s)";
+            }
+            // Checking if parameter is shorter than one hour.
+            else if (ts.TotalSeconds < 3600)
+            {
+                // Returning ETA as xx minute(s) and yy second(s).
+                return $"{ts.Minutes} minute(s) and {ts.Seconds} second(s)";
+            }
+            // Checking if parameter is shorter than one day.
+            else if (ts.TotalSeconds < 86400)
+            {
+                // Returning ETA as xx hours(s) and yy minutes(s).
+                return $"{ts.Hours} hour(s) and {ts.Minutes} minute(s)";
+            }
+            // If parameter is longer than a day.
+            else
+            {
+                // Returning ETA as xx days(s) and yy hour(s).
+                return $"{ts.Days} day(s) and {ts.Hours} hour(s)";
+            }
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns estimated time to finish on naming format. (xxx ms or xx second/seconds or xx minute/minutes and yy (second/seconds...) Recommended for low-cpu-intense algorithm in order to better visual output
+        /// </summary>
+        /// <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns string format.</returns>
+        public static string NameETABetterVisualUnsafe(long eTATimeInMs)
+        {
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: eTATimeInMs * TimeSpan.TicksPerMillisecond);
+
+            // Checking if the parameter is shorter than one minute.
+            if (ts.TotalSeconds < 60)
+            {
+                // Returning ETA as x second or yy seconds.
+                return $"{ts.Seconds} {(ts.Seconds != 1 ? "seconds" : "second")}";
+            }
+            // Checking if parameter is shorter than one hour.
+            else if (ts.TotalSeconds < 3600)
+            {
+                // Returning ETA as x minute or xx minutes, y second or yy seconds.
+                return $"{ts.Minutes} {(ts.Minutes != 1 ? "minutes" : "minute")} and {ts.Seconds} {(ts.Seconds != 1 ? "seconds" : "second")}";
+            }
+            // Checking if parameter is shorter than one day.
+            else if (ts.TotalSeconds < 86400)
+            {
+                // Returning ETA as x hour or xx hours and, y minute or yy minutes.
+                return $"{ts.Hours} {(ts.Hours != 1 ? "hours" : "hour")} and {ts.Minutes} {(ts.Minutes != 1 ? "minutes" : "minute")}";
+            }
+            // If parameter is longer than a day.
+            else
+            {
+                // Returning ETA as x day or xx days, y hour and yy hours.
+                return $"{ts.Days} {(ts.Days != 1 ? "days" : "day")} and {ts.Hours} {(ts.Hours != 1 ? "hours" : "hour")}";
+            }
+        }
+
+        #endregion Unsafe Methods
 
         #endregion VisualFormat
     }
