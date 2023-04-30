@@ -40,8 +40,8 @@
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
             <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
             <returns>The left time to finish iteration. (long)</returns>
-            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
             <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         </member>
         <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.TimeSpan})">
             <summary>
@@ -72,8 +72,8 @@
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
             <param name="frequency">The frequency of tick. Frequency must not be zero.</param>
             <returns>The left time to finish iteration. (long)</returns>
-            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
             <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         </member>
         <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.TimeSpan})">
             <summary>
