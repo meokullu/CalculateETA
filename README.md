@@ -239,6 +239,11 @@ See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
 See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
 
+* 1.6.0
+  * Added TimeSpanETAUnsafe(), NumberFormatETAUnsafe(), NameETAUnsafe() and NameETABetterVisualUnsafe() methods.
+  * totalSeconds variables renamed into elapsedSeconds.
+  * Additional checking is added for value check of index and frequency on available safe methods.
+
 * 1.5.0
   * Added comments to every lines of code.
   * Added DivideByZeroException to methods when input parameter index is not longer being checkes for it was zero.
@@ -274,9 +279,6 @@ See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.M
 * 1.0.0 Initial Release 
   
 ## Task list
-- [ ] ~~Usage of negative index values create corrupted data as result.~~
-- [X] Using of certain high values creates missing result value with naming ("Uncalculatable") and with CalcETA (-1)
-- [ ] Provide TimeSpanETA(), NumberFormatETA(), NameETA() and NameETABetterVisual() with their unsafe versions for better performance.
 
 ## Licence
 No licence is required.
