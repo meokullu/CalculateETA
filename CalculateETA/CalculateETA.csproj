@@ -15,7 +15,7 @@
 Additional checking value of index and frequency about if they are zero.
 
 Changed:
-totalSeconds variable name renamed into elapsedTime</PackageReleaseNotes>
+totalSeconds variable name renamed into elapsedSeconds</PackageReleaseNotes>
     <Version>1.6.0</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Okullu</Copyright>
