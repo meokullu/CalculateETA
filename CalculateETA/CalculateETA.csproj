@@ -11,7 +11,7 @@
     <Authors>Enes Okullu</Authors>
     <PackageIcon></PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>
     Added:
     Four unsafe visual output method TimeSpanETAUnsafe(), NumberFormatETAUnsafe(), NameETAUnsafe(), NameETABetterVisualUnsafe()
     Additional checking value of index and frequency about if they are zero.
