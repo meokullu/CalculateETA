@@ -8,6 +8,23 @@
 
 ### Removed
 
+## [1.6.1]
+
+### Changed
+* Fixed calculations on CalcETA(int, int timeSpan), CalcETA(uint,uint, timeSpan), CalcETAUnsafe(int, int, timeSpan) and CalcETAUnsafe(uint, uint, timeSpan).
+* Fixed wrong parameter name on methods that use totalElapsedTicks and frequency as parameters.
+* Added missing return summaries.
+* Added warning for frequency parameter should be provided with ticksPerMilliseconds.
+
+## [1.6.0]
+
+### Added
+* Added TimeSpanETAUnsafe(), NumberFormatETAUnsafe(), NameETAUnsafe() and NameETABetterVisualUnsafe() methods.
+
+### Changed
+* totalSeconds variables renamed into elapsedSeconds.
+* Additional checking is added for value check of index and frequency on available safe methods.
+
 ## [1.5.0]
 
 ### Added
