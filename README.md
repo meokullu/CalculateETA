@@ -239,6 +239,12 @@ See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
 See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
 
+* 1.6.1
+  * Added missing return summaries.
+  * Added warning for frequency parameter should be provided with ticksPerMilliseconds.
+  * Fixed calculations on CalcETA(int, int timeSpan), CalcETA(uint,uint, timeSpan), CalcETAUnsafe(int, int,  timeSpan) and CalcETAUnsafe(uint, uint, timeSpan).
+  * Fixed wrong parameter name on methods that use totalElapsedTicks and frequency as parameters.
+
 * 1.6.0
   * Added TimeSpanETAUnsafe(), NumberFormatETAUnsafe(), NameETAUnsafe() and NameETABetterVisualUnsafe() methods.
   * totalSeconds variables renamed into elapsedSeconds.
