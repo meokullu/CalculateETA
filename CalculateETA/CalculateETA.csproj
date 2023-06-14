@@ -12,20 +12,20 @@
     <PackageIcon></PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-    Added:
-    Four unsafe visual output method TimeSpanETAUnsafe(), NumberFormatETAUnsafe(), NameETAUnsafe(), NameETABetterVisualUnsafe()
-    Additional checking value of index and frequency about if they are zero.
-
-    Changed:
-    totalSeconds variable name renamed into elapsedSeconds
+      Added missing return summaries.
+      Added warning for frequency parameter should be provided with ticksPerMilliseconds.
+      
+      Fixed:
+      Fixed calculations on CalcETA(int, int timeSpan), CalcETA(uint,uint, timeSpan), CalcETAUnsafe(int, int,  timeSpan) and CalcETAUnsafe(uint, uint, timeSpan).
+      Fixed wrong parameter name on methods that use totalElapsedTicks and frequency as parameters.
     </PackageReleaseNotes>
-    <Version>1.6.0</Version>
+    <Version>1.6.1</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA;Time;LeftTime;Iterations;Multithreading;Singlethread</PackageTags>
-    <AssemblyVersion>1.6.0</AssemblyVersion>
-    <FileVersion>1.6.0</FileVersion>
+    <AssemblyVersion>1.6.1</AssemblyVersion>
+    <FileVersion>1.6.1</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meokullu/CalculateETA</RepositoryUrl>
   </PropertyGroup>
