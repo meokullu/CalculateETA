@@ -12,20 +12,17 @@
     <PackageIcon></PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      Added missing return summaries.
-      Added warning for frequency parameter should be provided with ticksPerMilliseconds.
-      
-      Fixed:
-      Fixed calculations on CalcETA(int, int timeSpan), CalcETA(uint,uint, timeSpan), CalcETAUnsafe(int, int,  timeSpan) and CalcETAUnsafe(uint, uint, timeSpan).
-      Fixed wrong parameter name on methods that use totalElapsedTicks and frequency as parameters.
+    v1.6.2
+    * NumberFormatETA() and NumberFormatETAUnsafe() methods no longer return milliseconds as a part of return string.
+    * NumberFormatETA() now returns "Too long" if input parameter value causes calculations for more than a day.
     </PackageReleaseNotes>
-    <Version>1.6.1</Version>
+    <Version>1.6.2</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA;Time;LeftTime;Iterations;Multithreading;Singlethread</PackageTags>
-    <AssemblyVersion>1.6.1</AssemblyVersion>
-    <FileVersion>1.6.1</FileVersion>
+    <AssemblyVersion>1.6.2</AssemblyVersion>
+    <FileVersion>1.6.2</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meokullu/CalculateETA</RepositoryUrl>
   </PropertyGroup>

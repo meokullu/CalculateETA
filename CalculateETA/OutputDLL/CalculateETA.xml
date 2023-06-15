@@ -260,10 +260,10 @@
         </member>
         <member name="M:CalculateETA.CalculateETA.NumberFormatETA(System.Nullable{System.Int64})">
             <summary>
-            Returns estimated left time to finish on string format. (HH:MM.SS.MMM)
+            Returns estimated left time to finish on string format. (HH:MM.SS)
             </summary>
             <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
-            <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns TimeSpan format.</returns>
+            <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns "Too long" if eTATimeInMs is more than a day. Returns number format. (string)</returns>
         </member>
         <member name="M:CalculateETA.CalculateETA.NameETA(System.Nullable{System.Int64})">
             <summary>
@@ -288,10 +288,10 @@
         </member>
         <member name="M:CalculateETA.CalculateETA.NumberFormatETAUnsafe(System.Int64)">
             <summary>
-            [Unsafe] Returns estimated left time to finish on string format. (HH:MM.SS.MMM)
+            [Unsafe] Returns estimated left time to finish on string format. (HH:MM.SS)
             </summary>
             <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
-            <returns>Returns TimeSpan format.</returns>
+            <returns>Returns number format. (string)</returns>
         </member>
         <member name="M:CalculateETA.CalculateETA.NameETAUnsafe(System.Int64)">
             <summary>
