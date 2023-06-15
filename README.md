@@ -239,6 +239,10 @@ See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
 See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
 
+*1.6.2
+  * NumberFormatETA() and NumberFormatETAUnsafe() methods no longer return milliseconds as a part of return string.
+  * NumberFormatETA() now returns "Too long" if input parameter value causes calculations for more than a day.
+
 * 1.6.1
   * Added missing return summaries.
   * Added warning for frequency parameter should be provided with ticksPerMilliseconds.

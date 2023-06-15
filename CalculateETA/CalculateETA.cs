@@ -894,10 +894,10 @@ namespace CalculateETA
         }
 
         /// <summary>
-        /// Returns estimated left time to finish on string format. (HH:MM.SS.MMM)
+        /// Returns estimated left time to finish on string format. (HH:MM.SS)
         /// </summary>
         /// <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
-        /// <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns TimeSpan format.</returns>
+        /// <returns>Returns "Uncalculatable" if etaTimeInMs is null. Returns "Negative" if etaTimeInMs is negative. Returns "Too long" if eTATimeInMs is more than a day. Returns number format. (string)</returns>
         public static string NumberFormatETA(long? eTATimeInMs)
         {
             // Checking if the given parameter is null.
@@ -912,12 +912,18 @@ namespace CalculateETA
                 // Returning "Negative" to indicate the given parameter was negative. 
                 return "Negative";
             }
+            // Checking if the given parameter value will result misleading return value. Estimation under 24 hours will return.
+            else if (eTATimeInMs > 86400000)
+            {
+                // Returning "Too long" to indicaate the given parameter value will result estimation more than a day.
+                return "Too long";
+            }
 
             // Creating a TimeSpan from TimeSpan(ticks:)
             TimeSpan ts = new TimeSpan(ticks: eTATimeInMs.Value * TimeSpan.TicksPerMillisecond);
 
-            // Returning ETA in number format. E.g 05:03:24:538
-            return $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}:{ts.Milliseconds}";
+            // Returning ETA in number format. E.g 05:03:24
+            return $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
         }
 
         /// <summary>
@@ -1047,17 +1053,17 @@ namespace CalculateETA
         }
 
         /// <summary>
-        /// [Unsafe] Returns estimated left time to finish on string format. (HH:MM.SS.MMM)
+        /// [Unsafe] Returns estimated left time to finish on string format. (HH:MM.SS)
         /// </summary>
         /// <param name="eTATimeInMs">The left time to finish. (milliseconds)</param>
-        /// <returns>Returns TimeSpan format.</returns>
+        /// <returns>Returns number format. (string)</returns>
         public static string NumberFormatETAUnsafe(long eTATimeInMs)
         {
             // Creating a TimeSpan from TimeSpan(ticks:)
             TimeSpan ts = new TimeSpan(ticks: eTATimeInMs * TimeSpan.TicksPerMillisecond);
 
-            // Returning ETA in number format. E.g 05:03:24:538
-            return $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}:{ts.Milliseconds}";
+            // Returning ETA in number format. E.g 05:03:24
+            return $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
         }
 
         /// <summary>
