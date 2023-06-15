@@ -178,7 +178,7 @@ NumberFormatETA(long? eTATimeInMs)
 NumberFormatETAUnsafe(long? eTATimeInMs)
 ```
 
-Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative, returns left time in {hh:mm:ss:msms}. Unsafe method returns left time directly on same format. (string)
+Returns "Uncalculatable" if eTATimeInMs is null, returns "Negative" if eTATimeInMs is negative, returns "Too long" if eTATimeInMs is for more than a day, returns left time in {hh:mm:ss}. Unsafe method returns left time on same format. (string)
 
 * long?: Estimated time to finish in milliseconds.
 
@@ -230,7 +230,7 @@ public string MethodName(int? index, int? totalIndex, double? totalElapsedTimeIn
 #### Output
 
 * TimeSpanETA(90000) => (TimeSpan)00:01:30
-* NumberFormatETA(90000) => "0:1:30:0"
+* NumberFormatETA(90000) => "0:1:30"
 * NameETA(90000) => "1 minute(s) and 30 second(s)" (recommended for high-CPU-intense algorithm)
 * NameETABetterVisual(90000) => "1 minute and 30 seconds"(recommended for low-CPU-intense algorithm in order to offer better visual output)
 ## Version History
