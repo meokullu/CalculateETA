@@ -8,6 +8,12 @@
 
 ### Removed
 
+## [1.6.2]
+
+### Changed
+* NumberFormatETA() and NumberFormatETAUnsafe() methods no longer return milliseconds as a part of return string.
+* NumberFormatETA() now returns "Too long" if input parameter value causes calculations for more than a day.
+
 ## [1.6.1]
 
 ### Changed
