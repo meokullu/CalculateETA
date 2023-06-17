@@ -12,17 +12,16 @@
     <PackageIcon></PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-    v1.6.2
-    * NumberFormatETA() and NumberFormatETAUnsafe() methods no longer return milliseconds as a part of return string.
-    * NumberFormatETA() now returns "Too long" if input parameter value causes calculations for more than a day.
+      v1.7.0 CalcETAHighDense
+      * CalcETAHighDense(int, uint), CalcETAHighDenseUnsafe(int, uint) methods are added. Among available methods for CPU-intense applications, new four methods can be used for precision on fast iterations.
     </PackageReleaseNotes>
-    <Version>1.6.2</Version>
+    <Version>1.7.0</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA;Time;LeftTime;Iterations;Multithreading;Singlethread</PackageTags>
-    <AssemblyVersion>1.6.2</AssemblyVersion>
-    <FileVersion>1.6.2</FileVersion>
+    <AssemblyVersion>1.7.0</AssemblyVersion>
+    <FileVersion>1.7.0</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meokullu/CalculateETA</RepositoryUrl>
   </PropertyGroup>
