@@ -33,7 +33,19 @@
         </member>
         <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
-            [Safe] Returns calculated estimated time to finish iteration on seconds (long)
+            [Safe] Returns calculated estimated time to finish iteration on seconds. (long) If iteration less than one millisecond, use CalcETAHighDense(index, totalIndex, totalElapsedTicks, frequency).
+            </summary>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
+            <param name="totalIndex">Total index of iteration.</param>
+            <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero. Frequent must be ticksPerMillisecond.</param>
+            <returns>The left time to finish iteration in milliseconds. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        </member>
+        <member name="M:CalculateETA.CalculateETA.CalcETAHighDense(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            [Safe] Returns calculated estimated time to finish iteration on seconds. (long) This method requires addional computational power when it is casting internal variables for calculations. Use this method if iteration has been made under one millisecond.
             </summary>
             <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
@@ -65,13 +77,25 @@
         </member>
         <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
-            [Safe] Returns calculated estimated time to finish iteration on seconds (long)
+            [Safe] Returns calculated estimated time to finish iteration on seconds. (long) If iteration less than one millisecond, use CalcETAHighDense(index, totalIndex, totalElapsedTicks, frequency).
             </summary>
             <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
             <param name="frequency">The frequency of tick. Frequency must not be zero. Frequency must by ticksPerMilliseconds</param>
             <returns>The left time to finish iteration. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        </member>
+        <member name="M:CalculateETA.CalculateETA.CalcETAHighDense(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            [Safe] Returns calculated estimated time to finish iteration on seconds. (long) This method requires addional computational power when it is casting internal variables for calculations. Use this method if iteration has been made under one millisecond.
+            </summary>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
+            <param name="totalIndex">Total index of iteration.</param>
+            <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero. Frequent must be ticksPerMillisecond.</param>
+            <returns>The left time to finish iteration in milliseconds. (long)</returns>
             <exception cref="T:System.DivideByZeroException">Throws exception if index is zero.</exception>
             <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         </member>
@@ -97,7 +121,18 @@
         </member>
         <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
-            [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
+            [Unsafe] Returns calculated estimated time to finish iteration on seconds. (long) If iteration less than one millisecond, use CalcETAHighDenseUnsafe(index, totalIndex, totalElapsedTicks, frequency).
+            </summary>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
+            <param name="totalIndex">Total index of iteration.</param>
+            <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero. Frequency must be ticksPerMilliseconds</param>
+            <returns>The left time to finish iteration in milliseconds. (long)</returns>   
+            <exception cref="T:System.DivideByZeroException">Throws exception if index or frequency is zero.</exception>
+        </member>
+        <member name="M:CalculateETA.CalculateETA.CalcETAHighDenseUnsafe(System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            [Unsafe] Returns calculated estimated time to finish iteration on seconds (long) This method requires addional computational power when it is casting internal variables for calculations.Use this method if iteration has been made under one millisecond.
             </summary>
             <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
@@ -128,13 +163,24 @@
         </member>
         <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
-            [Unsafe] Returns calculated estimated time to finish iteration on seconds (long)
+            [Unsafe] Returns calculated estimated time to finish iteration on seconds .(long) If iteration less than one millisecond, use CalcETAHighDenseUnsafe(index, totalIndex, totalElapsedTicks, frequency).
             </summary>
             <param name="index">The index of current iteration. Index must not be zero.</param>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
             <param name="frequency">The frequency of tick. Frequency must not be zero. Frequency must be ticksPerMilliseconds</param>
             <returns>The left time to finish iteration in milliseconds. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if index or frequency is zero.</exception>
+        </member>
+        <member name="M:CalculateETA.CalculateETA.CalcETAHighDenseUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            [Unsafe] Returns calculated estimated time to finish iteration on seconds. (long) This method requires addional computational power when it is casting internal variables for calculations.Use this method if iteration has been made under one millisecond.
+            </summary>
+            <param name="index">The index of current iteration. Index must not be zero.</param>
+            <param name="totalIndex">Total index of iteration.</param>
+            <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero. Frequency must be ticksPerMilliseconds</param>
+            <returns>The left time to finish iteration in milliseconds. (long)</returns>   
             <exception cref="T:System.DivideByZeroException">Throws exception if index or frequency is zero.</exception>
         </member>
         <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.TimeSpan})">
@@ -158,6 +204,16 @@
         <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations.
+            </summary>
+            <param name="totalIndex">Total index of iteration.</param>
+            <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero. Frequency must be ticksPerMilliseconds.</param>
+            <returns>The left time to finish iteration in milliseconds. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        </member>
+        <member name="M:CalculateETA.CalculateETA.CalcETAHighDense(System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations. This method requires addional computational power when it is casting internal variables for calculations. Use this method if iteration has been made under one millisecond.
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
@@ -191,6 +247,16 @@
             <returns>The left time to finish iteration in milliseconds. (long)</returns>
             <exception cref="T:System.DivideByZeroException">Throws exception if frequecny is zero.</exception>
         </member>
+        <member name="M:CalculateETA.CalculateETA.CalcETAHighDense(System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations. This method requires addional computational power when it is casting internal variables for calculations. Use this method if iteration has been made under one millisecond.
+            </summary>
+            <param name="totalIndex">Total index of iteration.</param>
+            <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero. Frequency must be ticksPerMilliseconds</param>
+            <returns>The left time to finish iteration in milliseconds. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequecny is zero.</exception>
+        </member>
         <member name="M:CalculateETA.CalculateETA.CalcETA(System.Nullable{System.Int32},System.Nullable{System.TimeSpan})">
             <summary>
             [Safe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations. If iteration takes close to one millisecond, use CalcETA(totalIndex, totalElapsedTicks, frequency).
@@ -217,6 +283,16 @@
             <returns>The left time to finish iteration in milliseconds. (long)</returns>
             <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
         </member>
+        <member name="M:CalculateETA.CalculateETA.CalcETAHighDenseUnsafe(System.Nullable{System.UInt32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            [Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations. This method requires addional computational power when it is casting internal variables for calculations. Use this method if iteration has been made under one millisecond.
+            </summary>
+            <param name="totalIndex">Total index of iteration.</param>
+            <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero. Frequency must be ticksPerMilliseond.</param>
+            <returns>The left time to finish iteration in milliseconds. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        </member>
         <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.UInt32},System.Nullable{System.TimeSpan})">
             <summary>
             [Logically Unsafe] Returns calculated estimated time to finish iteration on seconds (double) on Multi-Threading iterations. If iteration takes close to one millisecond, use CalcETAUnsafe(totalIndex, totalElapsedTicks, frequency).
@@ -236,6 +312,16 @@
         <member name="M:CalculateETA.CalculateETA.CalcETAUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>
             [Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations. If iteration takes close to one millisecond, use CalcETAUnsafe(totalIndex, totalElapsedTicks, frequency).
+            </summary>
+            <param name="totalIndex">Total index of iteration.</param>
+            <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>
+            <param name="frequency">The frequency of tick. Frequency must not be zero. Frequency must be ticksPerMilliseconds.</param>
+            <returns>The left time to finish iteration in milliseconds. (long)</returns>
+            <exception cref="T:System.DivideByZeroException">Throws exception if frequency is zero.</exception>
+        </member>
+        <member name="M:CalculateETA.CalculateETA.CalcETAHighDenseUnsafe(System.Nullable{System.Int32},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            [Unsafe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations. This method requires addional computational power when it is casting internal variables for calculations. Use this method if iteration has been made under one millisecond.
             </summary>
             <param name="totalIndex">Total index of iteration.</param>
             <param name="totalElapsedTicks">Elapsed ticks from starting of the iteration until current iteration on ticks.</param>

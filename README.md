@@ -56,10 +56,22 @@ CalcETA(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)
 CalcETAUnsafe(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)
 ```
 ```
+CalcETAHighDense(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)
+```
+```
+CalcETAHighDenseUnsafe(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)
+```
+```
 CalcETA(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)
 ```
 ```
 CalcETAUnsafe(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)
+```
+```
+CalcETAHighDense(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)
+```
+```
+CalcETAHighDenseUnsafe(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)
 ```
 
 Returns null if any of parameter is null or returns estimated left time in milliseconds (long?)
@@ -124,10 +136,22 @@ CalcETA(int? totalIndex, long? totalElapsedTicks, long? frequency)
 CalcETAUnSafe(int? totalIndex, long? totalElapsedTicks, long? frequency)
 ```
 ```
+CalcETAHighDense(int? totalIndex, long? totalElapsedTicks, long? frequency)
+```
+```
+CalcETAHighDenseUnsafe(int? totalIndex, long? totalElapsedTicks, long? frequency)
+```
+```
 CalcETA(uint? totalIndex, long? totalElapsedTicks, long? frequency)
 ```
 ```
 CalcETAUnsafe(uint? totalIndex, long? totalElapsedTicks, long? frequency)
+```
+```
+CalcETAHighDense(uint? totalIndex, long? totalElapsedTicks, long? frequency)
+```
+```
+CalcETAHighDenseUnsafe(uint? totalIndex, long? totalElapsedTicks, long? frequency)
 ```
 
 Returns null if any of parameter is null or returns estimated left time in milliseconds (long?)
@@ -210,9 +234,15 @@ Returns {} second/seconds, {} minute/minutes and {} second/seconds, {} hour/hour
 
 ## Example Usage
 ```
-public string MethodName(int? index, int? totalIndex, double? totalElapsedTimeInMs)
+public string CalcSingleThread(int? index, int? totalIndex, double? totalElapsedTimeInMs)
 {
     return NameETA(CalcETA(index: index, totalIndex: totalIndex, totalElapsedTimeInMs: totalElapsedTimeInMs));
+}
+```
+```
+public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
+{
+    return NameETA(CalcETAHighDense(totalIndex: totalIndex, totalElapsedTicks: totalElapsedTicks));
 }
 ```
 
@@ -233,11 +263,15 @@ public string MethodName(int? index, int? totalIndex, double? totalElapsedTimeIn
 * NumberFormatETA(90000) => "0:1:30"
 * NameETA(90000) => "1 minute(s) and 30 second(s)" (recommended for high-CPU-intense algorithm)
 * NameETABetterVisual(90000) => "1 minute and 30 seconds"(recommended for low-CPU-intense algorithm in order to offer better visual output)
+* 
 ## Version History
 
 See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
 See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
+
+* 1.7.0
+  * CalcETAHighDense(int, uint), CalcETAHighDenseUnsafe(int, uint) methods are added. Among available methods for CPU-intense applications, new four methods can be used for precision on fast iterations.
 
 * 1.6.2
   * NumberFormatETA() and NumberFormatETAUnsafe() methods no longer return milliseconds as a part of return string.
