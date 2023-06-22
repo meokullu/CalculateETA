@@ -8,6 +8,11 @@
 
 ### Removed
 
+## [1.7.0]
+
+### Added
+* CalcETAHighDense(int, uint), CalcETAHighDenseUnsafe(int, uint) methods are added. Among available methods for CPU-intense applications, new four methods can be used for precision on fast iterations.
+
 ## [1.6.2]
 
 ### Changed
