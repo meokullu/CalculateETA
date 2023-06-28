@@ -12,18 +12,21 @@
     <PackageIcon></PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      v1.7.0 CalcETAHighDense
-      * CalcETAHighDense(int, uint), CalcETAHighDenseUnsafe(int, uint) methods are added. Among available methods for CPU-intense applications, new four methods can be used for precision on fast iterations.
+      v1.7.1
+    * Methods are sorted and splited into three (Single-thread, multi-thread and common visual formatting).
+    * Internal parameters naming fixed to avoid confusion.
+    * Comments are improved to describe reason of usage better.
     </PackageReleaseNotes>
-    <Version>1.7.0</Version>
+    <Version>1.7.1</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA;Time;LeftTime;Iterations;Multithreading;Singlethread</PackageTags>
-    <AssemblyVersion>1.7.0</AssemblyVersion>
-    <FileVersion>1.7.0</FileVersion>
+    <AssemblyVersion>1.7.1</AssemblyVersion>
+    <FileVersion>1.7.1</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meokullu/CalculateETA</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -45,6 +48,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
