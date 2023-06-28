@@ -270,6 +270,11 @@ See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
 See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
 
+* 1.7.1
+  * Methods are sorted and splited into three (Single-thread, multi-thread and common visual formatting).
+  * Internal parameters naming fixed to avoid confusion.
+  * Comments are improved to describe reason of usage better.
+
 * 1.7.0
   * CalcETAHighDense(int, uint), CalcETAHighDenseUnsafe(int, uint) methods are added. Among available methods for CPU-intense applications, new four methods can be used for precision on fast iterations.
 
