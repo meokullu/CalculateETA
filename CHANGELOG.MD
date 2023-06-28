@@ -8,6 +8,13 @@
 
 ### Removed
 
+## [1.7.1]
+
+### Changed
+* Methods are sorted and splited into three (Single-thread, multi-thread and common visual formatting).
+* Internal parameters naming fixed to avoid confusion.
+* Comments are improved to describe reason of usage better.
+
 ## [1.7.0]
 
 ### Added
