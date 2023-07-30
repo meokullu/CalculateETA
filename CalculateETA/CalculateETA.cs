@@ -549,10 +549,10 @@ namespace CalculateETA
         #region Variables
 
         // Unsigned integer variable that holds total interaction for multi-threading applications. This value should be reset with ResetCounterUint() after re-use of CalcETA() multi-threading methods.
-        private static uint _counterUint;
+        private static uint s_counterUint;
 
         // Integer variable that holds total interaction for multi-threading applications. This value should be reset with ResetCounter() after re-use of CalcETA() multi-threading methods.
-        private static int _counter;
+        private static int s_counter;
 
         #endregion Variables
 
@@ -565,7 +565,7 @@ namespace CalculateETA
         public bool ResetCounterUint()
         {
             // Checking if the counter is zero.
-            if (_counterUint == 0)
+            if (s_counterUint == 0)
             {
                 // Returns false indicates that counter was zero already.
                 return false;
@@ -573,7 +573,7 @@ namespace CalculateETA
             else
             {
                 // Re-setting the counter value to zero.
-                _counterUint = 0;
+                s_counterUint = 0;
 
                 // Returns true indicates that re-setting the counter value to zero is successful.
                 return true;
@@ -587,7 +587,7 @@ namespace CalculateETA
         public bool ResetCounter()
         {
             // Checking if the counter is zero.
-            if (_counter == 0)
+            if (s_counter == 0)
             {
                 // Returns false indicates that counter was zero already.
                 return false;
@@ -595,7 +595,7 @@ namespace CalculateETA
             else
             {
                 // Re-setting the counter value to zero.
-                _counter = 0;
+                s_counter = 0;
 
                 // Returns true indicates that re-setting the counter value to zero was successful.
                 return true;
@@ -619,14 +619,14 @@ namespace CalculateETA
                 return null;
             }
 
-            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop. 
-            _counterUint++;
+            // Increase s_counterUint value everytime method is called to determine elapsed/left ratio of the loop. 
+            s_counterUint++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            uint leftCount = totalIndex.Value - _counterUint;
+            uint leftCount = totalIndex.Value - s_counterUint;
 
             // Calculating avarage time by dividing total time into number of the iteration.
-            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / _counterUint;
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / s_counterUint;
 
             // Calculating ETA by multiply elapsed avarage time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -662,14 +662,14 @@ namespace CalculateETA
             // Calculating elapsed time with dividing totalElapsedTicks to frequency.
             long elapsedMilliseconds = totalElapsedTicks.Value / frequency.Value;
 
-            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
-            _counterUint++;
+            // Increase s_counterUint value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counterUint++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            uint leftCount = totalIndex.Value - _counterUint;
+            uint leftCount = totalIndex.Value - s_counterUint;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            long avarageElapsedTimeInMs = elapsedMilliseconds / _counterUint;
+            long avarageElapsedTimeInMs = elapsedMilliseconds / s_counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -693,14 +693,14 @@ namespace CalculateETA
                 return null;
             }
 
-            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
-            _counter++;
+            // Increase s_counter value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counter++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            int leftCount = totalIndex.Value - _counter;
+            int leftCount = totalIndex.Value - s_counter;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / _counter;
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -736,14 +736,14 @@ namespace CalculateETA
             // Calculating elapsed time with dividing totalElapsedTicks to tickFrequency.
             long elapsedMilliseconds = totalElapsedTicks.Value / frequency.Value;
 
-            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
-            _counter++;
+            // Increase s_counter value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counter++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            int leftCount = totalIndex.Value - _counter;
+            int leftCount = totalIndex.Value - s_counter;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            long avarageElapsedTimeInMs = elapsedMilliseconds / _counter;
+            long avarageElapsedTimeInMs = elapsedMilliseconds / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -770,14 +770,14 @@ namespace CalculateETA
             // Getting totalMilliseconds value from timeSpan.TotalMilliseconds.
             double totalMilliseconds = timeSpan.Value.TotalMilliseconds;
 
-            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
-            _counterUint++;
+            // Increase s_counterUint value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counterUint++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            uint leftCount = totalIndex.Value - _counterUint;
+            uint leftCount = totalIndex.Value - s_counterUint;
 
             // Calculating avarage elapsed time by dividing total time into number of iteration.
-            double avarageElapsedTimeInMs = totalMilliseconds / _counterUint;
+            double avarageElapsedTimeInMs = totalMilliseconds / s_counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = leftCount * avarageElapsedTimeInMs;
@@ -804,14 +804,14 @@ namespace CalculateETA
             // Getting totalMilliseconds value from timeSpan.TotalMilliseconds.
             double totalMilliseconds = timeSpan.Value.TotalMilliseconds;
 
-            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
-            _counter++;
+            // Increase s_counter value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counter++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            int leftCount = totalIndex.Value - _counter;
+            int leftCount = totalIndex.Value - s_counter;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            double avarageElapsedTimeInMs = totalMilliseconds / _counter;
+            double avarageElapsedTimeInMs = totalMilliseconds / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = leftCount * avarageElapsedTimeInMs;
@@ -831,14 +831,14 @@ namespace CalculateETA
             // Get totalMilliseconds from TimeSpan formatted parameter.
             double totalMilliseconds = timeSpan.Value.TotalMilliseconds;
 
-            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.:
-            _counterUint++;
+            // Increase s_counterUint value everytime method is called to determine elapsed/left ratio of the loop.:
+            s_counterUint++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            uint leftCount = totalIndex.Value - _counterUint;
+            uint leftCount = totalIndex.Value - s_counterUint;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            double avarageElapsedTimeInMs = totalMilliseconds / _counterUint;
+            double avarageElapsedTimeInMs = totalMilliseconds / s_counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = leftCount * avarageElapsedTimeInMs;
@@ -858,14 +858,14 @@ namespace CalculateETA
             // Get totalMilliseconds from TimeSpan formatted parameter.
             double totalMilliseconds = timeSpan.Value.TotalMilliseconds;
 
-            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
-            _counter++;
+            // Increase s_counter value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counter++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            int leftCount = totalIndex.Value - _counter;
+            int leftCount = totalIndex.Value - s_counter;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            double avarageElapsedTimeInMs = totalMilliseconds / _counter;
+            double avarageElapsedTimeInMs = totalMilliseconds / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = leftCount * avarageElapsedTimeInMs;
@@ -901,14 +901,14 @@ namespace CalculateETA
             // Calculating elapsed time with dividing totalElapsedTicks to frequency.
             long elapsedMilliseconds = totalElapsedTicks.Value / frequency.Value;
 
-            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
-            _counterUint++;
+            // Increase s_counterUint value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counterUint++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            uint leftCount = totalIndex.Value - _counterUint;
+            uint leftCount = totalIndex.Value - s_counterUint;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            double avarageElapsedTimeInMs = (double)elapsedMilliseconds / _counterUint;
+            double avarageElapsedTimeInMs = (double)elapsedMilliseconds / s_counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = (double)leftCount * avarageElapsedTimeInMs;
@@ -944,14 +944,14 @@ namespace CalculateETA
             // Calculating elapsed time with dividing totalElapsedTicks to tickFrequency.
             long elapsedMilliseconds = totalElapsedTicks.Value / frequency.Value;
 
-            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
-            _counter++;
+            // Increase s_counter value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counter++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            int leftCount = totalIndex.Value - _counter;
+            int leftCount = totalIndex.Value - s_counter;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            double avarageElapsedTimeInMs = (double)elapsedMilliseconds / _counter;
+            double avarageElapsedTimeInMs = (double)elapsedMilliseconds / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = (double)leftCount * avarageElapsedTimeInMs;
@@ -968,14 +968,14 @@ namespace CalculateETA
         /// <returns>The left time to finish iteration in milliseconds. (long)</returns>
         public static long CalcETAUnsafe(uint? totalIndex, long? totalElapsedTimeInMs)
         {
-            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
-            _counterUint++;
+            // Increase s_counterUint value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counterUint++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            uint leftCount = totalIndex.Value - _counterUint;
+            uint leftCount = totalIndex.Value - s_counterUint;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / _counterUint;
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / s_counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -997,14 +997,14 @@ namespace CalculateETA
             // Calculating elapsed time with dividing totalElapsedTicks to frequency.
             long elapsedMilliseconds = totalElapsedTicks.Value / frequency.Value;
 
-            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
-            _counterUint++;
+            // Increase s_counterUint value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counterUint++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            uint leftCount = totalIndex.Value - _counterUint;
+            uint leftCount = totalIndex.Value - s_counterUint;
 
             // Calculating avarage elapsed time by dividing total time into number of iteration.
-            long avarageElapsedTimeInMs = elapsedMilliseconds / _counterUint;
+            long avarageElapsedTimeInMs = elapsedMilliseconds / s_counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -1021,14 +1021,14 @@ namespace CalculateETA
         /// <returns>The left time to finish iteration in milliseconds. (long) </returns>
         public static long CalcETAUnsafe(int? totalIndex, long? totalElapsedTimeInMs)
         {
-            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
-            _counter++;
+            // Increase s_counter value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counter++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            int leftCount = totalIndex.Value - _counter;
+            int leftCount = totalIndex.Value - s_counter;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / _counter;
+            long avarageElapsedTimeInMs = totalElapsedTimeInMs.Value / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -1050,14 +1050,14 @@ namespace CalculateETA
             // Calculating elapsed time by diving totalElapsedTicks into frequency.
             long elapsedMilliseconds = totalElapsedTicks.Value / frequency.Value;
 
-            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
-            _counter++;
+            // Increase s_counter value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counter++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            int leftCount = totalIndex.Value - _counter;
+            int leftCount = totalIndex.Value - s_counter;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            long avarageElapsedTimeInMs = elapsedMilliseconds / _counter;
+            long avarageElapsedTimeInMs = elapsedMilliseconds / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             long eta = leftCount * avarageElapsedTimeInMs;
@@ -1079,14 +1079,14 @@ namespace CalculateETA
             // Calculating elapsed time with dividing totalElapsedTicks to frequency.
             long elapsedMilliseconds = totalElapsedTicks.Value / frequency.Value;
 
-            // Increase counterUint value everytime method is called to determine elapsed/left ratio of the loop.
-            _counterUint++;
+            // Increase s_counterUint value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counterUint++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            uint leftCount = totalIndex.Value - _counterUint;
+            uint leftCount = totalIndex.Value - s_counterUint;
 
             // Calculating avarage elapsed time by dividing total time into number of iteration.
-            double avarageElapsedTimeInMs = (double)elapsedMilliseconds / _counterUint;
+            double avarageElapsedTimeInMs = (double)elapsedMilliseconds / s_counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = (double)leftCount * avarageElapsedTimeInMs;
@@ -1108,14 +1108,14 @@ namespace CalculateETA
             // Calculating elapsed time by diving totalElapsedTicks into frequency.
             long elapsedMilliseconds = totalElapsedTicks.Value / frequency.Value;
 
-            // Increase counter value everytime method is called to determine elapsed/left ratio of the loop.
-            _counter++;
+            // Increase s_counter value everytime method is called to determine elapsed/left ratio of the loop.
+            s_counter++;
 
             // Calculating leftCount by last Index of the iteration and current index of the iteration.
-            int leftCount = totalIndex.Value - _counter;
+            int leftCount = totalIndex.Value - s_counter;
 
             // Calculating avarage elapsed time by dividing total time into number of the iteration.
-            double avarageElapsedTimeInMs = (double)elapsedMilliseconds / _counter;
+            double avarageElapsedTimeInMs = (double)elapsedMilliseconds / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
             double eta = (double)leftCount * avarageElapsedTimeInMs;
