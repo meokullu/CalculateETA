@@ -11,15 +11,16 @@
     <Authors>Enes Okullu</Authors>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>v1.7.2 Icon added.
+    <PackageReleaseNotes>v1.7.3
+Private variable _counter and _counterUint renamed into s_counter and s_counterUint respectively.
     </PackageReleaseNotes>
-    <Version>1.7.2</Version>
+    <Version>1.7.3</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA;Time;LeftTime;Iterations;Multithreading;Singlethread</PackageTags>
-    <AssemblyVersion>1.7.2</AssemblyVersion>
-    <FileVersion>1.7.2</FileVersion>
+    <AssemblyVersion>1.7.3</AssemblyVersion>
+    <FileVersion>1.7.3</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meokullu/CalculateETA</RepositoryUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
