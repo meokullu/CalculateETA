@@ -15,6 +15,11 @@
 * Internal parameters naming fixed to avoid confusion.
 * Comments are improved to describe reason of usage better.
 
+## [2.0.0]
+
+### Changed
+ * Framework is changed from .NET Core 3.1 to .NET 7.0
+
 ## [1.7.0]
 
 ### Added
