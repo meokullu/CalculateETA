@@ -263,7 +263,7 @@ public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 * NumberFormatETA(90000) => "0:1:30"
 * NameETA(90000) => "1 minute(s) and 30 second(s)" (recommended for high-CPU-intense algorithm)
 * NameETABetterVisual(90000) => "1 minute and 30 seconds"(recommended for low-CPU-intense algorithm in order to offer better visual output)
-* 
+
 ## Version History
 
 See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
