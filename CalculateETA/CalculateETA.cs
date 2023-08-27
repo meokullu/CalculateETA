@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 /// <summary>
 /// Calculate the left time to finish current iteration on single-thread and multi-thread applications.

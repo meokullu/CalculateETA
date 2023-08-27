@@ -270,6 +270,9 @@ See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
 See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
 
+* 2.0.0
+  * Framework is changed from .Net Core 3.1 to .Net 7.0
+
 * 1.7.1
   * Methods are sorted and splited into three (Single-thread, multi-thread and common visual formatting).
   * Internal parameters naming fixed to avoid confusion.

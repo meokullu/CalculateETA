@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -11,16 +11,15 @@
     <Authors>Enes Okullu</Authors>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>v1.7.3
-Private variable _counter and _counterUint renamed into s_counter and s_counterUint respectively.
-    </PackageReleaseNotes>
-    <Version>1.7.3</Version>
+    <PackageReleaseNotes>v2.0.0
+Framework is changed from .Net Core 3.1 to .Net 7.0</PackageReleaseNotes>
+    <Version>2.0.0</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA;Time;LeftTime;Iterations;Multithreading;Singlethread</PackageTags>
-    <AssemblyVersion>1.7.3</AssemblyVersion>
-    <FileVersion>1.7.3</FileVersion>
+    <AssemblyVersion>2.0.0</AssemblyVersion>
+    <FileVersion>2.0.0</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meokullu/CalculateETA</RepositoryUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
