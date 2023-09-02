@@ -204,7 +204,7 @@ namespace CalculateETA
             double avarageElapsedTimeInMs = (double)elapsedMilliseconds / index.Value;
 
             // Calculating ETA by multiply avarage time with left count of the iteration.
-            double eta = (double)leftCount * avarageElapsedTimeInMs;
+            double eta = leftCount * avarageElapsedTimeInMs;
 
             // Returning ETA in milliseconds.
             return (long)eta;
@@ -246,7 +246,7 @@ namespace CalculateETA
             double avarageElapsedTimeInMs = (double)elapsedMilliseconds / index.Value;
 
             // Calculating ETA by multiply avarage time with left count of the iteration.
-            double eta = (double)leftCount * avarageElapsedTimeInMs;
+            double eta = leftCount * avarageElapsedTimeInMs;
 
             // Returning ETA in milliseconds.
             return (long)eta;
@@ -505,7 +505,7 @@ namespace CalculateETA
             double avarageElapsedTimeInMs = (double)elapsedMilliseconds / index.Value;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
-            double eta = (double)leftCount * avarageElapsedTimeInMs;
+            double eta = leftCount * avarageElapsedTimeInMs;
 
             // Returning ETA in milliseconds.
             return (long)eta;
@@ -532,7 +532,7 @@ namespace CalculateETA
             double avarageElapsedTimeInMs = (double)elapsedMilliseconds / index.Value;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
-            double eta = (double)leftCount * avarageElapsedTimeInMs;
+            double eta = leftCount * avarageElapsedTimeInMs;
 
             // Returning ETA in milliseconds.
             return (long)eta;
@@ -909,7 +909,7 @@ namespace CalculateETA
             double avarageElapsedTimeInMs = (double)elapsedMilliseconds / s_counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
-            double eta = (double)leftCount * avarageElapsedTimeInMs;
+            double eta = leftCount * avarageElapsedTimeInMs;
 
             // Returning ETA in milliseconds.
             return (long)eta;
@@ -952,7 +952,7 @@ namespace CalculateETA
             double avarageElapsedTimeInMs = (double)elapsedMilliseconds / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
-            double eta = (double)leftCount * avarageElapsedTimeInMs;
+            double eta = leftCount * avarageElapsedTimeInMs;
 
             // Returning ETA in milliseconds.
             return (long)eta;
@@ -1087,7 +1087,7 @@ namespace CalculateETA
             double avarageElapsedTimeInMs = (double)elapsedMilliseconds / s_counterUint;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
-            double eta = (double)leftCount * avarageElapsedTimeInMs;
+            double eta = leftCount * avarageElapsedTimeInMs;
 
             // Returning ETA in milliseconds.
             return (long)eta;
@@ -1116,7 +1116,7 @@ namespace CalculateETA
             double avarageElapsedTimeInMs = (double)elapsedMilliseconds / s_counter;
 
             // Calculating ETA by multiply avarage elapsed time with left count of the iteration.
-            double eta = (double)leftCount * avarageElapsedTimeInMs;
+            double eta = leftCount * avarageElapsedTimeInMs;
 
             // Returning ETA in milliseconds.
             return (long)eta;
@@ -1173,7 +1173,7 @@ namespace CalculateETA
             //}
 
             // Creating a TimeSpan from TimeSpan(ticks:)
-            TimeSpan ts = new TimeSpan(ticks: etaTimeInMs.Value * TimeSpan.TicksPerMillisecond);
+            TimeSpan ts = new(ticks: etaTimeInMs.Value * TimeSpan.TicksPerMillisecond);
 
             // Checking if the parameter is shorter than one minute.
             if (ts.TotalSeconds < 60)
@@ -1209,7 +1209,7 @@ namespace CalculateETA
         public static string NameETAUnsafe(long etaTimeInMs)
         {
             // Creating a TimeSpan from TimeSpan(ticks:)
-            TimeSpan ts = new TimeSpan(ticks: etaTimeInMs * TimeSpan.TicksPerMillisecond);
+            TimeSpan ts = new(ticks: etaTimeInMs * TimeSpan.TicksPerMillisecond);
 
             // Checking if the parameter is shorter than one minute.
             if (ts.TotalSeconds < 60)
@@ -1265,7 +1265,7 @@ namespace CalculateETA
             //}
 
             // Creating a TimeSpan from TimeSpan(ticks:)
-            TimeSpan ts = new TimeSpan(ticks: etaTimeInMs.Value * TimeSpan.TicksPerMillisecond);
+            TimeSpan ts = new(ticks: etaTimeInMs.Value * TimeSpan.TicksPerMillisecond);
 
             // Checking if the parameter is shorter than one minute.
             if (ts.TotalSeconds < 60)
@@ -1301,7 +1301,7 @@ namespace CalculateETA
         public static string NameETABetterVisualUnsafe(long etaTimeInMs)
         {
             // Creating a TimeSpan from TimeSpan(ticks:)
-            TimeSpan ts = new TimeSpan(ticks: etaTimeInMs * TimeSpan.TicksPerMillisecond);
+            TimeSpan ts = new(ticks: etaTimeInMs * TimeSpan.TicksPerMillisecond);
 
             // Checking if the parameter is shorter than one minute.
             if (ts.TotalSeconds < 60)
@@ -1356,7 +1356,7 @@ namespace CalculateETA
             }
 
             // Creating a TimeSpan from TimeSpan(ticks:)
-            TimeSpan ts = new TimeSpan(ticks: etaTimeInMs.Value * TimeSpan.TicksPerMillisecond);
+            TimeSpan ts = new(ticks: etaTimeInMs.Value * TimeSpan.TicksPerMillisecond);
 
             // Returning ETA in number format. E.g 05:03:24
             return $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
@@ -1370,7 +1370,7 @@ namespace CalculateETA
         public static string NumberFormatETAUnsafe(long etaTimeInMs)
         {
             // Creating a TimeSpan from TimeSpan(ticks:)
-            TimeSpan ts = new TimeSpan(ticks: etaTimeInMs * TimeSpan.TicksPerMillisecond);
+            TimeSpan ts = new(ticks: etaTimeInMs * TimeSpan.TicksPerMillisecond);
 
             // Returning ETA in number format. E.g 05:03:24
             return $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
@@ -1407,6 +1407,7 @@ namespace CalculateETA
         /// <returns>Return TimeSpan format.</returns>
         public static TimeSpan TimeSpanETAUnsafe(long etaTimeInMs)
         {
+            // Returning Timespan created by parameter changed into ticks.
             return new TimeSpan(ticks: etaTimeInMs * TimeSpan.TicksPerMillisecond);
         }
 
