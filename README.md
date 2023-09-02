@@ -270,6 +270,9 @@ See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
 See [release history](https://github.com/meokullu/CalculateETA/releases)
 See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
 
+* 2.0.1
+  * Uncessary casting removed.
+
 * 2.0.0
   * Framework is changed from .Net Core 3.1 to .Net 7.0
 
@@ -333,7 +336,7 @@ See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.M
 ## Task list
 
 ## Licence
-No licence is required.
+[MIT license](https://github.com/meokullu/CalculateETA/blob/master/LICENSE)
 
 ## Authors
 Twitter: Enes Okullu [@enesokullu](https://twitter.com/EnesOkullu)
