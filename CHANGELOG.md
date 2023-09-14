@@ -8,6 +8,11 @@
 
 ### Removed
 
+## [2.1.0]
+
+### Added
+Multi-target frameworks support. (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0)
+
 ## [1.7.1]
 
 ### Changed
