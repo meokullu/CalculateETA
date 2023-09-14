@@ -8,7 +8,7 @@ namespace CalculateETA
     public partial class CalculateETA
     {
         /// <summary>
-        /// [Safe] Returns calculated estimated time to finish iteration on seconds (long) If iteration takes close to one millisecond, use CalcETA(index, totalIndex, totalElapsedTicks, frequency).
+        /// [Safe] Returns calculated estimated time to finish iteration on seconds. (long) If iteration takes close to one millisecond, use CalcETA(index, totalIndex, totalElapsedTicks, frequency).
         /// </summary>
         /// <param name="index">The index of current iteration. Index must not be zero.</param>
         /// <param name="totalIndex">Total index of iteration.</param>
