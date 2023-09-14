@@ -263,11 +263,12 @@ public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 * NumberFormatETA(90000) => "0:1:30"
 * NameETA(90000) => "1 minute(s) and 30 second(s)" (recommended for high-CPU-intense algorithm)
 * NameETABetterVisual(90000) => "1 minute and 30 seconds"(recommended for low-CPU-intense algorithm in order to offer better visual output)
-* 
+
 ## Version History
 
 * 2.1.0
-    * Multi-target frameworks (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0<) support is added.
+    * Multi-target frameworks (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0) support is added.
+    * OutputDLL folder is removed.
 
 * 2.0.1
   * Uncessary casting removed.
