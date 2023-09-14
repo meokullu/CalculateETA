@@ -267,7 +267,8 @@ public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 ## Version History
 
 * 2.1.0
-    * Multi-target frameworks (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0<) support is added.
+    * Multi-target frameworks (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0) support is added.
+    * OutputDLL folder is removed.
 
 * 2.0.1
   * Uncessary casting removed.
