@@ -266,9 +266,8 @@ public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 * 
 ## Version History
 
-See [commit change](https://github.com/meokullu/CalculateETA/commits/master)
-See [release history](https://github.com/meokullu/CalculateETA/releases)
-See [changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.MD)
+* 2.1.0
+    * Multi-target frameworks (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0<) support is added.
 
 * 2.0.1
   * Uncessary casting removed.
