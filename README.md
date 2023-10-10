@@ -26,7 +26,7 @@ public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 }
 ```
 
-To check listed methods, example of output visit wiki page. [Listed Methods](https://github.com/meokullu/CalculateETA/wiki/Listed-Methods)
+To check listed methods, example of output visit wiki page. [CalculateETA Wiki](https://github.com/meokullu/CalculateETA/wiki/Listed-Methods)
 
 ### Version History
 
