@@ -1,4 +1,4 @@
-# CalculateETA
+## CalculateETA
 
 CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.
 
@@ -6,13 +6,13 @@ CalculateETA is a project to calculate estimated time to arrive on loops whether
 
 [Check out on NuGet gallery](https://www.nuget.org/packages/CalculateETA/)
 
-## Description
+### Description
 
 CalculateETA has methods to calculate estimated time to finish on loops. It calculates left count of iteration and multiply it with avarage passed time on the loop. On multi-thread applications, it has internal counter that increases everytime methods works via using that calculating left count of loop and multiply it with avarage passed time on the loop.
 
 CalculateETA is optimized for CPU-intense applications.
 
-## Example Usage
+### Example Usage
 ```
 public string CalcSingleThread(int? index, int? totalIndex, double? totalElapsedTimeInMs)
 {
@@ -28,17 +28,17 @@ public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 
 To check listed methods, example of output visit wiki page. [Listed Methods](https://github.com/meokullu/CalculateETA/wiki/Listed-Methods)
 
-## Version History
+### Version History
 
 See [Changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.md)
   
-## Task list
+### Task list
 
-## Licence
+#### Licence
 [MIT license](https://github.com/meokullu/CalculateETA/blob/master/LICENSE)
 
-## Authors
+#### Authors
 Twitter: Enes Okullu [@enesokullu](https://twitter.com/EnesOkullu)
 
-## Help
+#### Help
 Twitter: Enes Okullu [@enesokullu](https://twitter.com/EnesOkullu)
