@@ -34,11 +34,11 @@ See [Changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.m
   
 ### Task list
 
-#### Licence
+### Licence
 [MIT license](https://github.com/meokullu/CalculateETA/blob/master/LICENSE)
 
-#### Authors
+### Authors
 Twitter: Enes Okullu [@enesokullu](https://twitter.com/EnesOkullu)
 
-#### Help
+### Help
 Twitter: Enes Okullu [@enesokullu](https://twitter.com/EnesOkullu)
