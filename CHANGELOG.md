@@ -11,7 +11,20 @@
 ## [2.1.0]
 
 ### Added
-Multi-target frameworks support. (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0)
+* Multi-target frameworks support. (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0)
+
+### Removed
+* OutputDLL folder is removed.
+
+## [2.0.1]
+
+### Removed
+* Unnecessary casting removed.
+
+## [2.0.0]
+
+### Changed
+* Framework is changed from .Net Core 3.1 to .Net 7.0
 
 ## [1.7.1]
 
@@ -19,11 +32,6 @@ Multi-target frameworks support. (net6.0; net7.0; net461; netcoreapp3.1; netstan
 * Methods are sorted and splited into three (Single-thread, multi-thread and common visual formatting).
 * Internal parameters naming fixed to avoid confusion.
 * Comments are improved to describe reason of usage better.
-
-## [2.0.0]
-
-### Changed
- * Framework is changed from .NET Core 3.1 to .NET 7.0
 
 ## [1.7.0]
 
@@ -80,13 +88,20 @@ Multi-target frameworks support. (net6.0; net7.0; net461; netcoreapp3.1; netstan
 
 ### Added
  * Added ReserCounterUint() for multi-threaded iterations that use uint as index or totalindex.
- * Added [Unsafe] methods for all methods to increase performance.
+ * Added Unsafe methods for all methods to increase performance.
  * Added methods uses uint data type rather than int to increase range.
 
+## [1.2.1]
+
+### Changed
+* Output folder is renamed as OutputDLL
+* Ready-to-use CalculateETA.dll and CalcualteETA.xml updated.
+  
 ## [1.2.0]
 
 ### Changed
  * NameETA() now returns left hour data while left time is more than one day.
+
 ### Fixed
  * Bug on left time measurement is fixed.
 
