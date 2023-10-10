@@ -267,72 +267,7 @@ public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 
 ## Version History
 
-* 2.1.0
-    * Multi-target frameworks (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0) support is added.
-    * OutputDLL folder is removed.
-
-* 2.0.1
-  * Uncessary casting removed.
-
-* 2.0.0
-  * Framework is changed from .Net Core 3.1 to .Net 7.0
-
-* 1.7.1
-  * Methods are sorted and splited into three (Single-thread, multi-thread and common visual formatting).
-  * Internal parameters naming fixed to avoid confusion.
-  * Comments are improved to describe reason of usage better.
-
-* 1.7.0
-  * CalcETAHighDense(int, uint), CalcETAHighDenseUnsafe(int, uint) methods are added. Among available methods for CPU-intense applications, new four methods can be used for precision on fast iterations.
-
-* 1.6.2
-  * NumberFormatETA() and NumberFormatETAUnsafe() methods no longer return milliseconds as a part of return string.
-  * NumberFormatETA() now returns "Too long" if input parameter value causes calculations for more than a day.
-
-* 1.6.1
-  * Added missing return summaries.
-  * Added warning for frequency parameter should be provided with ticksPerMilliseconds.
-  * Fixed calculations on CalcETA(int, int timeSpan), CalcETA(uint,uint, timeSpan), CalcETAUnsafe(int, int,  timeSpan) and CalcETAUnsafe(uint, uint, timeSpan).
-  * Fixed wrong parameter name on methods that use totalElapsedTicks and frequency as parameters.
-
-* 1.6.0
-  * Added TimeSpanETAUnsafe(), NumberFormatETAUnsafe(), NameETAUnsafe() and NameETABetterVisualUnsafe() methods.
-  * totalSeconds variables renamed into elapsedSeconds.
-  * Additional checking is added for value check of index and frequency on available safe methods.
-
-* 1.5.0
-  * Added comments to every lines of code.
-  * Added DivideByZeroException to methods when input parameter index is not longer being checkes for it was zero.
-
-  * CalcETA() and CalcETAUnsafe() methods, now using nullable parameters.
-  * CalcETA() methods checks if given parameters are null instead of 0 value.
-  * CalcETA(..., long tickFrequency) method is now using CalcETA(..., long? frequency)
-  * avarageElapsedTime varaiable is renamed into avarageElapsedTimeInMs.
-  * seconds variable is renamed into elapsedSeconds.
-  * TimeSpanETA() now returns null instead of TimeSpan.Zero when input parameter is null instead of it is zero value.
-  * TimeSpanETA(), NumberFormatETA(), NameETA(), NameETABetterVisual() now uses new TimeSpan(ticks: ) instead of new TimeSpan(0,0,0,0, milliseconds: (int)eTATimeInMs)
-
-  * NameETA() and NameETABetterVisual() are no longer returning result as $"{etaTimeInMs:0} ms" if input parameters is shorter then a second.
-
-* 1.4.0
-  * Added NameETABetterVisual() method for offer better visual output
-
-* 1.3.0
-  * Added support for uint data type as parameters.
-  * Added unsafe methods for increase performance
-
-* 1.2.1
-  * Output folder is renamed as OutputDLL
-  * Ready-to-use CalculateETA.dll and CalculateETA.xml are updated.
-
-* 1.2.0
-  * Fixed left time measurement bug.
-  * When calculation left time TimeSpan is being used instead of conventional mathematical operations.
-
-* 1.1.0
-  * Added ResetCounter() method for reset counter that holds int variable to calculate ETA on multi-thread applications
-  
-* 1.0.0 Initial Release 
+See [Changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.md)
   
 ## Task list
 
