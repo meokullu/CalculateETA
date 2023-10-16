@@ -2,9 +2,9 @@
 
 CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.
 
-![CalcETA14](https://repository-images.githubusercontent.com/569852870/a32b2e3b-99a7-41ee-8dcc-9992adba35d0)
+![CalculateETA](https://repository-images.githubusercontent.com/569852870/a32b2e3b-99a7-41ee-8dcc-9992adba35d0)
 
-[Check out on NuGet gallery](https://www.nuget.org/packages/CalculateETA/)
+[Download on NuGet gallery](https://www.nuget.org/packages/CalculateETA/)
 
 ### Description
 
@@ -16,13 +16,13 @@ CalculateETA is optimized for CPU-intense applications.
 ```
 public string CalcSingleThread(int? index, int? totalIndex, double? totalElapsedTimeInMs)
 {
-    return NameETA(CalcETA(index: index, totalIndex: totalIndex, totalElapsedTimeInMs: totalElapsedTimeInMs));
+    return NameETA(CalcETA(index, totalIndex, totalElapsedTimeInMs));
 }
 ```
 ```
 public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 {
-    return NameETA(CalcETAHighDense(totalIndex: totalIndex, totalElapsedTicks: totalElapsedTicks));
+    return NameETA(CalcETAHighDense(totalIndex, totalElapsedTicks));
 }
 ```
 
