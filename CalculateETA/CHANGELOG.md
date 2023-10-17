@@ -1,4 +1,4 @@
-# CalculateETA Changelog
+## CalculateETA Changelog
 
 <!--
 ## [Unreleased]
@@ -9,6 +9,9 @@
 
 ### Removed
 -->
+
+## [2.x.y] (Upcoming)
+*
 
 ## [2.1.0]
 

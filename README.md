@@ -32,6 +32,7 @@ To check listed methods, example of output visit wiki page. [CalculateETA Wiki](
 See [Changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.md)
   
 ### Task list
+* Create an issue or check task list: [Issues](https://github.com/meokullu/CalculateETA/issues)
 
 ### Licence
 [MIT license](https://github.com/meokullu/CalculateETA/blob/master/LICENSE)
