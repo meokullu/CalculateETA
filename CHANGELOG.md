@@ -10,14 +10,17 @@
 ### Removed
 -->
 
-## [2.1.1] (Upcoming)
+## [2.1.1]
+
+### Added
+* Wiki pages are added. Wiki link is under example of use section.
+
+### Changed
 * Update README with cleaner view. Changelog link is added under task list section.
 * Task list section is removed under README.
 * Update CHANGELOG with cleaner view.
-* Wiki pages are added. Wiki link is under example of use section.
 * LICENCE.md file renamed as LICENCE.
 * Package tags are added.
-
 
 ## [2.1.0]
 
