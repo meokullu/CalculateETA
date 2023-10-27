@@ -10,6 +10,12 @@
 ### Removed
 -->
 
+## [2.1.2]
+
+### Changed
+
+* Methods are sorted.
+
 ## [2.1.1]
 
 ### Added
