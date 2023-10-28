@@ -10,6 +10,11 @@
 ### Removed
 -->
 
+## [3.0.0] (Upcoming)
+
+## Changed
+* `Counter.cs`, `HighDense.cs`, `Visualization.cs` are added and certain methods are moved.
+
 ## [2.1.2]
 
 ### Changed
