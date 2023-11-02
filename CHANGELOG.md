@@ -1,5 +1,5 @@
 ## CalculateETA Changelog
-
+[![CalculateETA](https://img.shields.io/nuget/v/CalculateETA.svg)](https://www.nuget.org/packages/CalculateETA/)
 <!--
 ## [Unreleased]
 
