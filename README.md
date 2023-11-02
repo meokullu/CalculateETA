@@ -40,7 +40,7 @@ This repository is licensed under the "MIT" license. See [MIT license](https://g
 
 ### Authors & Contributing
 
-If you'd like to contribute, contribute. <!-- [contributing guide](CONTRIBUTING.md). -->
+If you'd like to contribute, then contribute. <!-- [contributing guide](CONTRIBUTING.md). -->
 
 [![Contributors](https://contrib.rocks/image?repo=meokullu/CalculateETA)](https://github.com/meokullu/CalculateETA/graphs/contributors)
 
