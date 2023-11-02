@@ -1,98 +1,99 @@
 ## CalculateETA Changelog
 [![CalculateETA](https://img.shields.io/nuget/v/CalculateETA.svg)](https://www.nuget.org/packages/CalculateETA/)
+
 <!--
-## [Unreleased]
+### [Unreleased]
 
-### Added
+#### Added
 
-### Changed
+#### Changed
 
-### Removed
+#### Removed
 -->
 
-## [3.0.0] (Upcoming)
+### [3.0.0] (Upcoming)
 
-## Changed
+#### Changed
 * `Counter.cs`, `HighDense.cs`, `Visualization.cs` are added and certain methods are moved.
 
 ## [2.1.2]
 
-### Changed
+#### Changed
 
 * Methods are sorted.
 
-## [2.1.1]
+### [2.1.1]
 
-### Added
+#### Added
 * Wiki pages are added. Wiki link is under example of use section.
 
-### Changed
+#### Changed
 * Update README with cleaner view. Changelog link is added under task list section.
 * Task list section is removed under README.
 * Update CHANGELOG with cleaner view.
 * LICENCE.md file renamed as LICENCE.
 * Package tags are added.
 
-## [2.1.0]
+### [2.1.0]
 
-### Added
+#### Added
 * Multi-target frameworks support. (net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0)
 
-### Removed
+#### Removed
 * `OutputDLL` folder is removed.
 
-## [2.0.1]
+### [2.0.1]
 
-### Removed
+#### Removed
 * Unnecessary casting removed.
 
-## [2.0.0]
+### [2.0.0]
 
-### Changed
+#### Changed
 * Framework is changed from .Net Core 3.1 to .Net 7.0
 
-## [1.7.1]
+### [1.7.1]
 
-### Changed
+#### Changed
 * Methods are sorted and splited into three (Single-thread, multi-thread and common visual formatting).
 * Internal parameters naming fixed to avoid confusion.
 * Comments are improved to describe reason of usage better.
 
-## [1.7.0]
+### [1.7.0]
 
-### Added
+#### Added
 * `CalcETAHighDense(int, uint)`, `CalcETAHighDenseUnsafe(int, uint)` methods are added. Among available methods for CPU-intense applications, new four methods can be used for precision on fast iterations.
 
-## [1.6.2]
+### [1.6.2]
 
-### Changed
+#### Changed
 * `NumberFormatETA()` and `NumberFormatETAUnsafe()` methods no longer return milliseconds as a part of return string.
 * `NumberFormatETA()` now returns `"Too long"` if input parameter value causes calculations for more than a day.
 
-## [1.6.1]
+### [1.6.1]
 
-### Changed
+#### Changed
 * Fixed calculations on `CalcETA(int, int, TimeSpan)`, `CalcETA(uint, uint, TimeSpan)`, `CalcETAUnsafe(int, int, TimeSpan)` and `CalcETAUnsafe(uint, uint, TimeSpan)`.
 * Fixed wrong parameter name on methods that use `totalElapsedTicks` and `frequency` as parameters.
 * Added missing return summaries.
 * Added warning for `frequency` parameter should be provided with `ticksPerMilliseconds`.
 
-## [1.6.0]
+### [1.6.0]
 
-### Added
+#### Added
 * Added `TimeSpanETAUnsafe()`, `NumberFormatETAUnsafe()`, `NameETAUnsafe()` and `NameETABetterVisualUnsafe()` methods.
 
-### Changed
+#### Changed
 * `totalSeconds` variables renamed into `elapsedSeconds`.
 * Additional checking is added for value check of `index` and `frequency` on available safe methods.
 
-## [1.5.0]
+### [1.5.0]
 
-### Added
+#### Added
 * Added comments to every lines of code.
 * Added `DivideByZeroException` to methods when input parameter `index` is not longer being checkes for it was `zero`.
 
-### Changed
+#### Changed
 * `CalcETA()` and `CalcETAUnsafe()` methods, now using nullable parameters.
 * `CalcETA()` methods checks if given parameters are `null` instead of `zero` value.
 * `CalcETA(..., long tickFrequency)` method is now using `CalcETA(..., long? frequency)`
@@ -101,39 +102,39 @@
 * `TimeSpanETA()` now returns `null` instead of `TimeSpan.Zero` when input parameter is `null` instead of it is `zero` value.
 * `TimeSpanETA()`, `NumberFormatETA()`, `NameETA()`, `NameETABetterVisual()` now uses new `TimeSpan(ticks: )` instead of `new TimeSpan(0,0,0,0, milliseconds: (int)eTATimeInMs)`
 
-### Removed
+#### Removed
   * `NameETA()` and `NameETABetterVisual()` are no longer returning result as `$"{etaTimeInMs:0} ms"` if input parameters is shorter then a second.
 
-## [1.4.0]
+### [1.4.0]
 
-### Added
+#### Added
  * Added `NameETABetterVisual()` for better reability on algorithms.
 
-## [1.3.0]
+### [1.3.0]
 
-### Added
+#### Added
  * Added `ReserCounterUint()` for multi-threaded iterations that use `uint` as `index` or `totalindex`.
  * Added Unsafe methods for all methods to increase performance.
  * Added methods uses `uint` data type rather than `int` to increase range.
 
-## [1.2.1]
+### [1.2.1]
 
-### Changed
+#### Changed
 * Output folder is renamed as OutputDLL
 * Ready-to-use CalculateETA.dll and CalcualteETA.xml updated.
   
-## [1.2.0]
+### [1.2.0]
 
-### Changed
+#### Changed
  * `NameETA()` now returns left hour data while left time is more than one day.
 
-### Fixed
+#### Fixed
  * Bug on left time measurement is fixed.
 
-## [1.1.0]
+### [1.1.0]
 
-### Added
+#### Added
  * Added `ResetCounter()` method for reset the counter that hold int variable to calculate ETA on multi-thread applications.
 
-## [1.0.0]
+### [1.0.0]
 Initial version
