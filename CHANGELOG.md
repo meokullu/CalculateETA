@@ -13,10 +13,13 @@
 
 ### [3.0.0] (Upcoming)
 
+#### Added
+* Created reporting extension module. Following methods are added. `AddReport(long? eta)`, `AddReport(double? eta)`, `GetDoubleListReport()`, `GetLongListReport()` [#38](https://github.com/meokullu/CalculateETA/issues/38)
+
 #### Changed
 * `Counter.cs`, `HighDense.cs`, `Visualization.cs` are added and certain methods are moved.
 
-## [2.1.2]
+### [2.1.2]
 
 #### Changed
 
