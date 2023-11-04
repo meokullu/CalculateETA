@@ -6,3 +6,6 @@ contact_links:
   - name: Issues
     url: https://github.com/meokullu/CalculateETA/issues
     about: Please report security vulnerabilities here.
+  - name: Pull Request
+    url: https://github.com/meokullu/CalculateETA/pulls
+    about: Please do PR here.
