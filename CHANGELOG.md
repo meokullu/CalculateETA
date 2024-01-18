@@ -11,6 +11,11 @@
 #### Removed
 -->
 
+### [2.3.0]
+
+#### Added
+* Under `Visualisation.cs` `TextMessage` class is added. `TextSeconOptionalPlural`, `TextMinuteOptionalPlural`, `TextHourOptionalPlural`, `TextDayOptionalPlural`, `TextSecond`, `TextMinute`, `TextHour`, `TextDay`, `TextMinutes`, `TextHours`, `TextDays`, `TextUncalculatable`, `TextNegative`, `TextTooLong`, `TextAnd` and `TextNumberFormatSeperator` can be set to choose what `NameETA(long? etaTimeInMs)`, `NameETAUnsafe(long etaTimeInMs)`, `NameETABetterVisual(long? etaTimeInMs)`, `NameETABetterVisualUnsafe(long etaTimeInMs)`, `NumberFormatETA(long? etaTimeInMs)` and `NumberFormatETAUnsafe(long etaTimeInMs)` methods create string to return.
+
 ### [2.2.0]
 
 #### Added
