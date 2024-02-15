@@ -9,15 +9,22 @@ CalculateETA is a project to calculate estimated time to arrive on loops whether
 
 ### Description
 
-CalculateETA has methods to calculate estimated time to finish on loops. It calculates left count of iteration and multiply it with avarage passed time on the loop. On multi-thread applications, it has internal counter that increases everytime methods works via using that calculating left count of loop and multiply it with avarage passed time on the loop.
+CalculateETA has methods to calculate estimated time to finish on the loops. It calculates left count of the iteration and avarage passed time on the loop then multiply left count with avarage passed time. On multi-thread applications, it has internal counter that increases everytime methods are called. With using counter calculating left count of the loop and avarage passed time on the loop then multiply left count with avarage passed time.
 
-CalculateETA is optimized for CPU-intense applications.
+CalculateETA is optimized for CPU-intense applications which methods are named Unsafe as suffix such as CalcUnsafe() and NameETAUnsafe().
 
 ### Example Usage
+
 ```
-public string CalcSingleThread(int? index, int? totalIndex, double? totalElapsedTimeInMs)
+public string CalcSTCPUIntense(int? index, int? totalIndex, double? totalElapsedTimeInMs)
 {
-    return NameETA(CalcETA(index, totalIndex, totalElapsedTimeInMs));
+    return NameETAUnsafe(CalcETAUnsafe(index, totalIndex, totalElapsedTimeInMs));
+}
+```
+```
+public string CalcSTBetterVisual(int? index, int? totalIndex, double? totalElapsedTimeInMs)
+{
+    return NameETABetterVisual(CalcETA(index, totalIndex, totalElapsedTimeInMs));
 }
 ```
 ```
