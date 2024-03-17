@@ -16,19 +16,19 @@ CalculateETA is optimized for CPU-intense applications which methods are named U
 ### Example Usage
 
 ```
-public string CalcSTCPUIntense(int? index, int? totalIndex, double? totalElapsedTimeInMs)
+string CalcSTCPUIntense(int? index, int? totalIndex, double? totalElapsedTimeInMs)
 {
     return NameETAUnsafe(CalcETAUnsafe(index, totalIndex, totalElapsedTimeInMs));
 }
 ```
 ```
-public string CalcSTBetterVisual(int? index, int? totalIndex, double? totalElapsedTimeInMs)
+string CalcSTBetterVisual(int? index, int? totalIndex, double? totalElapsedTimeInMs)
 {
     return NameETABetterVisual(CalcETA(index, totalIndex, totalElapsedTimeInMs));
 }
 ```
 ```
-public string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
+string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 {
     return NameETA(CalcETAHighDense(totalIndex, totalElapsedTicks));
 }
