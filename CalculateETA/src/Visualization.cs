@@ -180,6 +180,55 @@ namespace CalculateETA
         }
 
         /// <summary>
+        /// Returns estimated time to finish on naming format. (xxx ms or xx second(s) or xx minute(s) and yy (second(s)...) Recommended for high-cpu-intense algorithm
+        /// </summary>
+        /// <param name="etaTime">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns "Uncalculatable" if etaTime is null. Returns "Negative" if etaTime is negative. Returns string format.</returns>
+        public static string NameETA(double? etaTime)
+        {
+            // Checking if the given parameter is null.
+            if (etaTime == null)
+            {
+                // Returning "Uncalculatable" to indicate the given parameter was null.
+                return TextUncalculatable;
+            }
+            // Checking if the given parameter is negative.
+            else if (etaTime < 0)
+            {
+                // Returning "Negative" to indicate the given parameter was negative. 
+                return TextNegative;
+            }
+
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: (long)(etaTime.Value * TimeSpan.TicksPerMillisecond));
+
+            // Checking if the parameter is shorter than one minute.
+            if (ts.TotalSeconds < 60)
+            {
+                // Returning ETA as xx second(s).
+                return $"{ts.Seconds}{TextSecondOptionalPlural}";
+            }
+            // Checking if parameter is shorter than one hour.
+            else if (ts.TotalSeconds < 3600)
+            {
+                // Returning ETA as xx minute(s) and yy second(s).
+                return $"{ts.Minutes}{TextMinuteOptionalPlural}{TextAnd}{ts.Seconds}{TextSecondOptionalPlural}";
+            }
+            // Checking if parameter is shorter than one day.
+            else if (ts.TotalSeconds < 86400)
+            {
+                // Returning ETA as xx hours(s) and yy minutes(s).
+                return $"{ts.Hours}{TextHourOptionalPlural}{TextAnd}{ts.Minutes}{TextMinuteOptionalPlural}";
+            }
+            // If parameter is longer than a day.
+            else
+            {
+                // Returning ETA as xx days(s) and yy hour(s).
+                return $"{ts.Days}{TextDayOptionalPlural}{TextAnd}{ts.Hours}{TextHourOptionalPlural}";
+            }
+        }
+
+        /// <summary>
         /// [Unsafe] Returns estimated time to finish on naming format. (xxx ms or xx second(s) or xx minute(s) and yy (second(s)...) Recommended for high-cpu-intense algorithm
         /// </summary>
         /// <param name="etaTimeInMs">The left time to finish. (milliseconds)</param>
@@ -216,6 +265,48 @@ namespace CalculateETA
         }
 
         /// <summary>
+        /// [Unsafe] Returns estimated time to finish on naming format. (xxx ms or xx second(s) or xx minute(s) and yy (second(s)...) Recommended for high-cpu-intense algorithm
+        /// </summary>
+        /// <param name="etaTime">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns string format.</returns>
+        public static string NameETAUnsafe(double etaTime)
+        {
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: (long)(etaTime * TimeSpan.TicksPerMillisecond));
+
+            // Checking if the parameter is shorter than one minute.
+            if (ts.TotalSeconds < 60)
+            {
+                // Returning ETA as xx second(s).
+                return $"{ts.Seconds}{TextSecondOptionalPlural}";
+            }
+            // Checking if parameter is shorter than one hour.
+            else if (ts.TotalSeconds < 3600)
+            {
+                // Returning ETA as xx minute(s) and yy second(s).
+                return $"{ts.Minutes}{TextMinuteOptionalPlural}{TextAnd}{ts.Seconds}{TextSecondOptionalPlural}";
+            }
+            // Checking if parameter is shorter than one day.
+            else if (ts.TotalSeconds < 86400)
+            {
+                // Returning ETA as xx hours(s) and yy minutes(s).
+                return $"{ts.Hours}{TextHourOptionalPlural}{TextAnd}{ts.Minutes}{TextMinuteOptionalPlural}";
+            }
+            // If parameter is longer than a day.
+            else
+            {
+                // Returning ETA as xx days(s) and yy hour(s).
+                return $"{ts.Days}{TextDayOptionalPlural}{TextAnd}{ts.Hours}{TextHourOptionalPlural}";
+            }
+        }
+
+        [Obsolete("Renamed as NameETAUnsafe(double etaTime)")]
+        public static string NameETAUnSafe(double etaTime)
+        {
+            return NameETAUnsafe(etaTime);
+        }
+
+        /// <summary>
         /// Returns estimated time to finish on naming format. (xxx ms or xx second/seconds or xx minute/minutes and yy (second/seconds...) Recommended for low-cpu-intense algorithm in order to better visual output
         /// </summary>
         /// <param name="etaTimeInMs">The left time to finish. (milliseconds)</param>
@@ -235,15 +326,57 @@ namespace CalculateETA
                 return TextNegative;
             }
 
-            // Checking if parameter is lower than one second. This is commented out for better performance.
-            //else if (etaTimeInMs < 1000)
-            //{
-            //    //
-            //    return $"{etaTimeInMs:0} ms";
-            //}
-
             // Creating a TimeSpan from TimeSpan(ticks:)
             TimeSpan ts = new TimeSpan(ticks: etaTimeInMs.Value * TimeSpan.TicksPerMillisecond);
+
+            // Checking if the parameter is shorter than one minute.
+            if (ts.TotalSeconds < 60)
+            {
+                // Returning ETA as x second or yy seconds.
+                return $"{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+            }
+            // Checking if parameter is shorter than one hour.
+            else if (ts.TotalSeconds < 3600)
+            {
+                // Returning ETA as x minute or xx minutes, y second or yy seconds.
+                return $"{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+            }
+            // Checking if parameter is shorter than one day.
+            else if (ts.TotalSeconds < 86400)
+            {
+                // Returning ETA as x hour or xx hours and, y minute or yy minutes.
+                return $"{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
+            }
+            // If parameter is longer than a day.
+            else
+            {
+                // Returning ETA as x day or xx days, y hour and yy hours.
+                return $"{ts.Days} {(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}";
+            }
+        }
+
+        /// <summary>
+        /// Returns estimated time to finish on naming format. (xxx ms or xx second/seconds or xx minute/minutes and yy (second/seconds...) Recommended for low-cpu-intense algorithm in order to better visual output
+        /// </summary>
+        /// <param name="etaTime">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns "Uncalculatable" if etaTime is null. Returns "Negative" if etaTime is negative. Returns string format.</returns>
+        public static string NameETABetterVisual(double? etaTime)
+        {
+            // Checking if the given parameter is null.
+            if (etaTime == null)
+            {
+                // Returning "Uncalculatable" to indicate the given parameter was null.
+                return TextUncalculatable;
+            }
+            // Checking if the given parameter is negative.
+            else if (etaTime < 0)
+            {
+                // Returning "Negative" to indicate the given parameter was negative. 
+                return TextNegative;
+            }
+
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: (long)(etaTime.Value * TimeSpan.TicksPerMillisecond));
 
             // Checking if the parameter is shorter than one minute.
             if (ts.TotalSeconds < 60)
@@ -308,6 +441,41 @@ namespace CalculateETA
         }
 
         /// <summary>
+        /// [Unsafe] Returns estimated time to finish on naming format. (xxx ms or xx second/seconds or xx minute/minutes and yy (second/seconds...) Recommended for low-cpu-intense algorithm in order to better visual output
+        /// </summary>
+        /// <param name="etaTime">The left time to finish. (milliseconds)</param>
+        public static string NameETABetterVisualUnsafe(double etaTime)
+        {
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: (long)(etaTime * TimeSpan.TicksPerMillisecond));
+
+            // Checking if the parameter is shorter than one minute.
+            if (ts.TotalSeconds < 60)
+            {
+                // Returning ETA as x second or yy seconds.
+                return $"{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+            }
+            // Checking if parameter is shorter than one hour.
+            else if (ts.TotalSeconds < 3600)
+            {
+                // Returning ETA as x minute or xx minutes, y second or yy seconds.
+                return $"{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+            }
+            // Checking if parameter is shorter than one day.
+            else if (ts.TotalSeconds < 86400)
+            {
+                // Returning ETA as x hour or xx hours and, y minute or yy minutes.
+                return $"{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
+            }
+            // If parameter is longer than a day.
+            else
+            {
+                // Returning ETA as x day or xx days, y hour and yy hours.
+                return $"{ts.Days} {(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}";
+            }
+        }
+
+        /// <summary>
         /// Returns estimated left time to finish on string format. (HH:MM.SS)
         /// </summary>
         /// <param name="etaTimeInMs">The left time to finish. (milliseconds)</param>
@@ -341,6 +509,39 @@ namespace CalculateETA
         }
 
         /// <summary>
+        /// Returns estimated left time to finish on string format. (HH:MM.SS)
+        /// </summary>
+        /// <param name="etaTime">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns "Uncalculatable" if etaTime is null. Returns "Negative" if etaTime is negative. Returns "Too long" if etaTimeInMs is more than a day. Returns number format. (string)</returns>
+        public static string NumberFormatETA(double? etaTime)
+        {
+            // Checking if the given parameter is null.
+            if (etaTime == null)
+            {
+                // Returning "Uncalculatable" to indicate the given parameter was null.
+                return TextUncalculatable;
+            }
+            // Checking if the given parameter is negative.
+            else if (etaTime < 0)
+            {
+                // Returning "Negative" to indicate the given parameter was negative. 
+                return TextNegative;
+            }
+            // Checking if the given parameter value will result misleading return value. Estimation under 24 hours will return.
+            else if (etaTime > 86400000)
+            {
+                // Returning "Too long" to indicaate the given parameter value will result estimation more than a day.
+                return TextTooLong;
+            }
+
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: (long)(etaTime.Value * TimeSpan.TicksPerMillisecond));
+
+            // Returning ETA in number format. E.g 05:03:24
+            return $"{ts.Hours}{TextNumberFormatSeparator}{ts.Minutes}{TextNumberFormatSeparator}{ts.Seconds}";
+        }
+
+        /// <summary>
         /// [Unsafe] Returns estimated left time to finish on string format. (HH:MM.SS)
         /// </summary>
         /// <param name="etaTimeInMs">The left time to finish. (milliseconds)</param>
@@ -349,6 +550,20 @@ namespace CalculateETA
         {
             // Creating a TimeSpan from TimeSpan(ticks:)
             TimeSpan ts = new TimeSpan(ticks: etaTimeInMs * TimeSpan.TicksPerMillisecond);
+
+            // Returning ETA in number format. E.g 05:03:24
+            return $"{ts.Hours}{TextNumberFormatSeparator}{ts.Minutes}{TextNumberFormatSeparator}{ts.Seconds}";
+        }
+
+        /// <summary>
+        /// [Unsafe] Returns estimated left time to finish on string format. (HH:MM.SS)
+        /// </summary>
+        /// <param name="etaTime">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns number format. (string)</returns>
+        public static string NumberFormatETAUnsafe(double etaTime)
+        {
+            // Creating a TimeSpan from TimeSpan(ticks:)
+            TimeSpan ts = new TimeSpan(ticks: (long)(etaTime * TimeSpan.TicksPerMillisecond));
 
             // Returning ETA in number format. E.g 05:03:24
             return $"{ts.Hours}{TextNumberFormatSeparator}{ts.Minutes}{TextNumberFormatSeparator}{ts.Seconds}";
@@ -381,12 +596,47 @@ namespace CalculateETA
         /// <summary>
         /// Returns estimated left time to finish on TimeSpan format.
         /// </summary>
+        /// <param name="etaTime">The left time to finish. (milliseconds)</param>
+        /// <returns>Returns TimeSpan.Zero if etaTime is either null or negative. Return TimeSpan format.</returns>
+        public static TimeSpan? TimeSpanETA(double? etaTime)
+        {
+            // Checking if the given parameter is null.
+            if (etaTime == null)
+            {
+                // Returning null to indicate the given parameter was null.
+                return null;
+            }
+            // Checking if the given parameter is negative.
+            else if (etaTime < 0)
+            {
+                // Returning TimeSpan.Zero to indicate the given parameter was negative.
+                return TimeSpan.Zero;
+            }
+
+            // Returning ETA in TimeSpan.
+            return new TimeSpan(ticks: (long)(etaTime.Value * TimeSpan.TicksPerMillisecond));
+        }
+
+        /// <summary>
+        /// Returns estimated left time to finish on TimeSpan format.
+        /// </summary>
         /// <param name="etaTimeInMs">The left time to finish. (milliseconds)</param>
         /// <returns>Return TimeSpan format.</returns>
         public static TimeSpan TimeSpanETAUnsafe(long etaTimeInMs)
         {
             // Returning Timespan created by parameter changed into ticks.
             return new TimeSpan(ticks: etaTimeInMs * TimeSpan.TicksPerMillisecond);
+        }
+
+        /// <summary>
+        /// Returns estimated left time to finish on TimeSpan format.
+        /// </summary>
+        /// <param name="etaTime">The left time to finish. (milliseconds)</param>
+        /// <returns>Return TimeSpan format.</returns>
+        public static TimeSpan TimeSpanETAUnsafe(double etaTime)
+        {
+            // Returning Timespan created by parameter changed into ticks.
+            return new TimeSpan(ticks: (long)(etaTime * TimeSpan.TicksPerMillisecond));
         }
 
         #endregion VisualFormat        
