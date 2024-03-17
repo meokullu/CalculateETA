@@ -12,18 +12,18 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      v2.3.0
-      * Under `Visualisation.cs` `TextMessage` class is added. `TextSecondOptionalPlural`, `TextMinuteOptionalPlural`, `TextHourOptionalPlural`, `TextDayOptionalPlural`, `TextSecond`, `TextMinute`, `TextHour`, `TextDay`, `TextMinutes`, `TextHours`, `TextDays`, `TextUncalculatable`, `TextNegative`, `TextTooLong`, `TextAnd` and `TextNumberFormatSeperator` can be set to choose what `NameETA(long? etaTimeInMs)`, `NameETAUnsafe(long etaTimeInMs)`, `NameETABetterVisual(long? etaTimeInMs)`, `NameETABetterVisualUnsafe(long etaTimeInMs)`, `NumberFormatETA(long? etaTimeInMs)` and `NumberFormatETAUnsafe(long etaTimeInMs)` methods create string to return.
+      v2.4.0
+      * 
 
       See changelog (https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>
-    <Version>2.3.0</Version>
+    <Version>2.4.0</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Enes Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA; Time; LeftTime; Iterations; Time-Estimations; Multi-thread; Single-thread; loops</PackageTags>
-    <AssemblyVersion>2.3.0</AssemblyVersion>
-    <FileVersion>2.3.0</FileVersion>
+    <AssemblyVersion>2.4.0</AssemblyVersion>
+    <FileVersion>2.4.0</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meokullu/CalculateETA</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>

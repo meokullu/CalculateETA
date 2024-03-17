@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CalculateETA
 {
@@ -12,10 +8,10 @@ namespace CalculateETA
     public static class Report
     {
         // List for calculations in double data type.
-        private static List<double?> s_etaInDoubleListToReport = new List<double?>();
+        private static readonly List<double?> s_etaInDoubleListToReport = new();
 
         // List for calculations in long data type.
-        private static List<long?> s_etaInLongListToReport = new List<long?>();
+        private static readonly List<long?> s_etaInLongListToReport = new();
 
         /// <summary>
         /// Adds calculated ETA time into a list.
