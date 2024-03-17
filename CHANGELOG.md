@@ -15,6 +15,8 @@
 #### Added
 * `CalcMultiThread.cs` and `CalcSingleThread.cs` files are added.
 * `ClearListInDouble()`, `ClearListInLong()`, `GetCountListInDouble()` and `GetCountListInLong()` method are added under `Report.cs`.
+* `NameETA(double etaTime)`, `NameETAUnsafe(double etaTime)`, `NameETABetterVisual(double etaTime)`, `NameETABetterVisualUnsafe(double etaTime)` `NumberFormatETA(double etaTime)` and `NumberFormatETAUnsafe(double etaTime)`
+* `NameETAUnSafe(double etaTime)` renamed as `NameETAUnsafe(double etaTime)`.
 
 ### [2.3.0]
 #### Added
