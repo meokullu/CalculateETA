@@ -14,6 +14,7 @@
 ### [2.4.0]
 #### Added
 * `CalcMultiThread.cs` and `CalcSingleThread.cs` files are added.
+* `ClearListInDouble()`, `ClearListInLong()`, `GetCountListInDouble()` and `GetCountListInLong()` method are added under `Report.cs`.
 
 ### [2.3.0]
 #### Added
