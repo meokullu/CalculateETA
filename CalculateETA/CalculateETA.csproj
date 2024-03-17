@@ -13,7 +13,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       v2.4.0
-      * 
+      * CalcMultiThread.cs and CalcSingleThread.cs files are added.
+      * ClearListInDouble(), ClearListInLong(), GetCountListInDouble() and GetCountListInLong() method are added under `Report.cs`. (#71)
 
       See changelog (https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>
