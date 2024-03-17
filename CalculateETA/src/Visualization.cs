@@ -143,13 +143,6 @@ namespace CalculateETA
                 return TextNegative;
             }
 
-            // Checking if the given parameter is lower than one second. This is commented out for better performance.
-            //else if (etaTimeInMs < 1000)
-            //{
-            //    //
-            //    return $"{etaTimeInMs:0} ms";
-            //}
-
             // Creating a TimeSpan from TimeSpan(ticks:)
             TimeSpan ts = new TimeSpan(ticks: etaTimeInMs.Value * TimeSpan.TicksPerMillisecond);
 
@@ -333,25 +326,25 @@ namespace CalculateETA
             if (ts.TotalSeconds < 60)
             {
                 // Returning ETA as x second or yy seconds.
-                return $"{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+                return $"{ts.Seconds}{(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
             }
             // Checking if parameter is shorter than one hour.
             else if (ts.TotalSeconds < 3600)
             {
                 // Returning ETA as x minute or xx minutes, y second or yy seconds.
-                return $"{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+                return $"{ts.Minutes}{(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds}{(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
             }
             // Checking if parameter is shorter than one day.
             else if (ts.TotalSeconds < 86400)
             {
                 // Returning ETA as x hour or xx hours and, y minute or yy minutes.
-                return $"{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
+                return $"{ts.Hours}{(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes}{(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
             }
             // If parameter is longer than a day.
             else
             {
                 // Returning ETA as x day or xx days, y hour and yy hours.
-                return $"{ts.Days} {(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}";
+                return $"{ts.Days}{(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours}{(ts.Hours != 1 ? TextHours : TextHour)}";
             }
         }
 
@@ -382,25 +375,25 @@ namespace CalculateETA
             if (ts.TotalSeconds < 60)
             {
                 // Returning ETA as x second or yy seconds.
-                return $"{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+                return $"{ts.Seconds}{(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
             }
             // Checking if parameter is shorter than one hour.
             else if (ts.TotalSeconds < 3600)
             {
                 // Returning ETA as x minute or xx minutes, y second or yy seconds.
-                return $"{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+                return $"{ts.Minutes}{(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds}{(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
             }
             // Checking if parameter is shorter than one day.
             else if (ts.TotalSeconds < 86400)
             {
                 // Returning ETA as x hour or xx hours and, y minute or yy minutes.
-                return $"{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
+                return $"{ts.Hours}{(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes}{(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
             }
             // If parameter is longer than a day.
             else
             {
                 // Returning ETA as x day or xx days, y hour and yy hours.
-                return $"{ts.Days} {(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}";
+                return $"{ts.Days}{(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours}{(ts.Hours != 1 ? TextHours : TextHour)}";
             }
         }
 
@@ -418,25 +411,25 @@ namespace CalculateETA
             if (ts.TotalSeconds < 60)
             {
                 // Returning ETA as x second or yy seconds.
-                return $"{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+                return $"{ts.Seconds}{(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
             }
             // Checking if parameter is shorter than one hour.
             else if (ts.TotalSeconds < 3600)
             {
                 // Returning ETA as x minute or xx minutes, y second or yy seconds.
-                return $"{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+                return $"{ts.Minutes}{(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds}{(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
             }
             // Checking if parameter is shorter than one day.
             else if (ts.TotalSeconds < 86400)
             {
                 // Returning ETA as x hour or xx hours and, y minute or yy minutes.
-                return $"{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
+                return $"{ts.Hours}{(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes}{(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
             }
             // If parameter is longer than a day.
             else
             {
                 // Returning ETA as x day or xx days, y hour and yy hours.
-                return $"{ts.Days} {(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}";
+                return $"{ts.Days}{(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours}{(ts.Hours != 1 ? TextHours : TextHour)}";
             }
         }
 
@@ -453,25 +446,25 @@ namespace CalculateETA
             if (ts.TotalSeconds < 60)
             {
                 // Returning ETA as x second or yy seconds.
-                return $"{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+                return $"{ts.Seconds}{(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
             }
             // Checking if parameter is shorter than one hour.
             else if (ts.TotalSeconds < 3600)
             {
                 // Returning ETA as x minute or xx minutes, y second or yy seconds.
-                return $"{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds} {(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
+                return $"{ts.Minutes}{(ts.Minutes != 1 ? TextMinutes : TextMinute)}{TextAnd}{ts.Seconds}{(ts.Seconds != 1 ? TextSeconds : TextSecond)}";
             }
             // Checking if parameter is shorter than one day.
             else if (ts.TotalSeconds < 86400)
             {
                 // Returning ETA as x hour or xx hours and, y minute or yy minutes.
-                return $"{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes} {(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
+                return $"{ts.Hours}{(ts.Hours != 1 ? TextHours : TextHour)}{TextAnd}{ts.Minutes}{(ts.Minutes != 1 ? TextMinutes : TextMinute)}";
             }
             // If parameter is longer than a day.
             else
             {
                 // Returning ETA as x day or xx days, y hour and yy hours.
-                return $"{ts.Days} {(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours} {(ts.Hours != 1 ? TextHours : TextHour)}";
+                return $"{ts.Days}{(ts.Days != 1 ? TextDays : TextDay)}{TextAnd}{ts.Hours}{(ts.Hours != 1 ? TextHours : TextHour)}";
             }
         }
 
