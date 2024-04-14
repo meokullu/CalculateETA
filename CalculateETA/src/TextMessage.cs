@@ -105,7 +105,7 @@ namespace CalculateETA
         /// <summary>
         /// Sets all text messages Turkish.
         /// </summary>
-        public void SetTextMessageTurkish()
+        public static void SetTextMessageTurkish()
         {
             TextMessage.TextSecondOptionalPlural = " saniye";
             TextMessage.TextMinuteOptionalPlural = " dakika";
@@ -133,7 +133,7 @@ namespace CalculateETA
         /// <summary>
         /// Sets all text messages with abbrevations.
         /// </summary>
-        public void SetTextMessageAbbrevations()
+        public static void SetTextMessageAbbrevations()
         {
             TextMessage.TextSecondOptionalPlural = " secs";
             TextMessage.TextMinuteOptionalPlural = " mins";
