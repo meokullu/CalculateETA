@@ -16,29 +16,29 @@ namespace CalculateETA
         /// <summary>
         /// Adds calculated ETA time into a list.
         /// </summary>
-        /// <param name="etaTime">Calculated ETA time to add into the list.</param>
+        /// <param name="eta">Calculated ETA time to add into the list.</param>
         /// <returns>Long value.</returns>
-        public static long? AddReport(this long? etaTime)
+        public static long? AddReport(this long? eta)
         {
             // Adding into the list.
-            s_etaInLongListToReport.Add(etaTime);
+            s_etaInLongListToReport.Add(eta);
 
             // Returning value without change.
-            return etaTime;
+            return eta;
         }
 
         /// <summary>
         /// Adds calculated ETA time into a list.
         /// </summary>
-        /// <param name="etaTime">Calculated ETA time to add into the list.</param>
+        /// <param name="eta">Calculated ETA time to add into the list.</param>
         /// <returns>Double value.</returns>
-        public static double? AddReport(this double? etaTime)
+        public static double? AddReport(this double? eta)
         {
             // Adding into the list.
-            s_etaInDoubleListToReport.Add(etaTime);
+            s_etaInDoubleListToReport.Add(eta);
 
             // Returning value without change.
-            return etaTime;
+            return eta;
         }
 
         /// <summary>
