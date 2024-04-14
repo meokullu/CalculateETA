@@ -44,16 +44,6 @@ namespace CalculateETA
         /// <summary>
         /// Returns filled list by AddReport() in certain data type.
         /// </summary>
-        /// <returns>Array of double values.</returns>
-        public static double?[] GetDoubleListReport()
-        {
-            // Transforming filled list into an array and returns it.
-            return s_etaInDoubleListToReport.ToArray();
-        }
-
-        /// <summary>
-        /// Returns filled list by AddReport() in certain data type.
-        /// </summary>
         /// <returns>Array of long values.</returns>
         public static long?[] GetLongListReport()
         {
@@ -62,11 +52,13 @@ namespace CalculateETA
         }
 
         /// <summary>
-        /// Clear list that holds eta values in double data type.
+        /// Returns filled list by AddReport() in certain data type.
         /// </summary>
-        public static void ClearListInDouble()
+        /// <returns>Array of double values.</returns>
+        public static double?[] GetDoubleListReport()
         {
-            s_etaInDoubleListToReport.Clear();
+            // Transforming filled list into an array and returns it.
+            return s_etaInDoubleListToReport.ToArray();
         }
 
         /// <summary>
@@ -78,12 +70,11 @@ namespace CalculateETA
         }
 
         /// <summary>
-        /// Get count of list in double type type.
+        /// Clear list that holds eta values in double data type.
         /// </summary>
-        /// <returns>List count.</returns>
-        public static int GetCountListInDouble()
+        public static void ClearListInDouble()
         {
-            return s_etaInDoubleListToReport.Count;
+            s_etaInDoubleListToReport.Clear();
         }
 
         /// <summary>
@@ -94,5 +85,14 @@ namespace CalculateETA
         {
             return s_etaInLongListToReport.Count;
         }
+
+        /// <summary>
+        /// Get count of list in double type type.
+        /// </summary>
+        /// <returns>List count.</returns>
+        public static int GetCountListInDouble()
+        {
+            return s_etaInDoubleListToReport.Count;
+        }       
     }
 }
