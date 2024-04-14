@@ -11,6 +11,11 @@
 #### Removed
 -->
 
+### [3.0.0]
+#### Added
+* `SetTextMessageTurkish()` method added for setting all text messages that are used by naming ETA Turkish. [#78](https://github.com/meokullu/CalculateETA/issues/78)
+* `SetTextMessageAbbrevations()` method added for setting all text messages thatare used by naming ETA English abbrevations. [#78](https://github.com/meokullu/CalculateETA/issues/78)
+
 ### [2.4.0]
 #### Added
 * `CalcMultiThread.cs` and `CalcSingleThread.cs` files are added.
