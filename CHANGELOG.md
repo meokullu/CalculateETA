@@ -72,6 +72,8 @@ Following methods' parameter names are simplified. [#77](https://github.com/meok
 * On `CalcETAHighDenseUnsafe(uint? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`
 * On `CalcETAHighDenseUnsafe(int? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
 
+* `ResetCounterUint()` and `ResultCounter()` methods were unaccesible due to lack of marking them as static. Not they are marked as static.
+
 #### Removed
 * `NameETAUnSafe(double etaTime)` was marked as obsolote on version 2.4.0 with suggesting alternative as `NameETAUnsafe(double etaTime)` due to hypo. Now obsolote method is removed.
 
