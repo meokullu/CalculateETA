@@ -112,15 +112,15 @@ namespace CalculateETA
             TextMessage.TextHourOptionalPlural = " saat";
             TextMessage.TextDayOptionalPlural = " gün";
 
-            TextMessage.TextSeconds = " saniye";
-            TextMessage.TextMinute = " dakika";
-            TextMessage.TextHour = " saat";
-            TextMessage.TextDay = " gün";
-
             TextMessage.TextSecond = " saniye";
             TextMessage.TextMinute = " dakika";
             TextMessage.TextHour = " saat";
             TextMessage.TextDay = " gün";
+
+            TextMessage.TextSeconds = " saniye";
+            TextMessage.TextMinutes = " dakika";
+            TextMessage.TextHours = " saat";
+            TextMessage.TextDays = " gün";
 
             TextMessage.TextUncalculatable = " hesaplanamıyor";
             TextMessage.TextNegative = " negatif";
@@ -140,15 +140,15 @@ namespace CalculateETA
             TextMessage.TextHourOptionalPlural = " hours";
             TextMessage.TextDayOptionalPlural = " days";
 
-            TextMessage.TextSeconds = " s";
-            TextMessage.TextMinute = " m";
-            TextMessage.TextHour = " h";
-            TextMessage.TextDay = " d";
-
             TextMessage.TextSecond = " s";
             TextMessage.TextMinute = " m";
             TextMessage.TextHour = " h";
             TextMessage.TextDay = " d";
+
+            TextMessage.TextSeconds = " s";
+            TextMessage.TextMinutes = " m";
+            TextMessage.TextHours = " h";
+            TextMessage.TextDays = " d";
 
             TextMessage.TextUncalculatable = " unc";
             TextMessage.TextNegative = " neg";
