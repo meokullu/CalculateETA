@@ -21,7 +21,7 @@
         /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero. (uint methods)
         /// </summary>
         /// <returns>True or false</returns>
-        public bool ResetCounterUint()
+        public static bool ResetCounterUint()
         {
             // Checking if the counter is zero.
             if (s_counterUint == 0)
@@ -43,7 +43,7 @@
         /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero. (int methods)
         /// </summary>
         /// <returns>True or false</returns>
-        public bool ResetCounter()
+        public static bool ResetCounter()
         {
             // Checking if the counter is zero.
             if (s_counter == 0)

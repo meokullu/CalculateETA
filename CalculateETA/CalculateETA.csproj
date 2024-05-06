@@ -12,22 +12,17 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      v2.4.0
-      * CalcMultiThread.cs and CalcSingleThread.cs files are added.
-      * ClearListInDouble(), ClearListInLong(), GetCountListInDouble() and GetCountListInLong() method are added under Report.cs. (#71)
-      * NameETA(double etaTime), NameETAUnsafe(double etaTime), NameETABetterVisual(double etaTime), NameETABetterVisualUnsafe(double etaTime), NumberFormatETA(double etaTime) and NumberFormatETAUnsafe(double etaTime) methods are added for naming values in double under Visualizations.cs
-      * NameETAUnSafe(double etaTime) renamed as NameETAUnsafe(double etaTime).
-      * NameETABetterVisual(long? etaTimeInMs), NameETABetterVisual(double? etaTime), NameETABetterVisualUnsafe(long etaTimeInMs) and NameETABetterVisualUnsafe(double etaTime) was adding additional space.
-
+      v3.0.0
+      Adding PreventSurge modules and wide changes.
       See changelog (https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>
-    <Version>2.4.0</Version>
+    <Version>3.0.0</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Enes Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA; Time; LeftTime; Iterations; Time-Estimations; Multi-thread; Single-thread; loops</PackageTags>
-    <AssemblyVersion>2.4.0</AssemblyVersion>
-    <FileVersion>2.4.0</FileVersion>
+    <AssemblyVersion>3.0.0</AssemblyVersion>
+    <FileVersion>3.0.0</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meokullu/CalculateETA</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>

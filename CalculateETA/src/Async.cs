@@ -7,28 +7,28 @@ namespace CalculateETA
         /// <summary>
         /// Calling <see cref="CalcETA(int?, int?, long?)"/> method with Task.Run().
         /// </summary>
-        public static async Task<long?> CalcETAAsync(int? index, int totalIndex, long? totalElapsedTimeInMs)
+        public static async Task<long?> CalcETAAsync(int? index, int totalIndex, long? elapsed)
         {
             // Calling method with provided values with Task.Run().
-            return await Task.Run(() => CalcETA(index: index, totalIndex: totalIndex, totalElapsedTimeInMs: totalElapsedTimeInMs));
+            return await Task.Run(() => CalcETA(index: index, totalIndex: totalIndex, elapsed: elapsed));
         }
 
         /// <summary>
         /// Calling <see cref="CalcETA(int?, long?)"/> method with Task.Run().
         /// </summary>
-        public static async Task<long?> CalcETAAsync(int? totalIndex, long? totalElapsedTime)
+        public static async Task<long?> CalcETAAsync(int? totalIndex, long? elapsed)
         {
             // Calling method with provided values with Task.Run().
-            return await Task.Run(() => CalcETA(totalIndex, totalElapsedTime));
+            return await Task.Run(() => CalcETA(totalIndex, elapsed));
         }
 
         /// <summary>
         /// Calling <see cref="NameETA(long?)"/> method with Task.Run()
         /// </summary>
-        public static async Task<string> NameETAAsync(long? etaTimeInMs)
+        public static async Task<string> NameETAAsync(long? eta)
         {
             // Calling method with provided values with Task.Run().
-            return await Task.Run(() => NameETA(etaTimeInMs: etaTimeInMs));
+            return await Task.Run(() => NameETA(eta: eta));
         }
     }
 }

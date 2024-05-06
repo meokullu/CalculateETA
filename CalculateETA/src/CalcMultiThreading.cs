@@ -9,15 +9,73 @@ namespace CalculateETA
     /// <summary>
     /// Multi-Thread
     /// </summary>
-    public partial class CalculateETA
+    public class MultiThreading
     {
+        #region Variables
+
+        // Unsigned integer variable that holds total interaction for multi-threading applications. This value should be reset with ResetCounterUint() after re-use of CalcETA() multi-threading methods.
+        private static uint s_counterUint;
+
+        // Integer variable that holds total interaction for multi-threading applications. This value should be reset with ResetCounter() after re-use of CalcETA() multi-threading methods.
+        private static int s_counter;
+
+        #endregion Variables
+
+        #region Reset Counters
+
+        /// <summary>
+        /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero. (uint methods)
+        /// </summary>
+        /// <returns>True or false</returns>
+        public bool ResetCounterUint()
+        {
+            // Checking if the counter is zero.
+            if (s_counterUint == 0)
+            {
+                // Returns false indicates that counter was zero already.
+                return false;
+            }
+            else
+            {
+                // Re-setting the counter value to zero.
+                s_counterUint = 0;
+
+                // Returns true indicates that re-setting the counter value to zero is successful.
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Returns true if the counter is resetted to zero. Returns false if the counter is already zero. (int methods)
+        /// </summary>
+        /// <returns>True or false</returns>
+        public bool ResetCounter()
+        {
+            // Checking if the counter is zero.
+            if (s_counter == 0)
+            {
+                // Returns false indicates that counter was zero already.
+                return false;
+            }
+            else
+            {
+                // Re-setting the counter value to zero.
+                s_counter = 0;
+
+                // Returns true indicates that re-setting the counter value to zero was successful.
+                return true;
+            }
+        }
+
+        #endregion ResetCounter
+
         /// <summary>
         /// [Safe] Returns calculated estimated time to finish iteration on seconds (long) on Multi-Threading iterations. If iteration takes close to one millisecond, use CalcETA(totalIndex, totalElapsedTicks, frequency).
         /// </summary>
         /// <param name="totalIndex">Total index of iteration.</param>
         /// <param name="elapsed">Elapsed time from starting of the iteration until current iteration on milliseconds</param>
         /// <returns>The left time to finish iteration in milliseconds. (long)</returns>
-        public static long? CalcETA(uint? totalIndex, long? elapsed)
+        public long? CalcETA(uint? totalIndex, long? elapsed)
         {
             // Checking parameters for at least one of them is null. This control is not being made for CalcETAUnsafe() method.
             if (totalIndex.HasValue == false || elapsed.HasValue == false)

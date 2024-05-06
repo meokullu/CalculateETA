@@ -5,26 +5,23 @@ namespace CalculateETA
     /// <summary>
     /// Reporing module have features to save data.
     /// </summary>
-    public static class Report
+    public class Reporting
     {
         // List for calculations in double data type.
-        private static readonly List<double?> s_etaInDoubleListToReport = new List<double?>();
+        private readonly List<double?> s_etaInDoubleListToReport = new List<double?>();
 
         // List for calculations in long data type.
-        private static readonly List<long?> s_etaInLongListToReport = new List<long?>();
+        private readonly List<long?> s_etaInLongListToReport = new List<long?>();
 
         /// <summary>
         /// Adds calculated ETA time into a list.
         /// </summary>
         /// <param name="eta">Calculated ETA time to add into the list.</param>
         /// <returns>Long value.</returns>
-        public static long? AddReport(this long? eta)
+        public void AddReport(long? eta)
         {
             // Adding into the list.
             s_etaInLongListToReport.Add(eta);
-
-            // Returning value without change.
-            return eta;
         }
 
         /// <summary>
@@ -32,20 +29,17 @@ namespace CalculateETA
         /// </summary>
         /// <param name="eta">Calculated ETA time to add into the list.</param>
         /// <returns>Double value.</returns>
-        public static double? AddReport(this double? eta)
+        public void AddReport(double? eta)
         {
             // Adding into the list.
             s_etaInDoubleListToReport.Add(eta);
-
-            // Returning value without change.
-            return eta;
         }
 
         /// <summary>
         /// Returns filled list by AddReport() in certain data type.
         /// </summary>
         /// <returns>Array of long values.</returns>
-        public static long?[] GetLongListReport()
+        public long?[] GetLongListReport()
         {
             // Transforming filled list into an array and returns it.
             return s_etaInLongListToReport.ToArray();
@@ -55,7 +49,7 @@ namespace CalculateETA
         /// Returns filled list by AddReport() in certain data type.
         /// </summary>
         /// <returns>Array of double values.</returns>
-        public static double?[] GetDoubleListReport()
+        public double?[] GetDoubleListReport()
         {
             // Transforming filled list into an array and returns it.
             return s_etaInDoubleListToReport.ToArray();
@@ -64,7 +58,7 @@ namespace CalculateETA
         /// <summary>
         /// Clear list that holds eta values in long data type.
         /// </summary>
-        public static void ClearListInLong()
+        public void ClearListInLong()
         {
             s_etaInLongListToReport.Clear();
         }
@@ -72,7 +66,7 @@ namespace CalculateETA
         /// <summary>
         /// Clear list that holds eta values in double data type.
         /// </summary>
-        public static void ClearListInDouble()
+        public void ClearListInDouble()
         {
             s_etaInDoubleListToReport.Clear();
         }
@@ -81,7 +75,7 @@ namespace CalculateETA
         /// Get count of list in double type type.
         /// </summary>
         /// <returns>List count.</returns>
-        public static int GetCountListInLong()
+        public int GetCountListInLong()
         {
             return s_etaInLongListToReport.Count;
         }
@@ -90,7 +84,7 @@ namespace CalculateETA
         /// Get count of list in double type type.
         /// </summary>
         /// <returns>List count.</returns>
-        public static int GetCountListInDouble()
+        public int GetCountListInDouble()
         {
             return s_etaInDoubleListToReport.Count;
         }       

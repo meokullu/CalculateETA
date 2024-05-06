@@ -11,6 +11,77 @@
 #### Removed
 -->
 
+### [3.0.0]
+#### Added
+* `SetTextMessageTurkish()` method added for setting all text messages that are used by naming ETA Turkish. [#78](https://github.com/meokullu/CalculateETA/issues/78)
+* `SetTextMessageAbbrevations()` method added for setting all text messages thatare used by naming ETA English abbrevations. [#78](https://github.com/meokullu/CalculateETA/issues/78)
+* `PreventSurgeByPercentage(long? eta, double discretePercentage)` method added into `Correction`
+* `PreventSurgeByPercentage(double? eta, double discretePercentage)` method added into `Correction`
+* `PreventSurgeByValueRepeatence(long? eta)` method added into `Correction`
+* `PreventSurgeByValueRepeatence(double? eta)` method added into `Correction`
+* `MultiThreading` and `Reporting` are added. Instance of each can be used repeatedly and simultaneously.
+
+#### Changed
+Following methods' parameter names are simplified. [#77](https://github.com/meokullu/CalculateETA/issues/77)
+* On `CalcETAAsync(int? index, int totalIndex, long? totalElapsedTimeInMs)` method `totalElapsedTimeInMs` parameter is replaced with `elapsed`.
+* On `CalcETAAsync(int totalIndex, long? totalElapsedTime)` method `totalElapsedTime` parameter is replaced with `elapsed`.
+* On `NameETAAsync(long? etaTimeInMs)` method `etaTimeInMs` parameter is replaced with `eta`.
+
+* On `NameETA(long? etaTimeInMs)` method `etaTimeInMs` parameter is replaced with `eta`.
+* On `NameETA(double? etaTime)` method `etaTime` parameter is replaced with `eta`.
+* On `NameETAUnsafe(long etaTimeInMs)` method `etaTimeInMs` parameter is replaced with `eta`.
+* On `NameETAUnsafe(double etaTime)` method `etaTime` parameter is replaced with `eta`.
+* On `NameETABetterVisual(long? etaTimeInMs)` method `etaTimeInMs` parameter is replaced with `eta`.
+* On `NameETABetterVisual(double? etaTime)` method `etaTime` parameter is replaced with `eta`.
+* On `NameETABetterVisualUnsafe(long etaTimeInMs)` method `ètaTimeInMs` is replaced with `eta`.
+* On `NameETABetterVisualUnsafe(double etaTime)` method `etaTime` is replaced with `eta`.
+* On `NumberFormatETA(long? etaTimeInMs)` method `etaTimeInMs` is replaced with `eta`.
+* On `NumberFormatETA(double? etaTime)` method `etaTime` is replaced with `eta`.
+* On `NumberFormatETAUnsafe(long etaTimeInMs)` method `etaTimeInMs` is replaced with `eta`.
+* On `NumberFormatETAUnsafe(double etaTime)` method `etaTime` is replaced with `eta`.
+* On `TimeSpanETA(long? etaTimeInMs)` method `etaTimeInMs` is replaced with `eta`.
+* On `TimeSpanETA(double? etaTime)` method `etaTime` is replaced with `eta`.
+* On `TimeSpanETAUnsafe(long etaTimeInMs)` method `etaTimeInMs` is replaced wtih `eta`.
+* On `TimeSpanETAUnsafe(double etaTime)` method `etaTime` is replaced wìth `eta`.
+
+* On `AddReport(this long? etaTime)` method `etaTime` is replaced with `eta`.
+* On `AddReport(this double? etaTime)` method `etaTime` is replaced with `eta`.
+
+* On `CalcETA(uint? totalIndex, long? totalElapsedTimeInMs)` method `totalElapsedTimeInMs` is replaced with `elapsed`.
+* On `CalcETA(uint? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+* On `CalcETA(int? totalIndex, long? totalElapsedTimeInMs)` method `totalElapsedTimeInMs` is replaced with `elapsed`.
+* On `CalcETA(int? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+
+* On `CalcETAUnsafe(uint? totalIndex, long? totalElapsedTimeInMs)` method `totalElapsedTimeInMs` is replaced with `elapsed`.
+* On `CalcETAUnsafe(uint? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+* On `CalcETAUnsafe(int? totalIndex, long? totalElapsedTimeInMs)` method `totalElapsedTimeInMs` is replaced with `elapsed`.
+* On `CalcETAUnsafe(int? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced `elapsedTicks`.
+
+* On `CalcETA(uint? index, uint? totalIndex, long? totalElapsedTimeInMs)` method `totalElapsedTimeMs` is replaced with `elapsed`.
+* On `CalcETA(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+* On `CalcETA(int? index, int? totalIndex, long? totalElapsedTimeInMs)` method `totalElapsedTimeInMs` is replaced with `elapsed`.
+* On `CalcETA(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+
+* On `CalcETAUnsafe(uint? index, uint? totalIndex, long? totalElapsedTimeInMs)` method `totalElapsedTimeInMs` is replaced with `elapsed`.
+* On `CalcETAUnsafe(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+* On `CalcETAUnsafe(int? index, int? totalIndex, long? totalElapsedTimeInMs)` method `totalElapsedTimeInMs` is replaced with `elapsed`.
+* On `CalcETAUnsafe(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+
+* On `CalcETAHighDense(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+* On `CalcETAHighDense(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+* On `CalcETAHighDenseUnsafe(uint? index, uint? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+* On `CalcETAHighDenseUnsafe(int? index, int? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+
+* On `CalcETAHighDense(uint? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+* On `CalcETAHighDense(int? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+* On `CalcETAHighDenseUnsafe(uint? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`
+* On `CalcETAHighDenseUnsafe(int? totalIndex, long? totalElapsedTicks, long? frequency)` method `totalElapsedTicks` is replaced with `elapsedTicks`.
+
+* `ResetCounterUint()` and `ResultCounter()` methods were unaccesible due to lack of marking them as static. Not they are marked as static.
+
+#### Removed
+* `NameETAUnSafe(double etaTime)` was marked as obsolote on version 2.4.0 with suggesting alternative as `NameETAUnsafe(double etaTime)` due to hypo. Now obsolote method is removed.
+
 ### [2.4.0]
 #### Added
 * `CalcMultiThread.cs` and `CalcSingleThread.cs` files are added.
