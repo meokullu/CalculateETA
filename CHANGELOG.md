@@ -15,6 +15,11 @@
 #### Added
 * `SetTextMessageTurkish()` method added for setting all text messages that are used by naming ETA Turkish. [#78](https://github.com/meokullu/CalculateETA/issues/78)
 * `SetTextMessageAbbrevations()` method added for setting all text messages thatare used by naming ETA English abbrevations. [#78](https://github.com/meokullu/CalculateETA/issues/78)
+* `PreventSurgeByPercentage(long? eta, double discretePercentage)` method added into `Correction`
+* `PreventSurgeByPercentage(double? eta, double discretePercentage)` method added into `Correction`
+* `PreventSurgeByValueRepeatence(long? eta)` method added into `Correction`
+* `PreventSurgeByValueRepeatence(double? eta)` method added into `Correction`
+* `MultiThreading` and `Reporting` are added. Instance of each can be used repeatedly and simultaneously.
 
 #### Changed
 Following methods' parameter names are simplified. [#77](https://github.com/meokullu/CalculateETA/issues/77)
