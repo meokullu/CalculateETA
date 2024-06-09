@@ -8,7 +8,6 @@ CalculateETA is a project to calculate estimated time to arrive on loops whether
 [Download on NuGet gallery](https://www.nuget.org/packages/CalculateETA/)
 
 ### Description
-
 CalculateETA has methods to calculate estimated time to finish on the loops. It calculates left count of the iteration and avarage passed time on the loop then multiply left count with avarage passed time. On multi-thread applications, it has internal counter that increases everytime methods are called. With using counter calculating left count of the loop and avarage passed time on the loop then multiply left count with avarage passed time.
 
 CalculateETA is optimized for CPU-intense applications which methods are named Unsafe as suffix such as CalcUnsafe() and NameETAUnsafe().
@@ -46,7 +45,6 @@ See [Changelog](https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.m
 This repository is licensed under the "MIT" license. See [MIT license](https://github.com/meokullu/CalculateETA/blob/master/LICENSE).
 
 ### Authors & Contributing
-
 If you'd like to contribute, then contribute. [contributing guide](https://github.com/meokullu/CalculateETA/blob/master/CONTRIBUTING.md).
 
 [![Contributors](https://contrib.rocks/image?repo=meokullu/CalculateETA)](https://github.com/meokullu/CalculateETA/graphs/contributors)
