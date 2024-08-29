@@ -87,6 +87,6 @@ namespace CalculateETA
         public int GetCountListInDouble()
         {
             return s_etaInDoubleListToReport.Count;
-        }       
+        }
     }
 }
