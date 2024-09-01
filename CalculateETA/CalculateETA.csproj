@@ -12,17 +12,17 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      v3.0.1
+      v3.0.2
       Removed unused usings and code cleanup.
       See changelog (https://github.com/meokullu/CalculateETA/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>
-    <Version>3.0.1</Version>
+    <Version>3.0.2</Version>
     <Description>CalculateETA is a project to calculate estimated time to arrive on loops whether it is in single-thread or multi-thread applicatons.</Description>
     <Copyright>Enes Okullu</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ETA; Time; LeftTime; Iterations; Time-Estimations; Multi-thread; Single-thread; loops</PackageTags>
-    <AssemblyVersion>3.0.1</AssemblyVersion>
-    <FileVersion>3.0.1</FileVersion>
+    <AssemblyVersion>3.0.2</AssemblyVersion>
+    <FileVersion>3.0.2</FileVersion>
     <PackageProjectUrl>https://meokullu.github.io/CalculateETA/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meokullu/CalculateETA</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
