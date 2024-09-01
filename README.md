@@ -5,12 +5,21 @@ CalculateETA is a project to calculate estimated time to arrive on loops whether
 
 ![CalculateETA](https://github.com/meokullu/CalculateETA/assets/4971757/006959d8-9736-4e67-a42a-1afd13e267a5)
 
+### How to download
+Release: [Latest release](https://github.com/meokullu/CalculateETA/releases/latest)
+
 [Download on NuGet gallery](https://www.nuget.org/packages/CalculateETA/)
+
+.NET CLI:
+```
+dotnet add package CalculateETA
+```
 
 ### Description
 CalculateETA has methods to calculate estimated time to finish on the loops. It calculates left count of the iteration and avarage passed time on the loop then multiply left count with avarage passed time. On multi-thread applications, it has internal counter that increases everytime methods are called. With using counter calculating left count of the loop and avarage passed time on the loop then multiply left count with avarage passed time.
 
 CalculateETA is optimized for CPU-intense applications which methods are named Unsafe as suffix such as `CalcUnsafe()` and `NameETAUnsafe()`
+
 
 ### Example Usage
 ```
@@ -30,6 +39,23 @@ string CalcMultiThread(uint? totalIndex, long? totalElapsedTicks)
 {
     return NameETA(CalcETAHighDense(totalIndex, totalElapsedTicks));
 }
+```
+Reporting
+```
+// Getting instance of Reporting().
+Reporting reporting = new Reporting();
+
+// Calculating ETA
+long? calcResult = CalcETA(index: i, totalIndex: total, timeSpan: sw.Elapsed);
+
+// Adding result.
+reporting.AddReport(calcResult);
+```
+
+> [!TIP]
+> To save reporting result easily, you can use EasySaver.TextFile.
+```
+dotnet add package EasySaver.TextFile
 ```
 
 To check listed methods, example of output visit wiki page. [CalculateETA Wiki](https://github.com/meokullu/CalculateETA/wiki)
